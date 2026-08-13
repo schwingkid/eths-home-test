@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>YTC Student Portal</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--cream:#FAF6EF;--mist:#EDF1F5;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--green:#3C7A52;--red:#9a3d32}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}.wrap{width:min(760px,calc(100% - 28px));margin:auto}.top{background:var(--deep);color:#fff;padding:22px 0 26px;position:sticky;top:0;z-index:10;box-shadow:0 5px 18px rgba(0,0,0,.12)}.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.25rem}.brand span{color:var(--orange)}.member{font-size:.73rem;color:#c9d6e0;text-align:right}.page{padding:22px 0 56px}.checkin{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(18,42,68,.08);margin-bottom:22px}.label{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 7px}.checkin h1{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:clamp(2.15rem,9vw,3.4rem);line-height:1.02;margin:0 0 12px}.sub{color:var(--muted);margin:0 0 18px}.session{background:var(--mist);border-radius:14px;padding:14px 16px;margin:0 0 16px}.session b{display:block;color:var(--navy)}.code-row{display:flex;gap:10px}.code{flex:1;min-width:0;border:2px solid #cbd5dc;border-radius:14px;padding:15px 16px;font-size:1.25rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;background:#fff}.button{border:0;border-radius:14px;padding:14px 18px;background:var(--orange);color:white;font-weight:800;font-size:1rem;cursor:pointer}.button:disabled{opacity:.5;cursor:not-allowed}.ok{background:#e8f1eb;color:var(--green);border:1px solid #cddfd3;border-radius:14px;padding:14px 16px;font-weight:700}.error{background:#f7e9e6;color:var(--red);border:1px solid #e8cbc5;border-radius:14px;padding:14px 16px}.locked{background:var(--deep);color:white;border-radius:20px;padding:22px;margin-bottom:22px}.locked h2{font-family:Fraunces,Georgia,serif;font-size:1.8rem;margin:0 0 6px}.locked p{color:#ccd8e2;margin:0}.portal{display:none}.portal.open{display:block}.grid{display:grid;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px}.card h2,.card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 8px}.card h2{font-size:1.8rem}.card h3{font-size:1.35rem}.card p{margin:0;color:var(--muted)}.section-title{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:28px 0 10px}.opps{display:grid;gap:12px}.opp{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.tag{display:inline-block;font-size:.61rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 8px;background:#edf1f4;color:var(--navy);margin-bottom:8px}.opp h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:1.3rem;margin:0 0 7px}.opp p{color:var(--muted);font-size:.92rem;margin:0}.resources{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.resource{background:white;border:1px solid var(--line);border-radius:14px;padding:15px}.resource b{display:block;color:var(--navy)}.resource span{font-size:.75rem;color:var(--muted)}.admin-link{display:none;margin-top:18px;text-align:center}.admin-link a{color:var(--navy);font-weight:700}.foot{padding:26px 0;color:var(--muted);font-size:.78rem;text-align:center}@media(min-width:650px){.checkin{padding:30px}.grid.two{grid-template-columns:1fr 1fr}.opps{grid-template-columns:1fr 1fr}.resources{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap toprow"><div class="brand">YTC <span>Student Portal</span></div><div class="member" id="member">Checking membership…</div></div></header>
+<main class="page"><div class="wrap">
+<section class="checkin">
+<p class="label">FIRST THING</p><h1>Check in.</h1><p class="sub" id="checkinSub">Your membership and today's meeting are being checked.</p>
+<div id="checkinBody"><div class="session"><b>Connecting…</b><span>Please wait.</span></div></div>
+</section>
+<section class="locked" id="locked"><h2>Check-in comes first.</h2><p>When a club meeting is active, the calendar, opportunities and clubroom resources unlock after attendance is recorded.</p></section>
+<section class="portal" id="portal">
+<div class="grid two"><article class="card"><p class="label">TODAY</p><h2 id="todayTitle">Clubroom</h2><p id="todayNote"></p></article><article class="card"><p class="label">CALENDAR</p><h2 id="calendarTitle">YTC ETHS Calendar</h2><p id="calendarNote"></p><div id="events"></div></article></div>
+<p class="section-title">Current opportunities</p><div class="opps" id="opportunities"></div>
+<p class="section-title">Clubroom tools</p><div class="resources" id="resources"></div>
+<div class="admin-link" id="adminLink"><a href="admin.html">Sponsor controls →</a></div>
+</section>
+<div class="foot">YTC Evanston · member-only portal</div>
+</div></main>
+<script>
+const $=id=>document.getElementById(id);let statusData=null;
+function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+async function getStatus(){
+ try{
+  const r=await fetch('/api/status',{cache:'no-store'});const d=await r.json();
+  if(!r.ok){showStatusError(d,r.status);return}
+  statusData=d;$('member').textContent=`${d.member.name} · ${d.member.chapter}`;
+  if(['sponsor','admin'].includes(d.member.role)) $('adminLink').style.display='block';
+  renderCheckin(d);
+  if(d.portalUnlocked) await loadPortal();
+ }catch(e){$('checkinBody').innerHTML='<div class="error">Portal service is not connected yet.</div>';}
+}
+function showStatusError(d,status){
+ $('member').textContent='Member access required';
+ const msg=d.error==='not_active_member'?'This email is not on the active YTC club roster.':d.error==='database_not_bound'?'Attendance database is not connected yet.':'Member sign-in is not active yet.';
+ $('checkinBody').innerHTML=`<div class="error">${esc(msg)}</div>`;
+ $('checkinSub').textContent=status===403?'Ask your club sponsor to add or reactivate your membership.':'The portal will open after Cloudflare Access is connected.';
+}
+function renderCheckin(d){
+ if(!d.activeSession){
+  $('checkinSub').textContent='There is no active meeting to check into right now.';
+  $('checkinBody').innerHTML='<div class="ok">Member verified. Portal open outside meeting hours.</div>';
+  $('locked').style.display='none';return;
+ }
+ const s=d.activeSession;
+ if(d.checkedIn){
+  $('checkinSub').textContent='Attendance recorded.';
+  $('checkinBody').innerHTML=`<div class="ok">✓ Checked in to ${esc(s.title)}</div>`;
+  $('locked').style.display='none';return;
+ }
+ $('checkinSub').textContent='Enter the clubroom code shown by your sponsor.';
+ $('checkinBody').innerHTML=`<div class="session"><b>${esc(s.title)}</b><span>${esc(s.session_date)}</span></div><div class="code-row"><input id="code" class="code" inputmode="text" autocomplete="one-time-code" maxlength="8" placeholder="CODE"><button id="checkBtn" class="button">Check in</button></div><div id="checkMsg" style="margin-top:12px"></div>`;
+ $('checkBtn').onclick=checkIn;
+ $('code').addEventListener('keydown',e=>{if(e.key==='Enter')checkIn()});
+}
+async function checkIn(){
+ const code=$('code').value.trim();if(!code)return;
+ $('checkBtn').disabled=true;$('checkMsg').innerHTML='Recording attendance…';
+ const r=await fetch('/api/checkin',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code})});const d=await r.json();
+ if(!r.ok){$('checkBtn').disabled=false;$('checkMsg').innerHTML=`<div class="error">${d.error==='invalid_code'?'That code does not match today’s meeting.':'Could not check in.'}</div>`;return}
+ await getStatus();
+}
+async function loadPortal(){
+ const r=await fetch('/api/portal-content',{cache:'no-store'});const d=await r.json();if(!r.ok)return;
+ $('portal').classList.add('open');$('locked').style.display='none';
+ $('todayTitle').textContent=d.today.title;$('todayNote').textContent=d.today.note;
+ $('calendarTitle').textContent=d.calendar.title;$('calendarNote').textContent=d.calendar.note;
+ $('events').innerHTML=d.calendar.events.length?d.calendar.events.map(e=>`<p>${esc(e)}</p>`).join(''):'';
+ $('opportunities').innerHTML=d.opportunities.map(o=>`<article class="opp"><span class="tag">${esc(o.status)}</span><h3>${esc(o.title)}</h3><p>${esc(o.text)}</p></article>`).join('');
+ $('resources').innerHTML=d.resources.map(x=>`<div class="resource"><b>${esc(x.title)}</b><span>${esc(x.status)}</span></div>`).join('');
+}
+getStatus();
+</script>
+</body></html>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Georgia Tech Student Makers coming to the YTC Clubroom</title>
+<desc id="desc">A playful mid-page announcement for YTC students featuring YTC initials, a large GT mark, a starburst about mentors and teachers, and a WOW speech bubble.</desc>
+<rect width="1600" height="900" fill="#c9ad73"/>
+<g transform="translate(600 62)">
+  <rect x="0" y="0" width="92" height="92" fill="#0e5aa7"/>
+  <rect x="102" y="0" width="92" height="92" fill="#39b54a"/>
+  <rect x="204" y="0" width="92" height="92" fill="#f15a24"/>
+  <text x="46" y="66" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" fill="#fff">Y</text>
+  <text x="148" y="66" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" fill="#fff">T</text>
+  <text x="250" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="54" font-weight="800" fill="#fff">C</text>
+  <text x="148" y="145" text-anchor="middle" font-family="Brush Script MT,Segoe Script,cursive" font-size="64" fill="#111">presents</text>
+</g>
+<g transform="translate(30 64)">
+  <path d="M130 0 183 91 267 35 253 137 372 109 302 196 416 229 307 266 372 353 250 332 281 461 185 378 151 510 104 380 12 470 44 339 -66 367 0 274 -109 247 3 204 -77 115 40 143 20 25 103 94Z" fill="#f7f7f7" stroke="#161616" stroke-width="4"/>
+  <g transform="rotate(-10 145 245)">
+    <text x="145" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#111">Mentors, tutors</text>
+    <text x="145" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#111">and teachers</text>
+    <text x="145" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#111">coming to your</text>
+    <text x="145" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#111">YTC Clubroom</text>
+    <text x="145" y="356" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#111">this year!!</text>
+  </g>
+</g>
+<g transform="translate(1070 58)">
+  <path d="M45 46 Q45 0 100 0 H430 Q480 0 492 40 L505 98 Q520 142 486 176 L461 198 430 286 397 210 H96 Q45 210 45 160Z" fill="#0f5a78"/>
+  <text x="265" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="88" font-weight="800" fill="#fff" font-style="italic">WOW!</text>
+</g>
+<g transform="translate(405 212)">
+  <text x="0" y="96" font-family="Arial Black,Arial,sans-serif" font-size="86" font-weight="900" fill="#000" stroke="#fff" stroke-width="8" paint-order="stroke">The</text>
+  <text x="322" y="355" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="430" font-weight="900" fill="#fff" stroke="#002b5c" stroke-width="16" paint-order="stroke">GT</text>
+  <text x="330" y="505" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="83" font-weight="900" fill="#000" stroke="#fff" stroke-width="8" paint-order="stroke">STUDENT MAKERS</text>
+</g>
+<g transform="translate(48 742)">
+  <text x="0" y="0" font-family="Georgia,serif" font-size="38" font-weight="700" fill="#111">Georgia Tech Student Makers · future engineers · peer-to-peer mentors</text>
+  <text x="0" y="56" font-family="Georgia,serif" font-size="38" font-weight="700" fill="#111">coming virtually to the YTC Clubroom this school year.</text>
+</g>
+</svg>

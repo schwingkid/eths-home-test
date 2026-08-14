@@ -48,5 +48,6 @@ const burger=document.querySelector('.burger'),links=document.querySelector('.na
 document.querySelectorAll('.navtrigger').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();const item=btn.closest('.navitem');document.querySelectorAll('.navitem.open').forEach(x=>{if(x!==item){x.classList.remove('open');x.querySelector('.navtrigger')?.setAttribute('aria-expanded','false')}});const open=item.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))}));document.addEventListener('click',()=>document.querySelectorAll('.navitem.open').forEach(x=>{x.classList.remove('open');x.querySelector('.navtrigger')?.setAttribute('aria-expanded','false')}));
 const left=[...document.querySelectorAll('.grad-left img')],main=[...document.querySelectorAll('.grad-main img')],right=[...document.querySelectorAll('.grad-right img')];let gi=0;function showGrad(n){[left,main,right].forEach(group=>group.forEach((img,i)=>img.classList.toggle('active',i===n)))}showGrad(0);setInterval(()=>{gi=(gi+1)%main.length;showGrad(gi)},4200);
 </script>
+<script src="site-nav.js"></script>
 </body>
 </html>

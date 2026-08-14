@@ -7,7 +7,7 @@
   }
 
   const path=location.pathname.split('/').pop()||'index.html';
-  const active=path==='support.html'?'support':path==='students.html'?'student':'home';
+  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':'home';
   const nav=document.querySelector('.nav');
   if(nav){
     nav.innerHTML=`<div class="wrap navrow">
@@ -20,33 +20,33 @@
         <a class="home-tab ${active==='home'?'on':''}" href="index.html">HOME</a>
 
         <div class="navitem">
-          <a class="tablink" href="https://old-lake-5e12.mark-lennon.workers.dev/parents"><span class="tabtop">Parents</span><span class="tabbottom">Overview</span></a>
+          <a class="tablink ${active==='parents'?'on':''}" href="parents.html"><span class="tabtop">Parents</span><span class="tabbottom">Overview</span></a>
           <button class="nav-caret" aria-label="Open Parents menu" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/parents"><strong>Why YTC</strong><span>Why the model matters for students</span></a>
-            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/projects"><strong>Experience</strong><span>What students learn, build and do</span></a>
-            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/national"><strong>About</strong><span>The story behind the club</span></a>
-            <a class="dropitem" href="mailto:info@ytcorps.org?subject=YTC%20Evanston%20parent%20question"><strong>Connect with us</strong><span>Ask about the ETHS club</span></a>
+            <a class="dropitem" href="parents.html#why"><strong>Why YTC</strong><span>Why the model matters for students</span></a>
+            <a class="dropitem" href="parents.html#experience"><strong>Experience</strong><span>What students learn, build and do</span></a>
+            <a class="dropitem" href="parents.html#about"><strong>About</strong><span>The story and model behind the club</span></a>
+            <a class="dropitem" href="parents.html#connect"><strong>Connect with us</strong><span>Ask about the ETHS club</span></a>
           </div>
         </div>
 
         <div class="navitem">
-          <a class="tablink" href="https://old-lake-5e12.mark-lennon.workers.dev/community"><span class="tabtop">Evanston</span><span class="tabbottom">YTC Works</span></a>
+          <a class="tablink ${active==='works'?'on':''}" href="works.html"><span class="tabtop">Evanston</span><span class="tabbottom">YTC Works</span></a>
           <button class="nav-caret" aria-label="Open YTC Works menu" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/community"><strong>Local Works</strong><span>Teaching and technology in Evanston</span></a>
-            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/projects"><strong>ETHS Travels</strong><span>Experiences that take students beyond the clubroom</span></a>
-            <a class="dropitem" href="index.html#global"><strong>Bringing the World to ETHS</strong><span>University and international connections</span></a>
+            <a class="dropitem" href="works.html#local"><strong>Local Works</strong><span>Teaching and technology in Evanston</span></a>
+            <a class="dropitem" href="works.html#travels"><strong>ETHS Travels</strong><span>Experiences that take students beyond the clubroom</span></a>
+            <a class="dropitem" href="works.html#world"><strong>Bringing the World to ETHS</strong><span>University and international connections</span></a>
           </div>
         </div>
 
         <div class="navitem">
-          <a class="tablink ${active==='student'?'on':''}" href="portal/"><span class="tabtop">Student</span><span class="tabbottom">Portal</span></a>
+          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Portal</span></a>
           <button class="nav-caret" aria-label="Open Student Portal menu" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem" href="portal/"><strong>The Hub</strong><span>Open the Student Portal</span></a>
-            <a class="dropitem" href="portal/#calendar"><strong>Calendar</strong><span>Meetings and sessions</span></a>
-            <a class="dropitem" href="students.html"><strong>Network</strong><span>Current learning, teaching and leadership opportunities</span></a>
+            <a class="dropitem" href="students.html#hub"><strong>The Hub</strong><span>The student-facing front door</span></a>
+            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Meetings, sessions and what is next</span></a>
+            <a class="dropitem" href="students.html#network"><strong>Network</strong><span>Learning, teaching and leadership opportunities</span></a>
           </div>
         </div>
 

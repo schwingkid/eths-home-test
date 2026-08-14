@@ -23,8 +23,10 @@
           <a class="tablink" href="https://old-lake-5e12.mark-lennon.workers.dev/parents"><span class="tabtop">Parents</span><span class="tabbottom">Overview</span></a>
           <button class="nav-caret" aria-label="Open Parents menu" aria-expanded="false">⌄</button>
           <div class="dropdown">
+            <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/parents"><strong>Why YTC</strong><span>Why the model matters for students</span></a>
             <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/projects"><strong>Experience</strong><span>What students learn, build and do</span></a>
             <a class="dropitem" href="https://old-lake-5e12.mark-lennon.workers.dev/national"><strong>About</strong><span>The story behind the club</span></a>
+            <a class="dropitem" href="mailto:info@ytcorps.org?subject=YTC%20Evanston%20parent%20question"><strong>Connect with us</strong><span>Ask about the ETHS club</span></a>
           </div>
         </div>
 
@@ -42,9 +44,9 @@
           <a class="tablink ${active==='student'?'on':''}" href="portal/"><span class="tabtop">Student</span><span class="tabbottom">Portal</span></a>
           <button class="nav-caret" aria-label="Open Student Portal menu" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem" href="students.html"><strong>The Hub</strong><span>Current learning and teaching opportunities</span></a>
+            <a class="dropitem" href="portal/"><strong>The Hub</strong><span>Open the Student Portal</span></a>
             <a class="dropitem" href="portal/#calendar"><strong>Calendar</strong><span>Meetings and sessions</span></a>
-            <a class="dropitem" href="portal/#network"><strong>Network</strong><span>The student-facing YTC network</span></a>
+            <a class="dropitem" href="students.html"><strong>Network</strong><span>Current learning, teaching and leadership opportunities</span></a>
           </div>
         </div>
 

@@ -64,6 +64,30 @@
     </div>`;
   }
 
+  /* Migration guard: the rebuilt site must not send visitors back into the
+     retired Old Lake page system. Images may still be served from that host,
+     but navigational links are folded into the new consolidated pages. */
+  const oldHost='old-lake-5e12.mark-lennon.workers.dev';
+  const legacyRoutes={
+    '/parents':'parents.html',
+    '/projects':'parents.html#experience',
+    '/community':'works.html#local',
+    '/national':'parents.html#about',
+    '/leadership':'students.html#network',
+    '/stories':'parents.html#why',
+    '/':'index.html'
+  };
+  document.querySelectorAll('a[href]').forEach(a=>{
+    try{
+      const u=new URL(a.getAttribute('href'),location.href);
+      if(u.hostname===oldHost){
+        const key=(u.pathname.replace(/\/+$/,'')||'/');
+        a.setAttribute('href',legacyRoutes[key]||'index.html');
+        a.removeAttribute('target');
+      }
+    }catch(_){ }
+  });
+
   const footer=document.querySelector('footer');
   if(footer&&!footer.querySelector('.corp-footer')){
     const target=footer.querySelector('.footergrid > div:last-child')||footer.querySelector('.wrap')||footer;
@@ -91,6 +115,15 @@
     }
     const coin=document.querySelector('.coin');
     if(coin) coin.id='bytcoin';
+  }
+
+  if(path==='students.html'){
+    const hero=document.querySelector('.hero');
+    if(hero) hero.id='hub';
+    const opportunities=document.querySelector('#opportunities');
+    if(opportunities) opportunities.id='network';
+    const leadership=document.querySelector('#leadership');
+    if(leadership&&!leadership.id) leadership.id='network';
   }
 
   const siteBurger=document.querySelector('.burger');

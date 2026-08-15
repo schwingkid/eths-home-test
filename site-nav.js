@@ -7,7 +7,7 @@
   }
 
   const path=location.pathname.split('/').pop()||'index.html';
-  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':'home';
+  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':path==='assets.html'?'assets':'home';
   const nav=document.querySelector('.nav');
 
   if(nav){
@@ -71,6 +71,8 @@
             <a class="dropitem" href="support.html#connect"><strong>Connect the Club</strong><span>Open a door for a student</span></a>
           </div>
         </div>
+
+        <a class="top-tab ${active==='assets'?'on':''}" href="assets.html">Assets</a>
       </div>
     </div>`;
   }

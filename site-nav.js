@@ -51,7 +51,6 @@
 
     const original=document.querySelector('.story-slider');
     if(original){
-      /* Clone to detach the old carousel's click, swipe and timer listeners. */
       const story=original.cloneNode(true);
       original.replaceWith(story);
       story.classList.add('ytc-story-sequence');
@@ -61,11 +60,10 @@
       const hint=story.querySelector('.story-hint');
       const label=story.querySelector('.story-label');
       if(label) label.textContent='THE MODEL IN MOTION';
-      if(hint) hint.textContent='Three chapters reveal in sequence — or as you scroll';
+      if(hint) hint.textContent='Scroll to reveal each chapter';
 
       const shell=story.querySelector('.story-shell');
       const viewport=story.querySelector('.story-viewport');
-      const track=story.querySelector('.story-track');
       if(shell){shell.removeAttribute('id');shell.removeAttribute('tabindex')}
       if(viewport) viewport.removeAttribute('tabindex');
 
@@ -92,9 +90,7 @@
         .ytc-story-sequence .story-copy{padding:42px 46px}
         .ytc-story-sequence .story-copy h2{font-size:clamp(2rem,3.6vw,3.25rem)}
         .ytc-story-sequence .story-visual,.ytc-story-sequence .camel-slot{min-height:410px}
-        @media(max-width:900px){
-          .ytc-story-sequence .ytc-sequence-card{width:86%!important}
-        }
+        @media(max-width:900px){.ytc-story-sequence .ytc-sequence-card{width:86%!important}}
         @media(max-width:760px){
           .ytc-story-sequence{padding:58px 0 72px}
           .ytc-story-sequence .story-intro{width:calc(100% - 32px);align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:24px}
@@ -106,34 +102,14 @@
           .ytc-story-sequence .story-copy{padding:36px 30px}
           .ytc-story-sequence .story-visual,.ytc-story-sequence .camel-slot{min-height:330px}
         }
-        @media(prefers-reduced-motion:reduce){
-          .ytc-story-sequence .ytc-sequence-card{opacity:1!important;transform:none!important;transition:none!important}
-        }
+        @media(prefers-reduced-motion:reduce){.ytc-story-sequence .ytc-sequence-card{opacity:1!important;transform:none!important;transition:none!important}}
       `;
       document.head.appendChild(motionStyle);
 
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const reveal=idx=>{if(slides[idx])slides[idx].classList.add('sequence-visible')};
-
       if(reduced||!('IntersectionObserver' in window)){
         slides.forEach(s=>s.classList.add('sequence-visible'));
       }else{
-        let sequenceStarted=false;
-        const sequenceObserver=new IntersectionObserver(entries=>{
-          entries.forEach(entry=>{
-            if(entry.isIntersecting&&!sequenceStarted){
-              sequenceStarted=true;
-              reveal(0);
-              setTimeout(()=>reveal(1),3000);
-              setTimeout(()=>reveal(2),6000);
-              sequenceObserver.disconnect();
-            }
-          });
-        },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
-        sequenceObserver.observe(story);
-
-        /* Scroll is an equal trigger: if a visitor reaches a card before its
-           scheduled reveal, show it immediately rather than making them wait. */
         const cardObserver=new IntersectionObserver(entries=>{
           entries.forEach(entry=>{
             if(entry.isIntersecting){
@@ -141,7 +117,7 @@
               cardObserver.unobserve(entry.target);
             }
           });
-        },{threshold:.22,rootMargin:'0px 0px -4% 0px'});
+        },{threshold:.28,rootMargin:'0px 0px -10% 0px'});
         slides.forEach(slide=>cardObserver.observe(slide));
       }
     }

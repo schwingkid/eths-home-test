@@ -50,9 +50,11 @@
           <button class="nav-caret" aria-label="Open Students section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
             <div class="drophead">Jump to</div>
-            <a class="dropitem" href="students.html#hub"><strong>Student Hub</strong><span>The student front door</span></a>
-            <a class="dropitem" href="students.html#network"><strong>Opportunities</strong><span>Learn, teach, mentor and lead</span></a>
-            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Meetings and upcoming sessions</span></a>
+            <a class="dropitem" href="students.html#hub"><strong>Student Hub</strong><span>Private member tools — under construction</span></a>
+            <a class="dropitem" href="students.html#network"><strong>Opportunities</strong><span>Learn, teach locally and connect globally</span></a>
+            <a class="dropitem" href="students.html#noemi"><strong>Noemi's Story</strong><span>Teaching robotics changed her own path</span></a>
+            <a class="dropitem" href="students.html#namibia"><strong>Namibia 2025</strong><span>Eight ETHS students in an educational exchange</span></a>
+            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Public schedule vs. member details</span></a>
             <a class="dropitem" href="students.html#leadership"><strong>Leadership</strong><span>Learn → Teach → Mentor → Lead</span></a>
           </div>
         </div>
@@ -124,11 +126,6 @@
     }
     const coin=document.querySelector('.coin');
     if(coin) coin.id='bytcoin';
-  }
-
-  if(path==='students.html'){
-    const hero=document.querySelector('.hero');
-    if(hero) hero.id='hub';
   }
 
   const closeMenus=()=>{

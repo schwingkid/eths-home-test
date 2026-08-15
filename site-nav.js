@@ -49,20 +49,101 @@
     const proof=document.querySelector('.proof');
     if(proof){proof.id='how-it-works';if(hero)hero.insertAdjacentElement('afterend',proof)}
 
-    const shell=document.getElementById('leadershipSlider')||document.querySelector('.story-shell');
-    if(shell){
-      const viewport=shell.querySelector('.story-viewport');
-      const slides=[...shell.querySelectorAll('.story-slide')];
-      const tabs=[...shell.querySelectorAll('.story-tab')];
-      const arrows=[...shell.querySelectorAll('.story-arrow')];
-      arrows.forEach(a=>a.style.display='none');
-      tabs.forEach(t=>{t.disabled=true;t.style.cursor='default'});
-      if(viewport){viewport.style.pointerEvents='none';viewport.style.scrollBehavior='smooth'}
-      const hint=shell.closest('.story-slider')?.querySelector('.story-hint'); if(hint)hint.textContent='Advances automatically';
-      let i=0;
-      const show=n=>{i=(n+slides.length)%slides.length;slides.forEach((s,x)=>s.classList.toggle('is-active',x===i));tabs.forEach((t,x)=>t.classList.toggle('active',x===i));if(viewport&&slides[i])viewport.scrollTo({left:slides[i].offsetLeft-(viewport.clientWidth-slides[i].clientWidth)/2,behavior:'smooth'})};
-      show(0);
-      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>show(i+1),6500);
+    const original=document.querySelector('.story-slider');
+    if(original){
+      /* Clone to detach the old carousel's click, swipe and timer listeners. */
+      const story=original.cloneNode(true);
+      original.replaceWith(story);
+      story.classList.add('ytc-story-sequence');
+      story.setAttribute('aria-label','Three examples of the YTC model in motion');
+
+      story.querySelector('.story-carousel-nav')?.remove();
+      const hint=story.querySelector('.story-hint');
+      const label=story.querySelector('.story-label');
+      if(label) label.textContent='THE MODEL IN MOTION';
+      if(hint) hint.textContent='Three chapters reveal in sequence — or as you scroll';
+
+      const shell=story.querySelector('.story-shell');
+      const viewport=story.querySelector('.story-viewport');
+      const track=story.querySelector('.story-track');
+      if(shell){shell.removeAttribute('id');shell.removeAttribute('tabindex')}
+      if(viewport) viewport.removeAttribute('tabindex');
+
+      const slides=[...story.querySelectorAll('.story-slide')];
+      slides.forEach((slide,i)=>{
+        slide.classList.remove('is-active');
+        slide.removeAttribute('aria-hidden');
+        slide.classList.add('ytc-sequence-card',i%2===0?'enter-right':'enter-left');
+      });
+
+      const motionStyle=document.createElement('style');
+      motionStyle.id='ytc-story-sequence-style';
+      motionStyle.textContent=`
+        .ytc-story-sequence{background:#fff;padding:76px 0 96px;overflow:hidden;border-top:1px solid #eee8df}
+        .ytc-story-sequence .story-intro{width:min(1100px,calc(100% - 48px));margin:0 auto 34px;display:flex;justify-content:space-between;align-items:end;gap:24px}
+        .ytc-story-sequence .story-label{color:#C95415}
+        .ytc-story-sequence .story-hint{color:#65727F}
+        .ytc-story-sequence .story-viewport{overflow:visible!important;padding:0!important;pointer-events:none!important}
+        .ytc-story-sequence .story-track{display:flex!important;flex-direction:column!important;gap:42px!important;width:min(1240px,100%)!important;margin:0 auto!important;padding:0 24px!important}
+        .ytc-story-sequence .ytc-sequence-card{flex:none!important;width:75%!important;min-height:410px!important;scroll-snap-align:none!important;opacity:0!important;box-shadow:0 18px 48px rgba(18,42,68,.13)!important;transition:transform .95s cubic-bezier(.18,.76,.24,1),opacity .65s ease!important;will-change:transform,opacity}
+        .ytc-story-sequence .ytc-sequence-card.enter-right{align-self:flex-start!important;transform:translateX(118vw) scale(.985)!important}
+        .ytc-story-sequence .ytc-sequence-card.enter-left{align-self:flex-end!important;transform:translateX(-118vw) scale(.985)!important}
+        .ytc-story-sequence .ytc-sequence-card.sequence-visible{opacity:1!important;transform:translateX(0) scale(1)!important}
+        .ytc-story-sequence .story-copy{padding:42px 46px}
+        .ytc-story-sequence .story-copy h2{font-size:clamp(2rem,3.6vw,3.25rem)}
+        .ytc-story-sequence .story-visual,.ytc-story-sequence .camel-slot{min-height:410px}
+        @media(max-width:900px){
+          .ytc-story-sequence .ytc-sequence-card{width:86%!important}
+        }
+        @media(max-width:760px){
+          .ytc-story-sequence{padding:58px 0 72px}
+          .ytc-story-sequence .story-intro{width:calc(100% - 32px);align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:24px}
+          .ytc-story-sequence .story-track{gap:28px!important;padding:0 16px!important}
+          .ytc-story-sequence .ytc-sequence-card{width:94%!important;grid-template-columns:1fr!important;min-height:0!important}
+          .ytc-story-sequence .ytc-sequence-card.enter-right{transform:translateX(105vw) scale(.99)!important}
+          .ytc-story-sequence .ytc-sequence-card.enter-left{transform:translateX(-105vw) scale(.99)!important}
+          .ytc-story-sequence .ytc-sequence-card.sequence-visible{transform:translateX(0) scale(1)!important}
+          .ytc-story-sequence .story-copy{padding:36px 30px}
+          .ytc-story-sequence .story-visual,.ytc-story-sequence .camel-slot{min-height:330px}
+        }
+        @media(prefers-reduced-motion:reduce){
+          .ytc-story-sequence .ytc-sequence-card{opacity:1!important;transform:none!important;transition:none!important}
+        }
+      `;
+      document.head.appendChild(motionStyle);
+
+      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reveal=idx=>{if(slides[idx])slides[idx].classList.add('sequence-visible')};
+
+      if(reduced||!('IntersectionObserver' in window)){
+        slides.forEach(s=>s.classList.add('sequence-visible'));
+      }else{
+        let sequenceStarted=false;
+        const sequenceObserver=new IntersectionObserver(entries=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting&&!sequenceStarted){
+              sequenceStarted=true;
+              reveal(0);
+              setTimeout(()=>reveal(1),3000);
+              setTimeout(()=>reveal(2),6000);
+              sequenceObserver.disconnect();
+            }
+          });
+        },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
+        sequenceObserver.observe(story);
+
+        /* Scroll is an equal trigger: if a visitor reaches a card before its
+           scheduled reveal, show it immediately rather than making them wait. */
+        const cardObserver=new IntersectionObserver(entries=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              entry.target.classList.add('sequence-visible');
+              cardObserver.unobserve(entry.target);
+            }
+          });
+        },{threshold:.22,rootMargin:'0px 0px -4% 0px'});
+        slides.forEach(slide=>cardObserver.observe(slide));
+      }
     }
   }
 

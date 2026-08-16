@@ -11,7 +11,6 @@
   const nav=document.querySelector('.nav');
 
   if(nav){
-    nav.innerHTML=`  if(nav){
     nav.innerHTML=`<div class="wrap navrow">
       <div class="brandstack">
         <a class="brand" href="index.html">YTC <em>Evanston</em></a>

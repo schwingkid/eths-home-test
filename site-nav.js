@@ -7,10 +7,11 @@
   }
 
   const path=location.pathname.split('/').pop()||'index.html';
-  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':path==='assets.html'?'assets':'home';
+  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':'home';
   const nav=document.querySelector('.nav');
 
   if(nav){
+    nav.innerHTML=`  if(nav){
     nav.innerHTML=`<div class="wrap navrow">
       <div class="brandstack">
         <a class="brand" href="index.html">YTC <em>Evanston</em></a>
@@ -20,25 +21,23 @@
       <button class="burger" aria-label="Open menu" aria-expanded="false">☰</button>
 
       <div class="navlinks">
-        <a class="top-tab ${active==='home'?'on':''}" href="index.html">Home</a>
+        <a class="home-tab ${active==='home'?'on':''}" href="index.html">HOME</a>
 
         <div class="navitem">
-          <a class="top-tab ${active==='parents'?'on':''}" href="parents.html">Parents</a>
+          <a class="tablink ${active==='parents'?'on':''}" href="parents.html"><span class="tabtop">Parents</span><span class="tabbottom">Overview</span></a>
           <button class="nav-caret" aria-label="Open Parents section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <div class="drophead">Jump to</div>
-            <a class="dropitem" href="parents.html#why"><strong>Why YTC</strong><span>Why the model matters</span></a>
-            <a class="dropitem" href="parents.html#experience"><strong>Student Experience</strong><span>What students learn and do</span></a>
-            <a class="dropitem" href="parents.html#about"><strong>About the Club</strong><span>The ETHS model and story</span></a>
+            <a class="dropitem" href="parents.html#why"><strong>Why YTC</strong><span>Why the model matters for students</span></a>
+            <a class="dropitem" href="parents.html#experience"><strong>Student Experience</strong><span>What students learn, build and do</span></a>
+            <a class="dropitem" href="parents.html#about"><strong>How the Club Works</strong><span>The student-led model and support structure</span></a>
             <a class="dropitem" href="parents.html#connect"><strong>Connect</strong><span>Questions from parents</span></a>
           </div>
         </div>
 
         <div class="navitem">
-          <a class="top-tab ${active==='works'?'on':''}" href="works.html">Evanston</a>
+          <a class="tablink ${active==='works'?'on':''}" href="works.html"><span class="tabtop">Evanston</span><span class="tabbottom">YTC Works</span></a>
           <button class="nav-caret" aria-label="Open Evanston section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <div class="drophead">Jump to</div>
             <a class="dropitem" href="works.html#local"><strong>Local Work</strong><span>Teaching and technology in Evanston</span></a>
             <a class="dropitem" href="works.html#travels"><strong>ETHS Travels</strong><span>Students beyond the clubroom</span></a>
             <a class="dropitem" href="works.html#world"><strong>World to ETHS</strong><span>University and global connections</span></a>
@@ -46,35 +45,32 @@
         </div>
 
         <div class="navitem">
-          <a class="top-tab ${active==='student'?'on':''}" href="students.html">Students</a>
-          <button class="nav-caret" aria-label="Open Students section links" aria-expanded="false">⌄</button>
+          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Portal</span></a>
+          <button class="nav-caret" aria-label="Open Student Portal section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <div class="drophead">Jump to</div>
-            <a class="dropitem" href="students.html#hub"><strong>Student Hub</strong><span>Private member tools — under construction</span></a>
+            <a class="dropitem" href="students.html#hub"><strong>The Hub</strong><span>Student tools and member access</span></a>
             <a class="dropitem" href="students.html#network"><strong>Opportunities</strong><span>Learn, teach locally and connect globally</span></a>
-            <a class="dropitem" href="students.html#noemi"><strong>Noemi's Story</strong><span>Teaching robotics changed her own path</span></a>
-            <a class="dropitem" href="students.html#namibia"><strong>Namibia 2025</strong><span>Eight ETHS students in an educational exchange</span></a>
-            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Public schedule vs. member details</span></a>
-            <a class="dropitem" href="students.html#leadership"><strong>Leadership</strong><span>Learn → Teach → Mentor → Lead</span></a>
+            <a class="dropitem" href="students.html#noemi"><strong>Noemi's Story</strong><span>Teaching robotics changed her path</span></a>
+            <a class="dropitem" href="students.html#namibia"><strong>Namibia 2025</strong><span>An ETHS educational exchange</span></a>
+            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Public schedule and member details</span></a>
+            <a class="dropitem" href="students.html#leadership"><strong>Leadership</strong><span>Learning becomes responsibility</span></a>
           </div>
         </div>
 
         <div class="navitem">
-          <a class="top-tab ${active==='support'?'on':''}" href="support.html">Support</a>
+          <a class="tablink ${active==='support'?'on':''}" href="support.html"><span class="tabtop">Ways to</span><span class="tabbottom">Support</span></a>
           <button class="nav-caret" aria-label="Open Support section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <div class="drophead">Jump to</div>
-            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin</strong><span>Recognition system — not cryptocurrency</span></a>
+            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin</strong><span>Club experiences and recognition</span></a>
             <a class="dropitem" href="support.html#donate"><strong>Donate</strong><span>Fund student opportunities</span></a>
             <a class="dropitem" href="support.html#equipment"><strong>Equipment</strong><span>Useful technology and supplies</span></a>
             <a class="dropitem" href="support.html#elbow-grease"><strong>Elbow Grease</strong><span>Take ownership of a need</span></a>
             <a class="dropitem" href="support.html#connect"><strong>Connect the Club</strong><span>Open a door for a student</span></a>
           </div>
         </div>
-
-        <a class="top-tab ${active==='assets'?'on':''}" href="assets.html">Assets</a>
       </div>
     </div>`;
+
   }
 
   const oldHost='old-lake-5e12.mark-lennon.workers.dev';

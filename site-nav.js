@@ -13,7 +13,7 @@
   if(nav){
     nav.innerHTML=`<div class="wrap navrow">
       <div class="brandstack">
-        <a class="brand" href="index.html">YTC <em>Evanston</em></a>
+        <a class="brand" href="index.html">YTC <em>@ ETHS</em></a>
         <a class="corp-link" href="https://www.youthtechnologycorps.org/" target="_blank" rel="noopener">Youth Technology Corps ↗</a>
       </div>
 
@@ -47,14 +47,14 @@
         </div>
 
         <div class="navitem">
-          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Portal</span></a>
+          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Students</span><span class="tabbottom">Experience</span></a>
           <button class="nav-caret" aria-label="Open Student Portal section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem" href="students.html#hub"><strong>The Hub</strong><span>Student tools and member access</span></a>
+            <a class="dropitem" href="students.html#hub"><strong>Current Members</strong><span>Club information is shared directly</span></a>
             <a class="dropitem" href="students.html#network"><strong>Opportunities</strong><span>Learn, teach locally and connect globally</span></a>
             <a class="dropitem" href="students.html#noemi"><strong>Noemi's Story</strong><span>Teaching robotics changed her path</span></a>
             <a class="dropitem" href="students.html#namibia"><strong>Namibia 2025</strong><span>An ETHS educational exchange</span></a>
-            <a class="dropitem" href="students.html#calendar"><strong>Calendar</strong><span>Public schedule and member details</span></a>
+            <a class="dropitem" href="students.html#calendar"><strong>Club Communication</strong><span>Current information for active members</span></a>
             <a class="dropitem" href="students.html#leadership"><strong>Leadership</strong><span>Learning becomes responsibility</span></a>
           </div>
         </div>

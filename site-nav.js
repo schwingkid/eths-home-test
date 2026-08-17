@@ -23,6 +23,19 @@
         <a class="home-tab ${active==='home'?'on':''}" href="index.html">HOME</a>
 
         <div class="navitem">
+          <a class="tablink ${active==='works'?'on':''}" href="works.html"><span class="tabtop">YTC</span><span class="tabbottom">Works</span></a>
+          <button class="nav-caret" aria-label="Open YTC Works section links" aria-expanded="false">⌄</button>
+          <div class="dropdown">
+            <a class="dropitem" href="works.html#local"><strong>Evanston</strong><span>Where the work begins</span></a>
+            <a class="dropitem" href="works.html#evanston-map"><strong>Community Map</strong><span>Places served across the city</span></a>
+            <a class="dropitem" href="works.html#kuumba-story"><strong>Camp Kuumba</strong><span>The computer handoff</span></a>
+            <a class="dropitem" href="works.html#new-orleans"><strong>New Orleans</strong><span>Students carry the model farther</span></a>
+            <a class="dropitem" href="works.html#beyond"><strong>Across Borders</strong><span>Computers and relationships travel</span></a>
+            <a class="dropitem" href="works.html#namibia"><strong>Namibia</strong><span>Students follow the work</span></a>
+          </div>
+        </div>
+
+        <div class="navitem">
           <a class="tablink ${active==='parents'?'on':''}" href="parents.html"><span class="tabtop">Parents</span><span class="tabbottom">Overview</span></a>
           <button class="nav-caret" aria-label="Open Parents section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
@@ -30,16 +43,6 @@
             <a class="dropitem" href="parents.html#experience"><strong>Student Experience</strong><span>What students learn, build and do</span></a>
             <a class="dropitem" href="parents.html#about"><strong>How the Club Works</strong><span>The student-led model and support structure</span></a>
             <a class="dropitem" href="parents.html#connect"><strong>Connect</strong><span>Questions from parents</span></a>
-          </div>
-        </div>
-
-        <div class="navitem">
-          <a class="tablink ${active==='works'?'on':''}" href="works.html"><span class="tabtop">Evanston</span><span class="tabbottom">YTC Works</span></a>
-          <button class="nav-caret" aria-label="Open Evanston section links" aria-expanded="false">⌄</button>
-          <div class="dropdown">
-            <a class="dropitem" href="works.html#local"><strong>Local Work</strong><span>Teaching and technology in Evanston</span></a>
-            <a class="dropitem" href="works.html#travels"><strong>ETHS Travels</strong><span>Students beyond the clubroom</span></a>
-            <a class="dropitem" href="works.html#world"><strong>World to ETHS</strong><span>University and global connections</span></a>
           </div>
         </div>
 
@@ -68,7 +71,7 @@
           </div>
         </div>
       </div>
-    </div>`;
+    </div>`
 
   }
 

@@ -63,7 +63,7 @@
           <a class="tablink ${active==='support'?'on':''}" href="support.html"><span class="tabtop">Ways to</span><span class="tabbottom">Support</span></a>
           <button class="nav-caret" aria-label="Open Support section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin</strong><span>Club experiences and recognition</span></a>
+            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin Pilot</strong><span>Fund the ETHS-designed model</span></a>
             <a class="dropitem" href="support.html#donate"><strong>Donate</strong><span>Fund student opportunities</span></a>
             <a class="dropitem" href="support.html#equipment"><strong>Equipment</strong><span>Useful technology and supplies</span></a>
             <a class="dropitem" href="support.html#elbow-grease"><strong>Elbow Grease</strong><span>Take ownership of a need</span></a>\n            <a class="dropitem" href="support.html#community-team"><strong>Community Team</strong><span>Bring marketing, design, fundraising or another useful skill</span></a>

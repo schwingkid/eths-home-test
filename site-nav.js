@@ -66,7 +66,7 @@
             <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin</strong><span>Club experiences and recognition</span></a>
             <a class="dropitem" href="support.html#donate"><strong>Donate</strong><span>Fund student opportunities</span></a>
             <a class="dropitem" href="support.html#equipment"><strong>Equipment</strong><span>Useful technology and supplies</span></a>
-            <a class="dropitem" href="support.html#elbow-grease"><strong>Elbow Grease</strong><span>Take ownership of a need</span></a>
+            <a class="dropitem" href="support.html#elbow-grease"><strong>Elbow Grease</strong><span>Take ownership of a need</span></a>\n            <a class="dropitem" href="support.html#community-team"><strong>Community Team</strong><span>Bring marketing, design, fundraising or another useful skill</span></a>
             <a class="dropitem" href="support.html#connect"><strong>Connect the Club</strong><span>Open a door for a student</span></a>
           </div>
         </div>

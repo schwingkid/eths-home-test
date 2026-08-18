@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Students</span><span class="tabbottom">Experience</span></a>
+        <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Hub</span></a>
 
         <div class="navitem">
           <a class="tablink ${active==='support'?'on':''}" href="support.html"><span class="tabtop">Ways to</span><span class="tabbottom">Support</span></a>

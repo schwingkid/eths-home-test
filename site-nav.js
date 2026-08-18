@@ -65,28 +65,6 @@
 
   }
 
-  const oldHost='old-lake-5e12.mark-lennon.workers.dev';
-  const legacyRoutes={
-    '/parents':'parents.html',
-    '/projects':'parents.html#experience',
-    '/community':'works.html#local',
-    '/national':'index.html',
-    '/leadership':'students.html',
-    '/stories':'parents.html#why',
-    '/':'index.html'
-  };
-
-  document.querySelectorAll('a[href]').forEach(a=>{
-    try{
-      const u=new URL(a.getAttribute('href'),location.href);
-      if(u.hostname===oldHost){
-        const key=(u.pathname.replace(/\/+$/,'')||'/');
-        a.setAttribute('href',legacyRoutes[key]||'index.html');
-        a.removeAttribute('target');
-      }
-    }catch(_){ }
-  });
-
   const footer=document.querySelector('footer');
   if(footer&&!footer.querySelector('.corp-footer')){
     const target=footer.querySelector('.footergrid > div:last-child')||footer.querySelector('.wrap')||footer;

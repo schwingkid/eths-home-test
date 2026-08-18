@@ -23,8 +23,16 @@
 
 <header class="hero"><div class="wrap"><p class="kicker">STUDENTS · A LOOK AHEAD</p><h1>The next YTC club experience begins here.</h1><p>Active members receive current information directly from club leadership. This page opens the doorway to what ETHS students will help build next.</p><div class="page-map" aria-label="Student experience preview"><a href="#hub">Enter the preview</a></div></div></header>
 
-<section class="section entryway" id="hub"><div class="wrap"><p class="kicker">YOUR ENTRYWAY</p><h2>Step into the New YTC Club Experience.</h2><p class="entryway-copy">The public site tells the story. The next space is being designed with and for active ETHS members. Scan the doorway to see what is being built.</p><div class="qr-door"><div class="qr-frame"><img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;margin=12&amp;data=https%3A%2F%2Fsolitary-tooth-43e5.mark-lennon.workers.dev%2Fclub-experience.html" alt="QR code opening the New YTC Club Experience roadmap"></div><h3>Students enter here.</h3><p>Scan to look through the doorway.</p><a class="qr-fallback" href="club-experience.html">Open the experience preview →</a></div></div></section>
+<section class="section entryway" id="hub"><div class="wrap"><p class="kicker">YOUR ENTRYWAY</p><h2>Step into the New YTC Club Experience.</h2><p class="entryway-copy">The public site tells the story. The next space is being designed with and for active ETHS members. Scan the doorway to see what is being built.</p><div class="qr-door"><div class="qr-frame"><img id="club-entry-qr" alt="QR code opening the New YTC Club Experience roadmap"></div><h3>Students enter here.</h3><p>Scan to look through the doorway.</p><a class="qr-fallback" href="club-experience.html">Open the experience preview →</a></div></div></section>
 
 <footer><div class="wrap footergrid"><div><strong>YTC Evanston</strong><p>Youth Technology Corps at Evanston Township High School.</p></div><div><p>Learn. Teach. Lead. Repeat.</p><a href="mailto:info@ytcorps.org">info@ytcorps.org</a></div></div></footer>
 <script src="site-nav.js"></script>
+<script>
+(()=>{
+  const qr=document.getElementById('club-entry-qr');
+  if(!qr) return;
+  const destination=new URL('club-experience.html',window.location.href).href;
+  qr.src='https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data='+encodeURIComponent(destination);
+})();
+</script>
 </body></html>

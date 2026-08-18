@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YTC at ETHS | Youth Technology Corps Evanston</title>
+<meta name="description" content="Youth Technology Corps at Evanston Township High School: a student-run club where members learn technology, teach it to others in Evanston, and carry it across the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site-nav.css">
+<style>
+:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--orange2:#C95415;--gold:#E9B44C;--cream:#FAF6EF;--mist:#EDF1F5;--paper:#fffdfa;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.62}
+a{text-decoration:none;color:inherit}img{display:block;width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+h1,h2,h3,blockquote{font-family:Fraunces,Georgia,serif;line-height:1.08;margin:0}
+.kicker{margin:0 0 14px;color:var(--orange2);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.section{padding:96px 0}.section.white{background:#fff}.section.mist{background:var(--mist)}
+.head{max-width:820px;margin-bottom:40px}.head h2{font-size:clamp(2.2rem,4.2vw,3.5rem);color:var(--navy);margin:0 0 14px;letter-spacing:-.015em}.head p{color:var(--muted);margin:0;font-size:1.05rem}
+.btn{display:inline-block;border-radius:999px;padding:13px 22px;font-weight:800;font-size:.92rem}.btn.orange{background:var(--orange);color:#fff}.btn.orange:hover{background:var(--orange2)}.btn.ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.link{color:var(--orange2);font-weight:800;font-size:.9rem}
+
+/* ============ HERO — one real photograph, full bleed ============ */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;background:var(--deep);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,42,68,.88) 0%,rgba(18,42,68,.7) 38%,rgba(18,42,68,.18) 70%,rgba(18,42,68,0) 100%),linear-gradient(0deg,rgba(18,42,68,.55) 0%,rgba(18,42,68,0) 45%)}
+.hero .wrap{position:relative;z-index:2;padding:120px 0 84px}
+.hero-eyebrow{color:#F6D58F;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 22px}
+.hero h1{color:#fff;font-size:clamp(2.3rem,4.8vw,4.4rem);max-width:17ch;letter-spacing:-.02em;font-weight:600;text-wrap:balance}
+.hero .lede{color:#e6edf3;font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:520px;margin:26px 0 34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-credit{position:absolute;right:20px;bottom:14px;z-index:2;color:rgba(255,255,255,.6);font-size:.66rem;letter-spacing:.04em}
+
+/* ============ PROOF BAND ============ */
+.proof{background:#fff;border-bottom:1px solid var(--line)}
+.proof .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.proof div{padding:34px 28px 30px;border-right:1px solid var(--line)}
+.proof div:first-child{padding-left:0}.proof div:last-child{border-right:0}
+.proof b{display:block;font-family:Fraunces,Georgia,serif;font-size:clamp(2.2rem,3.6vw,3.2rem);color:var(--navy);line-height:1;letter-spacing:-.02em}
+.proof span{display:block;color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.4}
+
+/* ============ NEWS ============ */
+.news-feature{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+.news-feature .tag{display:inline-block;background:var(--orange);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:18px}
+.news-feature h2{font-size:clamp(2rem,3.8vw,3.2rem);color:var(--navy);letter-spacing:-.015em;margin-bottom:18px}
+.news-feature p{font-size:1.06rem;margin:0 0 16px}
+.news-feature .who{display:flex;gap:16px;align-items:center;margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.news-feature .who img{width:76px;height:76px;object-fit:cover;object-position:top;border-radius:50%;flex:none}
+.news-feature .who b{display:block;color:var(--navy)}.news-feature .who small{color:var(--muted)}
+.news-feature figure{margin:0}.news-feature figure img{border-radius:6px;box-shadow:0 18px 44px rgba(18,42,68,.16)}
+.news-feature figcaption{color:var(--muted);font-size:.8rem;margin-top:10px}
+.home-news-more{margin-top:52px;padding-top:34px;border-top:1px solid var(--line)}
+.home-news-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}
+.home-news-head h3{margin:0;color:var(--navy);font-size:1.6rem}
+.home-news-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.news-card{display:grid;grid-template-columns:180px 1fr;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.news-card-image{display:block;min-height:190px;overflow:hidden;background:#dbe5ec}.news-card-image img{height:100%;object-fit:cover}
+.news-card-body{display:flex;flex-direction:column;padding:20px}
+.news-card-meta{display:flex;justify-content:space-between;gap:10px;color:var(--orange2);font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.news-card-meta time{color:var(--muted)}
+.news-card h3{margin:10px 0 8px;color:var(--navy);font-size:1.2rem}.news-card p{margin:0 0 13px;color:var(--muted);font-size:.88rem}.news-card-link{margin-top:auto;color:var(--orange2);font-size:.76rem;font-weight:800}
+
+/* ============ THE MODEL — one moment ============ */
+.model{background:var(--deep);color:#fff}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.model .kicker{color:var(--gold)}
+.model h2{color:#fff;font-size:clamp(2.2rem,4.2vw,3.5rem);letter-spacing:-.015em;margin-bottom:22px}
+.model p{color:#d4e0e8;font-size:1.05rem}
+.model img{border-radius:6px;aspect-ratio:4/3;object-fit:cover}
+.rail{display:grid;grid-template-columns:auto 1fr auto 1fr auto 1fr auto;gap:12px;align-items:center;margin-top:34px}
+.rail div{text-align:left;min-width:96px}.rail b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:1.25rem}.rail small{display:block;color:#aebdca;font-size:.78rem}.rail i{height:1px;background:rgba(255,255,255,.28)}
+.model blockquote{font-size:clamp(1.3rem,2.1vw,1.7rem);font-style:italic;font-weight:500;color:#eef4f8;border-left:3px solid var(--gold);padding-left:20px;margin:30px 0 8px;line-height:1.4}
+.model .who{color:#aebdca;font-size:.9rem;margin:0}
+
+/* ============ EVANSTON — map moment ============ */
+.mapmoment{position:relative;background:#0b1626;color:#fff;overflow:hidden;min-height:600px}
+.mapmoment img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center;opacity:.95}
+.mapmoment .over{position:relative;z-index:2;min-height:600px;background:linear-gradient(90deg,rgba(11,22,38,.96) 0%,rgba(11,22,38,.82) 34%,rgba(11,22,38,.15) 62%,rgba(11,22,38,0) 100%);display:flex;align-items:center}
+.mapmoment .kicker{color:var(--gold)}
+.mapmoment h2{font-size:clamp(2rem,3.8vw,3.3rem);max-width:12ch;letter-spacing:-.015em;margin-bottom:18px}
+.mapmoment p{max-width:440px;color:#d4e0e8;font-size:1.02rem;margin:0 0 26px}
+@media(max-width:900px){.mapmoment{min-height:0}.mapmoment img{position:relative;height:320px;opacity:1}.mapmoment .over{min-height:0;background:#0b1626;padding:40px 0}}
+
+/* ============ EVANSTON OUTWARD ============ */
+.outward{background:#fff}
+.outward-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center}
+.outward h2{font-size:clamp(2.2rem,4.2vw,3.5rem);color:var(--navy);letter-spacing:-.015em;margin-bottom:18px}
+.outward p{color:var(--ink);font-size:1.05rem}
+.outward img{border-radius:6px;box-shadow:0 18px 44px rgba(18,42,68,.14)}
+.outward figcaption{color:var(--muted);font-size:.8rem;margin-top:10px}
+.countries{font-family:Fraunces,Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.3;color:var(--navy);font-weight:600;letter-spacing:-.01em;margin:26px 0 8px}
+.countries-note{color:var(--muted);font-size:.9rem;margin:0 0 20px}
+
+/* ============ ALUMNI ============ */
+.grad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grad{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.grad img{aspect-ratio:3/4;object-fit:cover;object-position:top;background:#dbe5ec}
+.grad div{padding:20px 22px 24px}
+.grad h3{color:var(--navy);font-size:1.35rem;margin-bottom:2px}
+.grad .where{color:var(--orange2);font-weight:800;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px}
+.grad p{color:var(--muted);margin:0;font-size:.95rem}
+.grad q{display:block;font-family:Fraunces,Georgia,serif;font-style:italic;color:var(--navy);margin-top:12px;font-size:1rem}
+
+/* ============ FURQAAN QUOTE ============ */
+.quote{background:var(--navy);color:#fff}
+.quote-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.quote .kicker{color:var(--gold)}
+.quote blockquote{font-size:clamp(1.9rem,3.6vw,3rem);letter-spacing:-.01em}
+.quote .who{color:#cad7e1;margin-top:18px}
+.quote img{border-radius:6px;aspect-ratio:4/3;object-fit:cover}
+
+/* ============ PEOPLE + SUPPORT ============ */
+.people{background:#fff;border-top:1px solid var(--line)}
+.people-grid{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
+.people h2{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--navy);letter-spacing:-.01em}
+.people ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px 32px}
+.people li{padding:14px 0;border-top:1px solid var(--line)}
+.people b{display:block;color:var(--navy)}.people span{color:var(--muted);font-size:.92rem}
+.people .contact{grid-column:1/-1;color:var(--muted);font-size:.92rem;padding-top:8px}
+.support{background:var(--deep);color:#fff}
+.support-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.support .kicker{color:var(--gold)}
+.support h2{font-size:clamp(2rem,3.8vw,3.2rem);margin-bottom:12px;letter-spacing:-.015em}
+.support p{color:#cad7e1;margin:0 0 8px}
+.support .fine{font-size:.85rem;color:#aebdca}
+footer{background:#0b2032;color:#aebdca;padding:32px 0}.footergrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}footer strong,footer a{color:#fff}footer p{margin:6px 0}
+
+@media(max-width:1000px){.proof .wrap{grid-template-columns:1fr 1fr}.proof div{border-right:0;border-bottom:1px solid var(--line);padding-left:0}.news-feature,.model-grid,.outward-grid,.quote-grid,.support-grid,.people-grid{grid-template-columns:1fr}.grad-grid{grid-template-columns:1fr 1fr}.home-news-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.wrap{width:calc(100% - 32px)}.section{padding:64px 0}.hero{min-height:78vh}.hero .wrap{padding:90px 0 56px}.grad-grid{grid-template-columns:1fr}.rail{grid-template-columns:1fr}.rail i{width:1px;height:16px}.people ul{grid-template-columns:1fr}.news-card{grid-template-columns:1fr}.news-card-image{aspect-ratio:16/9;min-height:0}.footergrid{grid-template-columns:1fr}.home-news-head{flex-direction:column;align-items:start}}
+</style>
+</head>
+<body>
+<nav class="nav"></nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <img src="assets/web/hero-clubroom.jpg" alt="A crowded YTC clubroom at ETHS — older students showing younger students the inside of a computer" fetchpriority="high">
+  <div class="wrap">
+    <p class="hero-eyebrow">Youth Technology Corps · Evanston Township High School</p>
+    <h1>Students don't just build robots. They build themselves—and then they help each other build trust inside their community.</h1>
+    <p class="lede">A student-run club at ETHS since 2009. Members learn technology, teach it to the next person, and carry it out the door — into Evanston, and across the world.</p>
+    <div class="hero-actions"><a class="btn orange" href="works.html">See the work →</a><a class="btn ghost" href="support.html">Support the club</a></div>
+  </div>
+  <span class="hero-credit">Photo: YTC clubroom, ETHS</span>
+</header>
+
+<!-- ================= PROOF ================= -->
+<section class="proof"><div class="wrap">
+  <div><b>3,300+</b><span>computers refurbished and donated by YTC students since 1998</span></div>
+  <div><b>400</b><span>of them placed back into Evanston homes and organizations</span></div>
+  <div><b>17 years</b><span>of a student-run club at ETHS, without a gap, since 2009</span></div>
+  <div><b>7 countries</b><span>in Africa where ETHS students have taught or trained teachers</span></div>
+</div></section>
+
+<!-- ================= WHAT'S NEW ================= -->
+<section class="section white" id="georgia-tech"><div class="wrap">
+  <p class="kicker">What's new</p>
+  <div class="news-feature">
+    <div>
+      <span class="tag">This fall</span>
+      <h2>Georgia Tech students will mentor YTC students beginning this fall.</h2>
+      <p>Georgia Tech is the first university to join YTC's College Partner Program. Future engineers from Student Makers at Georgia Tech will teach STEM sessions virtually into the ETHS clubroom this school year — and additional college partners will follow, widening the network available to students at ETHS and across the YTC Global Alliance.</p>
+      <p>It's the same idea the club runs on, one rung up: someone a few years older shows you how, and then it's your turn.</p>
+      <div class="who"><img src="assets/web/gt-dilan.png" alt="Dilan Mehta"><div><b>Dilan Mehta</b><small>Founder &amp; president, Student Makers at Georgia Tech · aerospace engineering</small></div></div>
+    </div>
+    <figure><img src="assets/web/gt-student-makers.jpg" alt="Student Makers at Georgia Tech presentation slide"><figcaption>Student Makers at Georgia Tech — the partner organization on the GT side.</figcaption></figure>
+  </div>
+  <div class="home-news-more">
+    <div class="home-news-head"><h3>More from the club</h3><a class="link" href="news.html">All news &amp; updates →</a></div>
+    <div class="home-news-grid" data-news-feed data-news-limit="2" data-news-skip="georgia-tech"></div>
+  </div>
+</div></section>
+
+<!-- ================= THE MODEL — one moment ================= -->
+<section class="section model"><div class="wrap model-grid">
+  <img src="assets/web/giveaway-teach.jpg" alt="An older YTC student walks a younger student through the back of a desktop computer at a giveaway">
+  <div>
+    <p class="kicker">How it works</p>
+    <h2>Learn it. Then teach it to the next person.</h2>
+    <p>Most members have never opened a computer or touched a robot before their first meeting. Within a year they're the ones explaining it — to a freshman, to a family picking up a refurbished machine, to a class on another continent. That handoff is the whole design.</p>
+    <div class="rail"><div><b>Learn</b><small>pick up the skill</small></div><i></i><div><b>Teach</b><small>help the next person</small></div><i></i><div><b>Lead</b><small>own the responsibility</small></div><i></i><div><b>Repeat</b><small>train your replacement</small></div></div>
+    <blockquote>“When I taught someone how to fix a computer and later saw them helping another person, I felt proud. It made me see that what we learn here grows, because we share it.”</blockquote>
+    <p class="who">— Chris, 17 · <em>Student Voices at YTC</em>, 2025</p>
+  </div>
+</div></section>
+
+<!-- ================= EVANSTON — the map ================= -->
+<section class="mapmoment" id="evanston">
+  <img src="assets/web/evanston-map-still.jpg" alt="An illuminated 3D map of Evanston showing every place ETHS students have served">
+  <div class="over"><div class="wrap">
+    <p class="kicker">Close to home</p>
+    <h2>Every lit building is a place ETHS students served.</h2>
+    <p>Schools, senior centers, churches, community organizations across Evanston — 400 refurbished computers, hundreds of lessons, since 2009. ETHS is the one under the beacon.</p>
+    <a class="btn orange" href="evanston-map.html">Open the map →</a>
+  </div></div>
+</section>
+
+<!-- ================= EVANSTON OUTWARD ================= -->
+<section class="section outward" id="outward"><div class="wrap outward-grid">
+  <div>
+    <p class="kicker">From Evanston outward</p>
+    <h2>The work begins here. Then it travels.</h2>
+    <p>ETHS students have taught robotics into Ethiopia by video call, trained the teachers who launched Nigeria's first class, and in July 2025 five YTC members flew to Namibia and met, in person, the students they'd only known on a screen.</p>
+    <p class="countries">Nigeria · Namibia · Sierra Leone · Cameroon · Ethiopia · Mozambique · Ghana</p>
+    <p class="countries-note">YTC's African partner countries, with Mexico and Guatemala in Latin America. Evanston-refurbished computers have also gone to El Salvador and Haiti.</p>
+    <a class="link" href="works.html#beyond">Follow the work across borders →</a>
+  </div>
+  <figure style="margin:0"><img src="assets/web/namibia-teaching.jpg" alt="An ETHS student and Namibian students working together on a circuit board"><figcaption>Namibia, July 2025 — teaching in person, after years by video call.</figcaption></figure>
+</div></section>
+
+<!-- ================= WHERE IT LEADS ================= -->
+<section class="section mist"><div class="wrap">
+  <div class="head"><p class="kicker">Where it leads</p><h2>Different paths. The same starting point.</h2><p>Former members carry the clubroom with them — the habit of learning something, taking responsibility for it, and helping the next person.</p></div>
+  <div class="grad-grid">
+    <article class="grad"><img src="assets/graduate-ava.webp" alt="Ava Mosely"><div><h3>Ava Mosely</h3><p class="where">Purdue · Mechanical Engineering</p><p>Former YTC co-president at ETHS.</p><q>I can confidently say that this club has well prepared me for engineering in college and beyond.</q></div></article>
+    <article class="grad"><img src="assets/graduate-emma.webp" alt="Emma Bernal"><div><h3>Emma Bernal</h3><p class="where">DePaul · Cybersecurity</p><p>Former YTC co-president at ETHS.</p><q>YTC was the best decision I ever made, and I am confident that I will be successful in life because of it.</q></div></article>
+    <article class="grad"><img src="assets/graduate-spencer.webp" alt="Spencer Grossman"><div><h3>Spencer Grossman</h3><p class="where">University of Minnesota · Product Design</p><p>YTC alum, ETHS.</p><q>YTC transformed my perspective on the world and enriched my understanding of human connections.</q></div></article>
+  </div>
+</div></section>
+
+<!-- ================= FURQAAN ================= -->
+<section class="section quote"><div class="wrap quote-grid">
+  <div><p class="kicker">The club has generations</p><blockquote>“YTC has been passed down through generations. You learn from the leaders before you, and then you take your turn.”</blockquote><p class="who">— Furqaan Idrees · ETHS. Earned a computer as a freshman; by junior year was overseeing instruction at Haile Manas Academy, Ethiopia.</p></div>
+  <img src="assets/web/furqaan-sophomore.jpg" alt="Furqaan working at a computer early in his YTC journey">
+</div></section>
+
+<!-- ================= PEOPLE ================= -->
+<section class="section people"><div class="wrap people-grid">
+  <div><p class="kicker">Who runs this</p><h2>Students run the club. These are the adults behind it.</h2></div>
+  <ul>
+    <li><b>David Finkel</b><span>Founder &amp; President, Youth Technology Corps</span></li>
+    <li><b>Mark Lennon</b><span>Executive Vice President, Youth Technology Corps</span></li>
+    <li><b>Andrea Isita</b><span>Program Manager, Youth Technology Corps</span></li>
+    <li><b>Club officers</b><span>Elected ETHS students, with a faculty sponsor and adult mentors in the room</span></li>
+    <li class="contact">Questions, partnerships, press: <a href="mailto:info@ytcorps.org" style="color:var(--orange2);font-weight:700">info@ytcorps.org</a></li>
+  </ul>
+</div></section>
+
+<!-- ================= SUPPORT ================= -->
+<section class="section support"><div class="wrap support-grid">
+  <div><p class="kicker">Support YTC Evanston</p><h2>YTC built the club. Evanston has kept it going. Students keep it alive.</h2><p>Support covers the practical things that keep student-led learning moving: technology, instruction, program supplies and the next serious teaching opportunity — and, right now, the small organization behind the club.</p><p class="fine">Youth Technology Corps NFP, Inc. is a 501(c)(3) nonprofit, tax-exempt since 2003. The Global Learning Alliance was submitted for the 2026 Chicago Innovation Awards.</p></div>
+  <div><a class="btn orange" href="support.html">See all ways to support →</a></div>
+</div></section>
+
+<footer><div class="wrap footergrid"><div><strong>YTC Evanston</strong><p>Youth Technology Corps at Evanston Township High School. A program of Youth Technology Corps NFP, Inc., a 501(c)(3) founded in 1998.</p></div><div><p>Learn. Teach. Lead. Repeat.</p><a href="mailto:info@ytcorps.org">info@ytcorps.org</a></div></div></footer>
+<script src="news-data.js"></script>
+<script src="news.js"></script>
+<script src="site-nav.js?v=544f3b9"></script>
+</body>
+</html>

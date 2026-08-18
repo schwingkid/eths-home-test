@@ -7,7 +7,7 @@
   }
 
   const path=location.pathname.split('/').pop()||'index.html';
-  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='students.html'?'student':path==='support.html'?'support':'home';
+  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='news.html'?'news':path==='students.html'?'student':path==='support.html'?'support':'home';
   const nav=document.querySelector('.nav');
 
   if(nav){
@@ -23,9 +23,10 @@
         <a class="home-tab ${active==='home'?'on':''}" href="index.html">HOME</a>
 
         <div class="navitem">
-          <a class="tablink ${active==='works'?'on':''}" href="works.html"><span class="tabtop">YTC</span><span class="tabbottom">Works</span></a>
+          <a class="tablink ${active==='works'||active==='news'?'on':''}" href="works.html"><span class="tabtop">YTC</span><span class="tabbottom">Works</span></a>
           <button class="nav-caret" aria-label="Open YTC Works section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
+            <a class="dropitem" href="news.html"><strong>News & Updates</strong><span>Latest stories from YTC@ETHS</span></a>
             <a class="dropitem" href="works.html#local"><strong>Evanston</strong><span>Where the work begins</span></a>
             <a class="dropitem" href="works.html#evanston-map"><strong>Community Map</strong><span>Places served across the city</span></a>
             <a class="dropitem" href="works.html#kuumba-story"><strong>Camp Kuumba</strong><span>The computer handoff</span></a>

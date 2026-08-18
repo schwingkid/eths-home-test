@@ -41,33 +41,23 @@
           <div class="dropdown">
             <a class="dropitem" href="parents.html#why"><strong>Why YTC</strong><span>Why the model matters for students</span></a>
             <a class="dropitem" href="parents.html#experience"><strong>Student Experience</strong><span>What students learn, build and do</span></a>
-            <a class="dropitem" href="parents.html#about"><strong>How the Club Works</strong><span>The student-led model and support structure</span></a>
+            <a class="dropitem" href="parents.html#practical"><strong>Practical Details</strong><span>Time, cost and club expectations</span></a>
             <a class="dropitem" href="parents.html#connect"><strong>Connect</strong><span>Questions from parents</span></a>
           </div>
         </div>
 
-        <div class="navitem">
-          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Students</span><span class="tabbottom">Experience</span></a>
-          <button class="nav-caret" aria-label="Open Student Portal section links" aria-expanded="false">⌄</button>
-          <div class="dropdown">
-            <a class="dropitem" href="students.html#hub"><strong>Current Members</strong><span>Club information is shared directly</span></a>
-            <a class="dropitem" href="students.html#network"><strong>Opportunities</strong><span>Learn, teach locally and connect globally</span></a>
-            <a class="dropitem" href="students.html#noemi"><strong>Noemi's Story</strong><span>Teaching robotics changed her path</span></a>
-            <a class="dropitem" href="students.html#namibia"><strong>Namibia 2025</strong><span>An ETHS educational exchange</span></a>
-            <a class="dropitem" href="students.html#calendar"><strong>Club Communication</strong><span>Current information for active members</span></a>
-            <a class="dropitem" href="students.html#leadership"><strong>Leadership</strong><span>Learning becomes responsibility</span></a>
-          </div>
-        </div>
+        <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Students</span><span class="tabbottom">Experience</span></a>
 
         <div class="navitem">
           <a class="tablink ${active==='support'?'on':''}" href="support.html"><span class="tabtop">Ways to</span><span class="tabbottom">Support</span></a>
           <button class="nav-caret" aria-label="Open Support section links" aria-expanded="false">⌄</button>
           <div class="dropdown">
-            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>bYTCoin Pilot</strong><span>Fund the ETHS-designed model</span></a>
             <a class="dropitem" href="support.html#donate"><strong>Donate</strong><span>Fund student opportunities</span></a>
             <a class="dropitem" href="support.html#equipment"><strong>Equipment</strong><span>Useful technology and supplies</span></a>
-            <a class="dropitem" href="support.html#elbow-grease"><strong>Elbow Grease</strong><span>Take ownership of a need</span></a>\n            <a class="dropitem" href="support.html#community-team"><strong>Community Team</strong><span>Bring marketing, design, fundraising or another useful skill</span></a>
-            <a class="dropitem" href="support.html#connect"><strong>Connect the Club</strong><span>Open a door for a student</span></a>
+            <a class="dropitem" href="support.html#infrastructure"><strong>YTC Backbone</strong><span>Keep the organization behind the club working</span></a>
+            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>Portal + bYTCoin</strong><span>Fund the ETHS-designed model before launch</span></a>
+            <a class="dropitem" href="support.html#community-team"><strong>Community Team</strong><span>Bring marketing, design, fundraising or another useful skill</span></a>
+            <a class="dropitem" href="support.html#connect"><strong>Partnerships</strong><span>Open a door for a student or the Learning Center</span></a>
           </div>
         </div>
       </div>
@@ -80,8 +70,8 @@
     '/parents':'parents.html',
     '/projects':'parents.html#experience',
     '/community':'works.html#local',
-    '/national':'parents.html#about',
-    '/leadership':'students.html#leadership',
+    '/national':'index.html',
+    '/leadership':'students.html',
     '/stories':'parents.html#why',
     '/':'index.html'
   };
@@ -112,20 +102,20 @@
 
   if(path==='support.html'){
     const cards=[...document.querySelectorAll('.supportgrid .card')];
-    if(cards.length>=5){
-      const donate=cards[0],equip=cards[1],coinCard=cards[2],elbow=cards[3],connect=cards[4];
+    if(cards.length>=6){
+      const donate=cards[0],equip=cards[1],infrastructure=cards[2],portal=cards[3],skills=cards[4],connect=cards[5];
       donate.id='donate';
       equip.id='equipment';
-      elbow.id='elbow-grease';
+      infrastructure.id='infrastructure';
+      portal.id='portal';
+      skills.id='skills';
       connect.id='connect';
-      if(coinCard.parentElement){coinCard.parentElement.prepend(coinCard)}
       const nums=[...document.querySelectorAll('.supportgrid .num')];
       nums.forEach((n,i)=>n.textContent=String(i+1).padStart(2,'0'));
     }
     const coin=document.querySelector('.coin');
     if(coin) coin.id='bytcoin';
   }
-
   const closeMenus=()=>{
     document.querySelectorAll('.navitem.open').forEach(item=>{
       item.classList.remove('open');

@@ -7,77 +7,336 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--cream:#FAF6EF;--mist:#EDF1F5;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--green:#3C7A52;--red:#9a3d32}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}.wrap{width:min(760px,calc(100% - 28px));margin:auto}.top{background:var(--deep);color:#fff;padding:22px 0 26px;position:sticky;top:0;z-index:10;box-shadow:0 5px 18px rgba(0,0,0,.12)}.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.25rem}.brand span{color:var(--orange)}.member{font-size:.73rem;color:#c9d6e0;text-align:right}.page{padding:22px 0 56px}.checkin{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(18,42,68,.08);margin-bottom:22px}.label{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 7px}.checkin h1{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:clamp(2.15rem,9vw,3.4rem);line-height:1.02;margin:0 0 12px}.sub{color:var(--muted);margin:0 0 18px}.session{background:var(--mist);border-radius:14px;padding:14px 16px;margin:0 0 16px}.session b{display:block;color:var(--navy)}.code-row{display:flex;gap:10px}.code{flex:1;min-width:0;border:2px solid #cbd5dc;border-radius:14px;padding:15px 16px;font-size:1.25rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;background:#fff}.button{border:0;border-radius:14px;padding:14px 18px;background:var(--orange);color:white;font-weight:800;font-size:1rem;cursor:pointer}.button:disabled{opacity:.5;cursor:not-allowed}.ok{background:#e8f1eb;color:var(--green);border:1px solid #cddfd3;border-radius:14px;padding:14px 16px;font-weight:700}.error{background:#f7e9e6;color:var(--red);border:1px solid #e8cbc5;border-radius:14px;padding:14px 16px}.locked{background:var(--deep);color:white;border-radius:20px;padding:22px;margin-bottom:22px}.locked h2{font-family:Fraunces,Georgia,serif;font-size:1.8rem;margin:0 0 6px}.locked p{color:#ccd8e2;margin:0}.portal{display:none}.portal.open{display:block}.grid{display:grid;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px}.card h2,.card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 8px}.card h2{font-size:1.8rem}.card h3{font-size:1.35rem}.card p{margin:0;color:var(--muted)}.section-title{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:28px 0 10px}.opps{display:grid;gap:12px}.opp{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.tag{display:inline-block;font-size:.61rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 8px;background:#edf1f4;color:var(--navy);margin-bottom:8px}.opp h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:1.3rem;margin:0 0 7px}.opp p{color:var(--muted);font-size:.92rem;margin:0}.resources{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.resource{background:white;border:1px solid var(--line);border-radius:14px;padding:15px}.resource b{display:block;color:var(--navy)}.resource span{font-size:.75rem;color:var(--muted)}.admin-link{display:none;margin-top:18px;text-align:center}.admin-link a{color:var(--navy);font-weight:700}.foot{padding:26px 0;color:var(--muted);font-size:.78rem;text-align:center}@media(min-width:650px){.checkin{padding:30px}.grid.two{grid-template-columns:1fr 1fr}.opps{grid-template-columns:1fr 1fr}.resources{grid-template-columns:repeat(3,1fr)}}
+:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--cream:#FAF6EF;--mist:#EDF1F5;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--green:#3C7A52;--red:#9a3d32;--gold:#D9A036}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+.wrap{width:min(560px,100%);margin:auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column}
+@media(min-width:640px){body{background:#ece5d8}.wrap{box-shadow:0 0 60px rgba(18,42,68,.12)}}
+.top{background:var(--deep);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem;white-space:nowrap}.brand span{color:var(--orange)}
+.wallet{display:flex;align-items:center;gap:7px;background:var(--navy);border-radius:999px;padding:6px 12px}
+.wallet b{font-size:.95rem;font-variant-numeric:tabular-nums}.wallet small{font-size:.58rem;font-weight:800;letter-spacing:.1em;color:#c9d6e0}
+.coin{width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3c96b,var(--gold) 70%);display:inline-flex;align-items:center;justify-content:center;color:#7a5310;font-weight:800;font-size:.58rem;flex-shrink:0}
+.tabs{display:flex;background:#0d2136;padding:0 20px;gap:4px}
+.tab{flex:1;text-align:center;padding:11px 0 10px;font-weight:800;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#7f93a6;border:0;background:none;font-family:inherit;cursor:pointer;border-bottom:3px solid transparent;text-decoration:none;display:block}
+.tab.on{color:#fff;border-bottom-color:var(--orange)}
+.hello{padding:20px 20px 4px}
+.hello h1{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:1.65rem;margin:0;text-wrap:balance}
+.hello p{margin:4px 0 0;color:var(--muted);font-size:.82rem}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#e8f1eb;color:var(--green);font-weight:800;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 10px;margin-top:10px}
+.feed{padding:14px 16px 30px;display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 17px}
+.label{font-size:.62rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--orange);margin:0 0 8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.label .src{color:#9aa7b3;letter-spacing:.04em;font-weight:700}
+.reward{display:inline-flex;align-items:center;gap:5px;color:#8a6510;background:#faf0da;border:1px solid #ecd9a8;border-radius:999px;padding:3px 9px;font-size:.62rem;font-weight:800;text-transform:none;letter-spacing:.02em}
+.agenda{background:var(--deep);border:0;color:#fff}.agenda .label{color:var(--orange)}
+.agenda h2{font-family:Fraunces,Georgia,serif;font-size:1.15rem;margin:0}
+.agenda p{margin:4px 0 0;color:#ccd8e2;font-size:.8rem}
+.videobox{border-radius:12px;overflow:hidden;background:#0d2136;aspect-ratio:16/9;border:0;width:100%}
+.videobox iframe{width:100%;height:100%;border:0;display:block}
+.vtitle{font-weight:800;color:var(--navy);font-size:.95rem;margin:11px 0 2px}
+.vsub{color:var(--muted);font-size:.78rem;margin:0}
+.btn{background:var(--orange);color:#fff;border:0;border-radius:11px;padding:12px 16px;font:inherit;font-weight:800;font-size:.85rem;cursor:pointer}
+.btn.ghost{background:none;border:1.5px solid #cbd5dc;color:var(--navy)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--mist);border:2px solid transparent;border-radius:12px;padding:12px 13px;font:inherit;font-size:.85rem;font-weight:600;color:var(--ink);cursor:pointer;margin-top:8px}
+.opt:hover{border-color:#cbd5dc}
+.opt.right{background:#e8f1eb;border-color:var(--green);color:var(--green);font-weight:800}
+.opt.wrong{background:#f7e9e6;border-color:#c96a5b;animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.done-row{display:flex;align-items:center;gap:9px;color:var(--green);font-weight:800;font-size:.85rem;margin-top:11px}
+.check{width:22px;height:22px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{color:var(--muted);font-size:.72rem;margin:8px 0 0}
+.focus{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.focus h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0;font-size:1.02rem}
+.focus p{margin:3px 0 0;color:var(--muted);font-size:.76rem}
+.search{display:flex;align-items:center;gap:9px;background:#fff;border:2px solid #cbd5dc;border-radius:13px;padding:11px 13px;margin-top:4px}
+.search input{border:0;outline:0;font:inherit;font-size:.9rem;flex:1;background:none;color:var(--ink);min-width:0}
+.results{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.result{display:flex;align-items:center;justify-content:space-between;background:var(--mist);border-radius:11px;padding:11px 13px;font-size:.83rem;font-weight:700;color:var(--navy);text-decoration:none}
+.result small{display:block;font-weight:600;color:var(--muted);font-size:.7rem}
+.jrow{display:flex;flex-direction:column;gap:10px}
+.jcourse{display:flex;align-items:center;gap:11px}
+.jname{flex:1;font-size:.82rem;font-weight:700;color:var(--navy)}
+.jname small{display:block;color:var(--muted);font-weight:600;font-size:.68rem}
+.jbar{flex:1;height:7px;border-radius:99px;background:var(--mist);overflow:hidden}
+.jbar i{display:block;height:100%;background:var(--green)}
+.jn{font-size:.72rem;font-weight:800;color:var(--muted);min-width:32px;text-align:right;font-variant-numeric:tabular-nums}
+.stat3{display:flex;gap:8px;margin-top:12px}
+.stat3 div{flex:1;background:var(--mist);border-radius:12px;padding:10px 6px;text-align:center}
+.stat3 b{font-size:1.15rem;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat3 span{display:block;font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.classroom-card{background:var(--navy);color:#fff;border-radius:16px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.classroom-card b{font-family:Fraunces,Georgia,serif;font-size:1rem;display:block}
+.classroom-card span{color:#ccd8e2;font-size:.75rem}
+.classroom-card a{background:var(--orange);color:#fff;border-radius:10px;padding:10px 15px;font-weight:800;font-size:.8rem;text-decoration:none;flex-shrink:0}
+.code-row{display:flex;gap:10px}
+.code{flex:1;min-width:0;border:2px solid #cbd5dc;border-radius:13px;padding:13px 15px;font-size:1.15rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;background:#fff;font-family:inherit}
+.error{background:#f7e9e6;color:var(--red);border:1px solid #e8cbc5;border-radius:13px;padding:13px 15px;font-size:.85rem}
+.ok{background:#e8f1eb;color:var(--green);border:1px solid #cddfd3;border-radius:13px;padding:13px 15px;font-weight:700;font-size:.85rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%) translateY(20px);bottom:24px;background:var(--deep);color:#fff;border-radius:999px;padding:11px 18px;font-weight:800;font-size:.85rem;display:flex;align-items:center;gap:8px;opacity:0;pointer-events:none;transition:all .3s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.field{margin-top:12px}
+.field label{display:block;font-weight:800;color:var(--navy);font-size:.8rem;margin-bottom:5px}
+.field label em{color:#9aa7b3;font-weight:600;font-style:normal;font-size:.72rem}
+.field input,.field textarea{width:100%;background:#fff;border:2px solid #cbd5dc;border-radius:12px;padding:12px 14px;font:inherit;font-size:.9rem;color:var(--ink)}
+.field textarea{min-height:64px;resize:vertical}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:2px solid #cbd5dc;background:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:.82rem;color:var(--muted);cursor:pointer;font-family:inherit}
+.chip.on{border-color:var(--orange);background:#fdf0e8;color:#b4501e}
+.obhero{background:var(--deep);color:#fff;padding:26px 20px}
+.obhero .label{color:var(--orange)}
+.obhero h1{font-family:Fraunces,Georgia,serif;font-size:1.9rem;margin:0;line-height:1.08}
+.obhero h1 span{color:var(--orange)}
+.obhero p{color:#ccd8e2;font-size:.85rem;margin:10px 0 0}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+a{color:var(--navy)}a:hover{color:var(--orange)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap toprow"><div class="brand">YTC <span>Student Portal</span></div><div class="member" id="member">Checking membership…</div></div></header>
-<main class="page"><div class="wrap">
-<section class="checkin">
-<p class="label">FIRST THING</p><h1>Check in.</h1><p class="sub" id="checkinSub">Your membership and today's meeting are being checked.</p>
-<div id="checkinBody"><div class="session"><b>Connecting…</b><span>Please wait.</span></div></div>
-</section>
-<section class="locked" id="locked"><h2>Check-in comes first.</h2><p>When a club meeting is active, the calendar, opportunities and clubroom resources unlock after attendance is recorded.</p></section>
-<section class="portal" id="portal">
-<div class="grid two"><article class="card"><p class="label">TODAY</p><h2 id="todayTitle">Clubroom</h2><p id="todayNote"></p></article><article class="card"><p class="label">CALENDAR</p><h2 id="calendarTitle">YTC ETHS Calendar</h2><p id="calendarNote"></p><div id="events"></div></article></div>
-<p class="section-title">Current opportunities</p><div class="opps" id="opportunities"></div>
-<p class="section-title">Clubroom tools</p><div class="resources" id="resources"></div>
-<div class="admin-link" id="adminLink"><a href="admin.html">Sponsor controls →</a></div>
-</section>
-<div class="foot">YTC Evanston · member-only portal</div>
-</div></main>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">YTC <span>Student Portal</span></div>
+    <div class="wallet" id="wallet" style="visibility:hidden"><span class="coin">B</span><div style="line-height:1.05"><b id="balance">0</b><br><small>BYTCOIN</small></div></div>
+  </div>
+  <div class="tabs" id="tabs" style="display:none">
+    <span class="tab on">Student portal</span>
+    <a class="tab" href="admin.html" id="mentorTab" style="display:none">Mentor portal</a>
+  </div>
+  <div id="view"><div class="feed"><div class="card">Loading your portal…</div></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
 <script>
-const $=id=>document.getElementById(id);let statusData=null;
-function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-async function getStatus(){
- try{
-  const r=await fetch('/api/status',{cache:'no-store'});const d=await r.json();
-  if(!r.ok){showStatusError(d,r.status);return}
-  statusData=d;$('member').textContent=`${d.member.name} · ${d.member.chapter}`;
-  if(['sponsor','admin'].includes(d.member.role)) $('adminLink').style.display='block';
-  renderCheckin(d);
-  if(d.portalUnlocked) await loadPortal();
- }catch(e){$('checkinBody').innerHTML='<div class="error">Portal service is not connected yet.</div>';}
+const $=s=>document.getElementById(s);
+const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+let ME=null, STATUS=null, CONTENT=null, WEEKLY=null;
+
+function toast(msg){const t=$('toast');t.innerHTML=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2800);}
+function setBalance(n){$('wallet').style.visibility='visible';$('balance').textContent=n;}
+async function api(path,opts){const r=await fetch(path,Object.assign({cache:'no-store'},opts));let d={};try{d=await r.json()}catch(e){}return{r,d};}
+
+async function boot(){
+  const me=await api('/api/me');
+  if(!me.r.ok){
+    const msg=me.d.error==='not_active_member'
+      ?'This email is not on the active YTC club roster yet. Ask your sponsor to add you.'
+      :me.d.error==='database_not_bound'?'The portal database is not connected.':'Sign-in is not active yet.';
+    $('view').innerHTML='<div class="feed"><div class="error">'+esc(msg)+'</div></div>';return;
+  }
+  ME=me.d;
+  if(['sponsor','admin'].includes(ME.member.role)){$('mentorTab').style.display='block';}
+  $('tabs').style.display='flex';
+  if(!ME.profile){renderOnboarding();return;}
+  await loadDaily();
 }
-function showStatusError(d,status){
- $('member').textContent='Member access required';
- const msg=d.error==='not_active_member'?'This email is not on the active YTC club roster.':d.error==='database_not_bound'?'Attendance database is not connected yet.':'Member sign-in is not active yet.';
- $('checkinBody').innerHTML=`<div class="error">${esc(msg)}</div>`;
- $('checkinSub').textContent=status===403?'Ask your club sponsor to add or reactivate your membership.':'The portal will open after Cloudflare Access is connected.';
+
+/* ---------- Onboarding ---------- */
+function chipRow(name,values){return '<div class="chips" data-chips="'+name+'">'+values.map(v=>'<button type="button" class="chip" data-v="'+esc(v)+'">'+esc(v)+'</button>').join('')+'</div>';}
+function renderOnboarding(){
+  $('view').innerHTML=
+  '<div class="obhero"><p class="label">FIRST VISIT</p><h1>Every member has a journey.<br><span>Start yours.</span></h1>'+
+  '<p>You learn. Then you teach what you learned. Then you lead the ones who come after you. Tell us who you are, and the portal will walk it with you.</p></div>'+
+  '<div class="feed">'+
+  '<div class="field"><label>What should we call you?</label><input id="f_name" maxlength="60" autocomplete="given-name"></div>'+
+  '<div class="field"><label>Grade</label>'+chipRow('grade',['9','10','11','12'])+'</div>'+
+  '<div class="field"><label>Your ETHS school email</label><input id="f_email" placeholder="you@eths202.org" inputmode="email" autocomplete="email"></div>'+
+  '<div class="field"><label>How long have you been in YTC?</label>'+chipRow('years',['New','1 year','2 years','3+ years'])+'</div>'+
+  '<div class="field"><label>What other clubs or activities are you in?</label><input id="f_clubs" maxlength="200" placeholder="Soccer, robotics team, jazz band…"></div>'+
+  '<div class="field"><label>Why did you join YTC? <em>(in your own words)</em></label><textarea id="f_why" maxlength="1000" placeholder="Tell us in a sentence or two…"></textarea></div>'+
+  '<div class="field"><label>Favorite YTC moment so far? <em>(new members: what are you looking forward to?)</em></label><textarea id="f_moment" maxlength="1000" placeholder="A moment, a person, a project…"></textarea></div>'+
+  '<div style="display:flex;align-items:center;gap:14px;margin-top:16px"><button class="btn" id="obGo">Start my journey →</button><span class="hint" style="margin:0">Takes 2 minutes · change it anytime</span></div>'+
+  '<p class="hint">Photo to follow — your sponsor will take it at club and add it to your profile.</p>'+
+  '</div>';
+  document.querySelectorAll('[data-chips]').forEach(row=>{
+    row.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+      row.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));b.classList.add('on');});
+  });
+  $('obGo').addEventListener('click',async()=>{
+    const pick=n=>{const b=document.querySelector('[data-chips="'+n+'"] .chip.on');return b?b.dataset.v:null;};
+    const body={preferred_name:$('f_name').value,grade:pick('grade'),school_email:$('f_email').value,
+      years_in_ytc:pick('years'),other_clubs:$('f_clubs').value,why_joined:$('f_why').value,favorite_moment:$('f_moment').value};
+    if(!body.preferred_name.trim()){toast('Tell us your name first.');return;}
+    $('obGo').disabled=true;
+    const {r}=await api('/api/me',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+    if(!r.ok){$('obGo').disabled=false;toast('Could not save — try again.');return;}
+    ME.profile=body;
+    await loadDaily();
+    toast('Welcome to YTC, '+esc(body.preferred_name)+'.');
+  });
 }
-function renderCheckin(d){
- if(!d.activeSession){
-  $('checkinSub').textContent='There is no active meeting to check into right now.';
-  $('checkinBody').innerHTML='<div class="ok">Member verified. Portal open outside meeting hours.</div>';
-  $('locked').style.display='none';return;
- }
- const s=d.activeSession;
- if(d.checkedIn){
-  $('checkinSub').textContent='Attendance recorded.';
-  $('checkinBody').innerHTML=`<div class="ok">✓ Checked in to ${esc(s.title)}</div>`;
-  $('locked').style.display='none';return;
- }
- $('checkinSub').textContent='Enter the clubroom code shown by your sponsor.';
- $('checkinBody').innerHTML=`<div class="session"><b>${esc(s.title)}</b><span>${esc(s.session_date)}</span></div><div class="code-row"><input id="code" class="code" inputmode="text" autocomplete="one-time-code" maxlength="8" placeholder="CODE"><button id="checkBtn" class="button">Check in</button></div><div id="checkMsg" style="margin-top:12px"></div>`;
- $('checkBtn').onclick=checkIn;
- $('code').addEventListener('keydown',e=>{if(e.key==='Enter')checkIn()});
+
+/* ---------- Daily ---------- */
+function greetWord(){const h=new Date().getHours();return h<12?'Good morning':h<17?'Good afternoon':'Good evening';}
+
+async function loadDaily(){
+  const [st,wk]=await Promise.all([api('/api/status'),api('/api/weekly')]);
+  STATUS=st.d;WEEKLY=wk.d;
+  if(wk.r.ok)setBalance(WEEKLY.bytcoin);
+  const locked=st.r.ok&&STATUS.activeSession&&!STATUS.checkedIn;
+  if(!locked){const ct=await api('/api/portal-content');if(ct.r.ok)CONTENT=ct.d;}
+  renderDaily(locked);
+  if(locked){const qc=new URLSearchParams(location.search).get('code');if(qc){$('code').value=qc.toUpperCase();checkIn();}}
 }
+
+function renderDaily(locked){
+  const name=ME.profile&&ME.profile.preferred_name?ME.profile.preferred_name:ME.member.name.split(' ')[0];
+  let h='<div class="hello"><h1>'+greetWord()+', '+esc(name)+'.</h1>';
+  if(STATUS&&STATUS.checkedIn&&CONTENT){h+='<p>Meeting #'+(CONTENT.journey.meetingsAttended||1)+' · attendance recorded</p><span class="pill">✓ Checked in</span>';}
+  else if(STATUS&&!STATUS.activeSession){h+='<p>No meeting right now — the portal is open.</p>';}
+  h+='</div><div class="feed">';
+
+  if(locked){
+    const s=STATUS.activeSession;
+    h+='<div class="card agenda"><p class="label">Check-in comes first</p><h2>'+esc(s.title)+'</h2><p>'+esc(s.session_date)+' — enter the code your sponsor is showing, or scan the clubroom QR.</p></div>'+
+    '<div class="card"><div class="code-row"><input id="code" class="code" maxlength="8" placeholder="CODE" autocomplete="one-time-code"><button class="btn" id="checkBtn">Check in</button></div><div id="checkMsg" style="margin-top:10px"></div></div></div>';
+    $('view').innerHTML=h;
+    $('checkBtn').addEventListener('click',checkIn);
+    $('code').addEventListener('keydown',e=>{if(e.key==='Enter')checkIn()});
+    return;
+  }
+
+  // Today's clubroom (calendar-driven)
+  const ag=CONTENT&&CONTENT.todayAgenda;
+  const wkAgenda=WEEKLY&&WEEKLY.week&&WEEKLY.week.agenda;
+  h+='<div class="card agenda"><p class="label">Today\'s clubroom <span class="src">from the club calendar</span></p>';
+  if(wkAgenda){h+='<h2>'+esc(wkAgenda)+'</h2>';}
+  else if(ag){h+='<h2>'+esc(ag.title)+'</h2>'+(ag.location?'<p>'+esc(ag.location)+'</p>':'');}
+  else{h+='<h2>Independent learning</h2><p>No event on the calendar today — review your last lesson and work at your own pace.</p>';}
+  const nextEv=CONTENT&&CONTENT.calendar&&CONTENT.calendar.events&&CONTENT.calendar.events[0];
+  if(nextEv)h+='<p style="margin-top:9px;font-size:.72rem;color:#9fb2c2">Next: '+esc(nextEv)+'</p>';
+  h+='</div>';
+
+  // Video of the week
+  const w=WEEKLY&&WEEKLY.week;
+  if(w&&w.video){
+    h+='<div class="card" id="videoCard"><p class="label">Video of the week <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+1</span></p>'+
+    '<div class="videobox"><iframe src="'+esc(w.video.url)+'" title="'+esc(w.video.title)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'+
+    '<p class="vtitle">'+esc(w.video.title)+'</p><p class="vsub">'+esc(w.video.speaker||'')+(w.video.duration?' · '+esc(w.video.duration):'')+'</p>'+
+    '<div id="videoDone">'+(w.video.watched
+      ?'<div class="done-row"><span class="check">✓</span>Watched — checked off for the week</div>'
+      :'<button class="btn ghost" id="watchedBtn" style="margin-top:11px;width:100%">I watched it — check it off</button>')+'</div></div>';
+  }
+
+  // Video quiz (always about LAST week's video)
+  if(w&&w.videoQuiz){
+    h+='<div class="card" id="qCard"><p class="label">Video quiz <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+2</span></p>'+
+    '<p style="margin:0 0 2px;font-size:.7rem;font-weight:700;color:var(--muted)">About last week\'s video</p>'+
+    '<p style="margin:0;font-weight:700;color:var(--navy);font-size:.92rem">'+esc(w.videoQuiz.text)+'</p><div id="opts">'+
+    w.videoQuiz.options.map((o,i)=>'<button class="opt" data-i="'+i+'" '+(w.videoQuiz.answered?'disabled':'')+'>'+esc(o)+'</button>').join('')+
+    '</div><p class="hint" id="qHint">'+(w.videoQuiz.answered?'Answered — checked off for the week.':'The quiz is always about last week\'s video.')+'</p></div>';
+  }else if(w&&w.video){
+    h+='<div class="card"><p class="label">Video quiz</p><p style="margin:0;color:var(--muted);font-size:.85rem">First week — the quiz about this video drops next Monday. Watch it now, answer it then.</p></div>';
+  }
+
+  // Question of the week — tell us about you (hobbies, needs, ideas)
+  if(w&&w.potw){
+    h+='<div class="card" id="potwCard"><p class="label">Question of the week <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+1</span></p>'+
+    '<p style="margin:0;font-weight:700;color:var(--navy);font-size:.92rem">'+esc(w.potw.text)+'</p>';
+    if(w.potw.answered){
+      h+='<div class="done-row"><span class="check">✓</span>Answered — thanks, this helps the club plan.</div>';
+    }else if(w.potw.type==='choice'&&w.potw.options.length){
+      h+='<div id="potwOpts">'+w.potw.options.map(o=>'<button class="opt" data-a="'+esc(o)+'">'+esc(o)+'</button>').join('')+'</div>';
+    }else{
+      h+='<div class="search" style="margin-top:10px"><input id="potwText" maxlength="500" placeholder="Your answer…" aria-label="Your answer"></div>'+
+      '<button class="btn" id="potwGo" style="margin-top:10px;width:100%">Send my answer</button>';
+    }
+    h+='<p class="hint">Your answer goes to the club mentors — it shapes trips, donations and clubroom plans.</p></div>';
+  }
+
+  // Today's focus (journey-driven)
+  if(CONTENT&&CONTENT.journey){
+    const j=CONTENT.journey;
+    if(j.currentCourse){
+      const course=(CONTENT.courses||[]).find(c=>c.key===j.currentCourse);
+      const lesson=course&&course.lessons[j.nextLesson-1];
+      h+='<div class="card focus"><div><p class="label" style="margin-bottom:4px">Today\'s focus</p><h3>'+esc(course?course.title:'')+'</h3>'+
+      '<p>Next up: '+esc(lesson?lesson.title:'Lesson '+j.nextLesson)+' — open the deck, then pass its quiz to move on.</p></div>'+
+      (lesson?'<a class="btn" href="'+esc(lesson.url)+'" target="_blank" rel="noopener" style="text-decoration:none">Open</a>':'')+'</div>';
+    }else{
+      h+='<div class="card focus"><div><h3>All three courses complete!</h3><p>Time to teach it forward — log your teaching hours with your sponsor.</p></div></div>';
+    }
+  }
+
+  // Journey map
+  if(CONTENT&&CONTENT.journey){
+    const j=CONTENT.journey,names={course1:'What is Electricity?',course2:'Making Things Work',course3:'Advanced Labs (I/O)'};
+    h+='<div class="card"><p class="label">Your journey <span class="src">Learn → Teach → Lead</span></p><div class="jrow">'+
+    j.courses.map((c,i)=>'<div class="jcourse"><div class="jname">Course '+(i+1)+'<small>'+esc(names[c.key]||c.key)+'</small></div><div class="jbar"><i style="width:'+Math.round(100*c.passed/c.of)+'%"></i></div><div class="jn">'+c.passed+'/'+c.of+'</div></div>').join('')+
+    '</div><div class="stat3"><div><b>'+j.meetingsAttended+'</b><span>Meetings</span></div><div><b>'+j.courses.reduce((a,c)=>a+c.passed,0)+'</b><span>Quizzes passed</span></div><div><b>'+Math.round(j.minutesTaught/60)+'</b><span>Hours taught</span></div></div></div>';
+  }
+
+  // Classroom
+  if(CONTENT&&CONTENT.classroom){
+    h+='<div class="classroom-card"><div><b>Google Classroom</b><span>'+esc(CONTENT.classroom.note)+'</span></div><a href="'+esc(CONTENT.classroom.url)+'" target="_blank" rel="noopener">Open →</a></div>';
+  }
+
+  // Lesson search
+  h+='<div class="card"><p class="label">Review a lesson</p><div class="search"><span aria-hidden="true">🔎</span><input id="searchBox" placeholder="Find your course or lesson…" aria-label="Search coursework"></div><div class="results" id="results"></div></div>';
+
+  h+='</div>';
+  $('view').innerHTML=h;
+  wireDaily();
+}
+
+function wireDaily(){
+  const w=WEEKLY&&WEEKLY.week;
+  const wb=$('watchedBtn');
+  if(wb)wb.addEventListener('click',async()=>{
+    wb.disabled=true;
+    const {r,d}=await api('/api/weekly',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'watched'})});
+    if(r.ok){setBalance(d.bytcoin);$('videoDone').innerHTML='<div class="done-row"><span class="check">✓</span>Watched — checked off for the week</div>';
+      if(d.awarded)toast('<span class="coin">B</span> +'+d.awarded+' BYTCOIN — video watched');}
+    else{wb.disabled=false;toast('Could not record — try again.');}
+  });
+  document.querySelectorAll('#opts .opt').forEach(o=>o.addEventListener('click',async()=>{
+    const {r,d}=await api('/api/weekly',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'answer',answerIdx:Number(o.dataset.i)})});
+    if(!r.ok){toast('Could not check the answer.');return;}
+    setBalance(d.bytcoin);
+    if(d.correct){o.classList.add('right');document.querySelectorAll('#opts .opt').forEach(x=>x.disabled=true);
+      $('qHint').textContent='Answered — checked off for the week.';
+      if(d.awarded)toast('<span class="coin">B</span> +'+d.awarded+' BYTCOIN — right answer');}
+    else{o.classList.add('wrong');setTimeout(()=>o.classList.remove('wrong'),400);toast('Not quite — try again.');}
+  }));
+  async function sendPotw(answer){
+    const {r,d}=await api('/api/weekly',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'potw',answer})});
+    if(!r.ok){toast('Could not send — try again.');return false;}
+    setBalance(d.bytcoin);
+    const card=$('potwCard');
+    card.querySelectorAll('.opt,.search,.btn').forEach(x=>x.remove());
+    const p=document.createElement('div');p.className='done-row';p.innerHTML='<span class="check">✓</span>Answered — thanks, this helps the club plan.';
+    card.insertBefore(p,card.querySelector('.hint'));
+    if(d.awarded)toast('<span class="coin">B</span> +'+d.awarded+' BYTCOIN — thanks for the answer');
+    return true;
+  }
+  document.querySelectorAll('#potwOpts .opt').forEach(o=>o.addEventListener('click',()=>sendPotw(o.dataset.a)));
+  const pg=$('potwGo');
+  if(pg)pg.addEventListener('click',()=>{const v=$('potwText').value.trim();if(!v){toast('Type an answer first.');return;}sendPotw(v);});
+  const sb=$('searchBox');
+  if(sb)sb.addEventListener('input',function(){
+    const q=this.value.trim().toLowerCase(),r=$('results');
+    if(!q){r.innerHTML='';return;}
+    const items=[];
+    (CONTENT&&CONTENT.courses||[]).forEach(c=>{
+      c.lessons.forEach(l=>items.push({t:l.title,c:c.title,u:l.url}));
+      items.push({t:'Quizzes',c:c.title,u:c.quizzes});
+    });
+    const hits=items.filter(l=>(l.c+' '+l.t).toLowerCase().includes(q)).slice(0,6);
+    r.innerHTML=hits.length?hits.map(l=>'<a class="result" href="'+esc(l.u)+'" target="_blank" rel="noopener"><span>'+esc(l.t)+'<small>'+esc(l.c)+'</small></span><span aria-hidden="true">→</span></a>').join('')
+      :'<div class="result"><span>No match — try "electricity", "lab", or "quiz"<small>18 lessons + quizzes are searchable</small></span></div>';
+  });
+}
+
 async function checkIn(){
- const code=$('code').value.trim();if(!code)return;
- $('checkBtn').disabled=true;$('checkMsg').innerHTML='Recording attendance…';
- const r=await fetch('/api/checkin',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code})});const d=await r.json();
- if(!r.ok){$('checkBtn').disabled=false;$('checkMsg').innerHTML=`<div class="error">${d.error==='invalid_code'?'That code does not match today’s meeting.':'Could not check in.'}</div>`;return}
- await getStatus();
+  const code=$('code').value.trim();if(!code)return;
+  $('checkBtn').disabled=true;$('checkMsg').innerHTML='Recording attendance…';
+  const {r,d}=await api('/api/checkin',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code})});
+  if(!r.ok){$('checkBtn').disabled=false;$('checkMsg').innerHTML='<div class="error">'+(d.error==='invalid_code'?'That code does not match today\'s meeting.':'Could not check in.')+'</div>';return;}
+  await loadDaily();
+  toast('✓ Checked in — attendance recorded');
 }
-async function loadPortal(){
- const r=await fetch('/api/portal-content',{cache:'no-store'});const d=await r.json();if(!r.ok)return;
- $('portal').classList.add('open');$('locked').style.display='none';
- $('todayTitle').textContent=d.today.title;$('todayNote').textContent=d.today.note;
- $('calendarTitle').textContent=d.calendar.title;$('calendarNote').textContent=d.calendar.note;
- $('events').innerHTML=d.calendar.events.length?d.calendar.events.map(e=>`<p>${esc(e)}</p>`).join(''):'';
- $('opportunities').innerHTML=d.opportunities.map(o=>`<article class="opp"><span class="tag">${esc(o.status)}</span><h3>${esc(o.title)}</h3><p>${esc(o.text)}</p></article>`).join('');
- $('resources').innerHTML=d.resources.map(x=>`<div class="resource"><b>${esc(x.title)}</b><span>${esc(x.status)}</span></div>`).join('');
-}
-getStatus();
+
+boot();
 </script>
 </body></html>

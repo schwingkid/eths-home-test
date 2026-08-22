@@ -27,27 +27,28 @@
 .main{padding:30px 0 80px}
 .layout{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;align-items:start}
 
-/* ============ THE DOORWAY ============ */
-.doorway{position:relative;display:flex;flex-direction:column;background:radial-gradient(130% 80% at 50% -10%,#204a72 0%,var(--deep) 62%);border-radius:22px;overflow:hidden;min-height:600px;color:#fff}
-.stage{flex:1;position:relative;display:flex;align-items:flex-end;justify-content:center;perspective:1500px;padding:40px 20px 0}
-.floorlight{position:absolute;left:50%;bottom:0;width:74%;height:120px;transform:translateX(-50%);background:radial-gradient(60% 100% at 50% 100%,rgba(246,213,143,.28),transparent 70%)}
-.frame{position:relative;width:min(300px,72%);aspect-ratio:1/1.72;background:linear-gradient(#d3b473,#a9884b);border-radius:150px 150px 10px 10px;padding:15px 15px 0;box-shadow:0 26px 64px rgba(0,0,0,.45)}
-.opening{position:relative;width:100%;height:100%;border-radius:140px 140px 4px 4px;overflow:hidden;background:#0a1522;transform-style:preserve-3d}
-.beyond{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(78% 66% at 50% 44%,#f7dc94 0%,#eaad4f 24%,#2c7581 58%,#0a2432 100%)}
-.beyond .globe{width:70%;filter:drop-shadow(0 0 22px rgba(247,220,148,.75))}
-.rays{position:absolute;inset:0;background:conic-gradient(from 205deg at 50% 42%,transparent 0 7%,rgba(255,242,205,.12) 8% 11%,transparent 12% 21%,rgba(255,242,205,.09) 22% 25%,transparent 26% 74%,rgba(255,242,205,.09) 75% 78%,transparent 79% 88%,rgba(255,242,205,.12) 89% 92%,transparent 93%);mix-blend-mode:screen}
-.door{position:absolute;inset:0;border-radius:140px 140px 4px 4px;background:linear-gradient(100deg,#7f5e36 0%,#5e4224 100%);transform-origin:left center;transform:rotateY(-16deg);transition:transform 1s cubic-bezier(.2,.85,.2,1);box-shadow:inset 0 0 0 3px rgba(0,0,0,.16),10px 0 30px rgba(0,0,0,.4)}
-.doorway:hover .door,.doorway:focus-within .door{transform:rotateY(-84deg)}
-.door .panel{position:absolute;left:15%;right:15%;background:linear-gradient(100deg,rgba(255,255,255,.07),rgba(0,0,0,.2));box-shadow:inset 0 0 0 2px rgba(0,0,0,.24)}
-.door .panel.top{top:9%;height:44%;border-radius:38px 38px 6px 6px}
-.door .panel.bot{top:57%;height:34%;border-radius:7px}
-.door .handle{position:absolute;right:11%;top:51%;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(233,180,76,.9),inset 0 0 0 2px rgba(0,0,0,.2)}
-.cap{position:relative;z-index:3;padding:6px 34px 36px;text-align:center}
-.cap .tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(233,180,76,.14);border:1px solid rgba(233,180,76,.4);padding:6px 12px;border-radius:999px;margin-bottom:14px}
-.cap h2{font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.01em;max-width:16ch;margin:0 auto}
-.cap .enter{display:inline-flex;align-items:center;gap:9px;margin-top:20px;background:var(--orange);color:#fff;font-weight:800;padding:14px 26px;border-radius:999px;font-size:1rem}
-.cap .signin{margin:14px 0 0;font-size:.82rem;color:#aebdca}
-.cap .signin b{color:#fff;font-weight:700}
+/* ============ THE COLLEGIATE DOORWAY ============ */
+.doorway{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;min-height:620px;text-align:center;
+  background:
+    linear-gradient(rgba(255,255,255,.05),rgba(0,0,0,.12)),
+    repeating-linear-gradient(0deg,#c9bfa8 0 47px,#c2b8a0 47px 49px),
+    repeating-linear-gradient(90deg,#c9bfa8 0 82px,#bfb499 82px 84px),
+    #c9bfa8;
+  box-shadow:inset 0 0 0 1px rgba(120,108,84,.35)}
+.doorway .lintel{position:relative;z-index:2;margin:26px 24px 2px;padding:15px 20px;border-radius:6px;
+  background:linear-gradient(#d3cab3,#b8ad91);border:1px solid #9c9075;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -3px 7px rgba(0,0,0,.22),0 5px 13px rgba(0,0,0,.18)}
+.lintel .over{display:block;font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#8a7f66;margin-bottom:5px}
+.engraved{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(1.15rem,2.3vw,1.7rem);letter-spacing:.015em;line-height:1.16;color:#6b6250;
+  text-shadow:0 1px 0 rgba(255,255,255,.62),0 -1px 1px rgba(0,0,0,.42)}
+.stage{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:20px 20px 0}
+.door-svg{width:min(300px,74%);height:auto;filter:drop-shadow(0 18px 34px rgba(50,38,20,.45))}
+.knock-ring{transform-origin:150px 213px;transition:transform .5s cubic-bezier(.34,1.4,.5,1)}
+.doorway:hover .knock-ring,.doorway:focus-within .knock-ring{transform:rotate(-9deg)}
+.cap{position:relative;z-index:2;padding:14px 30px 34px}
+.cap .enter{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-weight:800;padding:14px 26px;border-radius:999px;font-size:1rem}
+.cap .signin{margin:14px 0 0;font-size:.82rem;color:#6b6250}
+.cap .signin b{color:#4a4433;font-weight:800}
 
 /* RIGHT COLUMN */
 .side{display:flex;flex-direction:column;gap:26px}
@@ -77,9 +78,9 @@
 
 footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a{color:#fff}.footergrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}footer strong{font-family:Fraunces,Georgia,serif;color:#fff}
 
-@media(max-width:900px){.layout{grid-template-columns:1fr}.doorway{min-height:520px}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.doorway{min-height:540px}}
 @media(max-width:560px){.wrap{width:calc(100% - 32px)}.strip{grid-template-columns:1fr 1fr}.strip figure:last-child{display:none}.footergrid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.door{transition:none}}
+@media(prefers-reduced-motion:reduce){.knock-ring{transition:none}}
 </style>
 </head>
 <body>
@@ -101,42 +102,62 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
 <!-- ============ MAIN ============ -->
 <section class="main"><div class="wrap layout">
 
-  <!-- LEFT: THE DOORWAY -->
+  <!-- LEFT: THE COLLEGIATE DOORWAY -->
   <a class="doorway" href="portal/" aria-label="Step through the doorway into the student portal">
+    <div class="lintel">
+      <span class="over">Youth Technology Corps · ETHS</span>
+      <span class="engraved">Your Doorway to a Global Experience</span>
+    </div>
     <div class="stage">
-      <div class="floorlight"></div>
-      <div class="frame">
-        <div class="opening">
-          <div class="beyond">
-            <div class="rays"></div>
-            <svg class="globe" viewBox="0 0 200 200" aria-hidden="true">
-              <defs><radialGradient id="gl" cx="42%" cy="36%" r="72%">
-                <stop offset="0%" stop-color="#cdeee6"/><stop offset="45%" stop-color="#3f9aa3"/><stop offset="100%" stop-color="#12525c"/>
-              </radialGradient></defs>
-              <circle cx="100" cy="100" r="72" fill="url(#gl)"/>
-              <g stroke="rgba(255,255,255,.30)" stroke-width="1.2" fill="none">
-                <ellipse cx="100" cy="100" rx="72" ry="26"/><ellipse cx="100" cy="100" rx="72" ry="50"/>
-                <ellipse cx="100" cy="100" rx="26" ry="72"/><ellipse cx="100" cy="100" rx="50" ry="72"/>
-                <line x1="28" y1="100" x2="172" y2="100"/>
-              </g>
-              <g fill="#2f7d5b" opacity=".95">
-                <path d="M92 52 q16 5 12 22 q11 8 3 22 q-16 9 -24 -3 q-9 -21 9 -43z"/>
-                <path d="M54 64 q11 -7 13 7 q-2 13 -13 15 q-11 -9 0 -22z"/>
-                <path d="M134 66 q17 -3 14 15 q-11 9 -19 0 q-4 -11 5 -15z"/>
-                <path d="M96 138 q9 2 7 12 q-8 5 -12 -3 q-2 -7 5 -9z"/>
-              </g>
-              <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <div class="door">
-            <span class="panel top"></span><span class="panel bot"></span><span class="handle"></span>
-          </div>
-        </div>
-      </div>
+      <svg class="door-svg" viewBox="0 0 300 400" aria-hidden="true">
+        <defs>
+          <linearGradient id="oak" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#6a4726"/><stop offset=".5" stop-color="#4d341a"/><stop offset="1" stop-color="#36230f"/>
+          </linearGradient>
+          <linearGradient id="iron" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4a"/><stop offset="1" stop-color="#131313"/></linearGradient>
+          <radialGradient id="brz" cx="40%" cy="34%" r="72%"><stop offset="0" stop-color="#f1d99e"/><stop offset=".55" stop-color="#b3852f"/><stop offset="1" stop-color="#6d491a"/></radialGradient>
+          <clipPath id="archclip"><path d="M40,372 L40,180 Q40,66 150,44 Q260,66 260,180 L260,372 Z"/></clipPath>
+        </defs>
+        <!-- carved stone archivolt (frame around the door) -->
+        <path d="M28,376 L28,180 Q28,52 150,30 Q272,52 272,180 L272,376" fill="none" stroke="#b7ac90" stroke-width="26" stroke-linejoin="round"/>
+        <path d="M28,376 L28,180 Q28,52 150,30 Q272,52 272,180 L272,376" fill="none" stroke="#8f8365" stroke-width="26" stroke-linejoin="round" opacity=".35" transform="translate(0,3)"/>
+        <!-- keystone -->
+        <path d="M150,20 l16,26 -16,14 -16,-14 z" fill="#c7bda6" stroke="#8f8365" stroke-width="1.5"/>
+        <!-- the oak door -->
+        <path d="M40,372 L40,180 Q40,66 150,44 Q260,66 260,180 L260,372 Z" fill="url(#oak)"/>
+        <g clip-path="url(#archclip)">
+          <rect x="147" y="44" width="6" height="330" fill="rgba(0,0,0,.42)"/>
+          <g stroke="rgba(0,0,0,.24)" stroke-width="2.4">
+            <line x1="76" y1="44" x2="76" y2="372"/><line x1="112" y1="44" x2="112" y2="372"/>
+            <line x1="188" y1="44" x2="188" y2="372"/><line x1="224" y1="44" x2="224" y2="372"/>
+          </g>
+          <rect x="30" y="118" width="240" height="20" fill="url(#iron)"/>
+          <rect x="30" y="286" width="240" height="20" fill="url(#iron)"/>
+          <g fill="#262626">
+            <circle cx="58" cy="128" r="4.4"/><circle cx="110" cy="128" r="4.4"/><circle cx="190" cy="128" r="4.4"/><circle cx="242" cy="128" r="4.4"/>
+            <circle cx="58" cy="296" r="4.4"/><circle cx="110" cy="296" r="4.4"/><circle cx="190" cy="296" r="4.4"/><circle cx="242" cy="296" r="4.4"/>
+          </g>
+          <g fill="#262626">
+            <circle cx="52" cy="200" r="4"/><circle cx="52" cy="240" r="4"/><circle cx="52" cy="344" r="4"/>
+            <circle cx="248" cy="200" r="4"/><circle cx="248" cy="240" r="4"/><circle cx="248" cy="344" r="4"/>
+          </g>
+        </g>
+        <!-- ornate ring knocker -->
+        <g class="knock-ring">
+          <g fill="url(#brz)" stroke="#5a3c14" stroke-width="1.3">
+            <ellipse cx="150" cy="187" rx="7" ry="12"/><ellipse cx="169" cy="194" rx="7" ry="12" transform="rotate(45 169 194)"/>
+            <ellipse cx="176" cy="213" rx="12" ry="7"/><ellipse cx="169" cy="232" rx="7" ry="12" transform="rotate(-45 169 232)"/>
+            <ellipse cx="150" cy="239" rx="7" ry="12"/><ellipse cx="131" cy="232" rx="7" ry="12" transform="rotate(45 131 232)"/>
+            <ellipse cx="124" cy="213" rx="12" ry="7"/><ellipse cx="131" cy="194" rx="7" ry="12" transform="rotate(-45 131 194)"/>
+            <circle cx="150" cy="213" r="22"/>
+          </g>
+          <circle cx="150" cy="207" r="8.5" fill="url(#brz)" stroke="#5a3c14" stroke-width="1.3"/>
+          <path d="M150,214 C110,222 110,286 150,290 C190,286 190,222 150,214 Z" fill="none" stroke="url(#brz)" stroke-width="10"/>
+        </g>
+        <ellipse cx="150" cy="292" rx="13" ry="8" fill="url(#brz)" stroke="#5a3c14" stroke-width="1.3"/>
+      </svg>
     </div>
     <div class="cap">
-      <span class="tag">The student portal</span>
-      <h2>Your doorway to a global experience.</h2>
       <span class="enter">Step through the door →</span>
       <p class="signin">🔒 Members sign in with their <b>@eths202.org</b> Google account.</p>
     </div>

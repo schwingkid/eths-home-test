@@ -10,7 +10,11 @@ const SURVEY_REWARD = 2;
 const POTW_REWARD = 1;
 
 async function loadWeek(db, weekId) {
-  return db.prepare(`SELECT * FROM weekly_content WHERE week_id = ? LIMIT 1`).bind(weekId).first();
+  // This week's content, or the most recently posted earlier week (content
+  // carries forward until the sponsor posts the next one).
+  return db.prepare(
+    `SELECT * FROM weekly_content WHERE week_id <= ? ORDER BY week_id DESC LIMIT 1`
+  ).bind(weekId).first();
 }
 
 async function activity(db, memberId, weekId) {
@@ -38,6 +42,7 @@ function publicWeek(row, act, potwDone, surveyDone) {
     // Video survey — open-ended questions about the video. Shown instead of the quiz when set.
     videoSurvey: surveyQs.length ? {
       questions: surveyQs,
+      note: row.survey_note || null,
       answered: !!surveyDone,
     } : null,
     // Video quiz — always about LAST week's video. correct_idx never sent.
@@ -79,8 +84,7 @@ export async function onRequestGet(context) {
   if (!member) return json({ ok: false, error: 'not_active_member' }, 403);
 
   const weekId = currentWeekId();
-  let row = await loadWeek(db, weekId);
-  if (!row) row = await loadWeek(db, prevWeekId(weekId)); // sponsor hasn't posted yet: carry last week
+  const row = await loadWeek(db, weekId);
   const act = row ? await activity(db, member.id, row.week_id) : null;
   const potwDone = row ? await potwAnswer(db, member.id, row.week_id) : null;
   const surveyDone = row ? await surveyAnswer(db, member.id, row.week_id) : null;
@@ -103,8 +107,7 @@ export async function onRequestPost(context) {
   let body = {};
   try { body = await context.request.json(); } catch (_) {}
   const weekId = currentWeekId();
-  let row = await loadWeek(db, weekId);
-  if (!row) row = await loadWeek(db, prevWeekId(weekId));
+  const row = await loadWeek(db, weekId);
   if (!row) return json({ ok: false, error: 'no_weekly_content' }, 404);
 
   await db.prepare(
@@ -149,7 +152,7 @@ export async function onRequestPost(context) {
     if (existing) return json({ ok: true, already: true, bytcoin: await bytcoinBalance(db, member.id) });
     const raw = Array.isArray(body.answers) ? body.answers : [];
     const answers = surveyQs.map((_, i) => String(raw[i] || '').trim().slice(0, 2000));
-    if (answers.some(a => !a)) return json({ ok: false, error: 'all_answers_required' }, 400);
+    if (!answers.some(a => a)) return json({ ok: false, error: 'answer_required' }, 400); // optional: any one question is enough
     await db.prepare(
       `INSERT INTO survey_answers (member_id, week_id, answers_json) VALUES (?, ?, ?)
        ON CONFLICT(member_id, week_id) DO NOTHING`

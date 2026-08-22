@@ -1,4 +1,4 @@
-import { COURSES, CLASSROOM } from './courses-data.js';
+import { COURSES } from './courses-data.js';
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -133,6 +133,16 @@ export async function onRequestGet(context) {
   }
 
   const cal = await fetchCalendarEvents();
+  // Each chapter is self-contained: its own Classroom (or none yet).
+  const chapter = await db.prepare(
+    `SELECT name, classroom_url, classroom_join_code, classroom_note FROM chapters WHERE chapter_code = ? LIMIT 1`
+  ).bind(member.chapter_code).first();
+  const chapterClassroom = chapter && chapter.classroom_url ? {
+    title: 'Google Classroom',
+    note: chapter.classroom_note || ('Your program’s Classroom' + (chapter.classroom_join_code ? ' — join code ' + chapter.classroom_join_code : '')),
+    url: chapter.classroom_url,
+    joinCode: chapter.classroom_join_code || null,
+  } : null;
   const profile = await db.prepare(
     `SELECT preferred_name, grade, photo_url FROM profiles WHERE member_id = ? LIMIT 1`
   ).bind(member.id).first();
@@ -152,7 +162,7 @@ export async function onRequestGet(context) {
       note: cal.note,
       events: cal.events
     },
-    classroom: CLASSROOM,
+    classroom: chapterClassroom,
     courses: COURSES,
     today: {
       title: session ? session.title : 'No active club meeting right now',

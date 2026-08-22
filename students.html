@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>YTC@ETHS — Flagship Global Learning Center</title>
-<meta name="description" content="Welcome to YTC@ETHS, home of the network's Flagship Global Learning Center. Step into the student portal, see upcoming events, and follow the work from Evanston to classrooms around the world.">
+<meta name="description" content="Welcome to YTC@ETHS, home of the network's Flagship Global Learning Center. Step through the doorway into the student portal — your doorway to a global experience.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site-nav.css">
 <style>
@@ -11,8 +11,6 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}a{text-decoration:none;color:inherit}img,svg{display:block;max-width:100%}
 .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}h1,h2,h3,h4{font-family:Fraunces,Georgia,serif;line-height:1.06;margin:0}
 .kicker{font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--orange2);margin:0 0 12px;display:block}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:16px 28px;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:0}
-.btn.orange{background:var(--orange);color:#fff}.btn.orange:hover{background:var(--orange2)}
 
 /* WELCOME BAND */
 .welcome{background:var(--deep);color:#fff;padding:44px 0 36px}
@@ -20,25 +18,36 @@
 .welcome h1{font-size:clamp(2rem,4.2vw,3.1rem);letter-spacing:-.02em;font-weight:600}
 .welcome .flag{font-family:Fraunces,Georgia,serif;font-size:clamp(1.1rem,2.1vw,1.55rem);color:var(--gold);margin:8px 0 0;font-weight:600}
 .welcome .sub{color:#cdd9e3;font-size:1rem;max-width:640px;margin:12px 0 0}
-.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 .strip figure{margin:0;border-radius:12px;overflow:hidden;position:relative;background:#0b1626}
-.strip img{width:100%;height:104px;object-fit:cover;opacity:.94}
-.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:20px 14px 10px;font-size:.76rem;font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(7,18,30,.9),transparent)}
+.strip img{width:100%;height:150px;object-fit:cover;object-position:center 32%;opacity:.96}
+.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 9px;font-size:.76rem;font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(7,18,30,.92),transparent)}
 
 /* MAIN */
-.main{padding:30px 0 72px}
-.layout{display:grid;grid-template-columns:1.35fr 1fr;gap:32px;align-items:start}
+.main{padding:30px 0 80px}
+.layout{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;align-items:start}
 
-/* LEFT — THE DOOR */
-.door{position:relative;border-radius:22px;overflow:hidden;min-height:470px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
-.door img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.door::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(9,18,30,.94) 8%,rgba(9,18,30,.6) 46%,rgba(9,18,30,.2) 100%)}
-.door .inner{position:relative;z-index:2;padding:40px 40px 42px}
-.door .tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(233,180,76,.14);border:1px solid rgba(233,180,76,.4);padding:6px 12px;border-radius:999px;margin-bottom:18px}
-.door h2{font-size:clamp(2rem,3.4vw,2.9rem);letter-spacing:-.01em;max-width:14ch}
-.door p{color:#dbe6ef;font-size:1.05rem;max-width:44ch;margin:16px 0 26px}
-.door .signin{margin:16px 0 0;font-size:.85rem;color:#aebdca;display:flex;align-items:center;gap:8px}
-.door .signin b{color:#fff;font-weight:700}
+/* ============ THE DOORWAY ============ */
+.doorway{position:relative;display:flex;flex-direction:column;background:radial-gradient(130% 80% at 50% -10%,#204a72 0%,var(--deep) 62%);border-radius:22px;overflow:hidden;min-height:600px;color:#fff}
+.stage{flex:1;position:relative;display:flex;align-items:flex-end;justify-content:center;perspective:1500px;padding:40px 20px 0}
+.floorlight{position:absolute;left:50%;bottom:0;width:74%;height:120px;transform:translateX(-50%);background:radial-gradient(60% 100% at 50% 100%,rgba(246,213,143,.28),transparent 70%)}
+.frame{position:relative;width:min(300px,72%);aspect-ratio:1/1.72;background:linear-gradient(#d3b473,#a9884b);border-radius:150px 150px 10px 10px;padding:15px 15px 0;box-shadow:0 26px 64px rgba(0,0,0,.45)}
+.opening{position:relative;width:100%;height:100%;border-radius:140px 140px 4px 4px;overflow:hidden;background:#0a1522;transform-style:preserve-3d}
+.beyond{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(78% 66% at 50% 44%,#f7dc94 0%,#eaad4f 24%,#2c7581 58%,#0a2432 100%)}
+.beyond .globe{width:70%;filter:drop-shadow(0 0 22px rgba(247,220,148,.75))}
+.rays{position:absolute;inset:0;background:conic-gradient(from 205deg at 50% 42%,transparent 0 7%,rgba(255,242,205,.12) 8% 11%,transparent 12% 21%,rgba(255,242,205,.09) 22% 25%,transparent 26% 74%,rgba(255,242,205,.09) 75% 78%,transparent 79% 88%,rgba(255,242,205,.12) 89% 92%,transparent 93%);mix-blend-mode:screen}
+.door{position:absolute;inset:0;border-radius:140px 140px 4px 4px;background:linear-gradient(100deg,#7f5e36 0%,#5e4224 100%);transform-origin:left center;transform:rotateY(-16deg);transition:transform 1s cubic-bezier(.2,.85,.2,1);box-shadow:inset 0 0 0 3px rgba(0,0,0,.16),10px 0 30px rgba(0,0,0,.4)}
+.doorway:hover .door,.doorway:focus-within .door{transform:rotateY(-84deg)}
+.door .panel{position:absolute;left:15%;right:15%;background:linear-gradient(100deg,rgba(255,255,255,.07),rgba(0,0,0,.2));box-shadow:inset 0 0 0 2px rgba(0,0,0,.24)}
+.door .panel.top{top:9%;height:44%;border-radius:38px 38px 6px 6px}
+.door .panel.bot{top:57%;height:34%;border-radius:7px}
+.door .handle{position:absolute;right:11%;top:51%;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(233,180,76,.9),inset 0 0 0 2px rgba(0,0,0,.2)}
+.cap{position:relative;z-index:3;padding:6px 34px 36px;text-align:center}
+.cap .tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(233,180,76,.14);border:1px solid rgba(233,180,76,.4);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.cap h2{font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.01em;max-width:16ch;margin:0 auto}
+.cap .enter{display:inline-flex;align-items:center;gap:9px;margin-top:20px;background:var(--orange);color:#fff;font-weight:800;padding:14px 26px;border-radius:999px;font-size:1rem}
+.cap .signin{margin:14px 0 0;font-size:.82rem;color:#aebdca}
+.cap .signin b{color:#fff;font-weight:700}
 
 /* RIGHT COLUMN */
 .side{display:flex;flex-direction:column;gap:26px}
@@ -48,7 +57,7 @@
 .evlist{list-style:none;margin:0;padding:0}
 .ev{display:grid;grid-template-columns:58px 1fr;gap:16px;padding:15px 0;border-top:1px solid var(--line)}
 .ev:first-child{border-top:0;padding-top:4px}
-.ev .date{text-align:center;background:var(--mist);border-radius:11px;padding:8px 4px}
+.ev .date{text-align:center;background:var(--mist);border-radius:11px;padding:8px 4px;align-self:start}
 .ev .date .m{display:block;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange2)}
 .ev .date .d{display:block;font-family:Fraunces,Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1}
 .ev .body b{display:block;color:var(--navy);font-size:1rem;line-height:1.25}
@@ -56,22 +65,21 @@
 .ev-empty{color:var(--muted);font-size:.92rem;padding:8px 0}
 .cal-link{display:inline-block;margin-top:14px;color:var(--orange2);font-weight:800;font-size:.86rem}
 
-/* THREE CASCADING PHOTO STORIES */
+/* PHOTO STORIES — image on top so nobody gets cropped out */
 .stories{display:flex;flex-direction:column;gap:16px}
 .stories .kicker{margin-bottom:2px}
-.story{display:grid;grid-template-columns:112px 1fr;gap:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.story:nth-child(3){margin-left:22px}
-.story:nth-child(4){margin-left:44px}
-.story img{width:112px;height:100%;min-height:104px;object-fit:cover}
-.story .body{padding:16px 18px}
+.story{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.story img{width:100%;height:158px;object-fit:cover;object-position:center 38%}
+.story .body{padding:15px 20px 17px}
 .story .lbl{font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange2)}
-.story h4{font-size:1.12rem;color:var(--navy);margin:4px 0 4px}
-.story p{color:var(--muted);font-size:.88rem;margin:0}
+.story h4{font-size:1.18rem;color:var(--navy);margin:4px 0 4px}
+.story p{color:var(--muted);font-size:.9rem;margin:0}
 
 footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a{color:#fff}.footergrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}footer strong{font-family:Fraunces,Georgia,serif;color:#fff}
 
-@media(max-width:900px){.layout{grid-template-columns:1fr}.door{min-height:440px}.story:nth-child(3),.story:nth-child(4){margin-left:0}}
-@media(max-width:560px){.wrap{width:calc(100% - 32px)}.strip{grid-template-columns:1fr 1fr}.strip figure:last-child{display:none}.door .inner{padding:28px 24px 30px}.footergrid{grid-template-columns:1fr}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.doorway{min-height:520px}}
+@media(max-width:560px){.wrap{width:calc(100% - 32px)}.strip{grid-template-columns:1fr 1fr}.strip figure:last-child{display:none}.footergrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.door{transition:none}}
 </style>
 </head>
 <body>
@@ -84,24 +92,53 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
   <p class="flag">Home of the network's Flagship Global Learning Center.</p>
   <p class="sub">A student-run club where you learn technology, teach it to the next person, and carry it from Evanston to classrooms around the world.</p>
   <div class="strip">
-    <figure><img src="assets/web/namibiaclassroomhands.jpg" alt="Students at work in a partner classroom in Namibia"><figcaption>Partner classroom · Namibia</figcaption></figure>
+    <figure><img src="assets/web/namibia-teaching.jpg" alt="An ETHS student teaching in a partner classroom in Namibia"><figcaption>Partner classroom · Namibia</figcaption></figure>
     <figure><img src="assets/web/kuumbafamilyintro.jpg" alt="A Camp Kuumba family receiving a refurbished computer from YTC students"><figcaption>Computer handoff · Camp Kuumba</figcaption></figure>
-    <figure><img src="assets/web/hero-clubroom.jpg" alt="The YTC clubroom at ETHS"><figcaption>The clubroom · ETHS</figcaption></figure>
+    <figure><img src="assets/web/ytc-eths-team.jpg" alt="The ETHS YTC team together in the clubroom"><figcaption>The team · ETHS</figcaption></figure>
   </div>
 </div></section>
 
 <!-- ============ MAIN ============ -->
 <section class="main"><div class="wrap layout">
 
-  <!-- LEFT: THE DOOR -->
-  <a class="door" href="portal/">
-    <img class="bg" src="assets/web/ytc-connects.jpg" alt="ETHS students and younger kids together at a YTC Connects night">
-    <div class="inner">
+  <!-- LEFT: THE DOORWAY -->
+  <a class="doorway" href="portal/" aria-label="Step through the doorway into the student portal">
+    <div class="stage">
+      <div class="floorlight"></div>
+      <div class="frame">
+        <div class="opening">
+          <div class="beyond">
+            <div class="rays"></div>
+            <svg class="globe" viewBox="0 0 200 200" aria-hidden="true">
+              <defs><radialGradient id="gl" cx="42%" cy="36%" r="72%">
+                <stop offset="0%" stop-color="#cdeee6"/><stop offset="45%" stop-color="#3f9aa3"/><stop offset="100%" stop-color="#12525c"/>
+              </radialGradient></defs>
+              <circle cx="100" cy="100" r="72" fill="url(#gl)"/>
+              <g stroke="rgba(255,255,255,.30)" stroke-width="1.2" fill="none">
+                <ellipse cx="100" cy="100" rx="72" ry="26"/><ellipse cx="100" cy="100" rx="72" ry="50"/>
+                <ellipse cx="100" cy="100" rx="26" ry="72"/><ellipse cx="100" cy="100" rx="50" ry="72"/>
+                <line x1="28" y1="100" x2="172" y2="100"/>
+              </g>
+              <g fill="#2f7d5b" opacity=".95">
+                <path d="M92 52 q16 5 12 22 q11 8 3 22 q-16 9 -24 -3 q-9 -21 9 -43z"/>
+                <path d="M54 64 q11 -7 13 7 q-2 13 -13 15 q-11 -9 0 -22z"/>
+                <path d="M134 66 q17 -3 14 15 q-11 9 -19 0 q-4 -11 5 -15z"/>
+                <path d="M96 138 q9 2 7 12 q-8 5 -12 -3 q-2 -7 5 -9z"/>
+              </g>
+              <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="door">
+            <span class="panel top"></span><span class="panel bot"></span><span class="handle"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">
       <span class="tag">The student portal</span>
-      <h2>Join us in the Global Learning Center.</h2>
-      <p>Just knock on our door and come on in — check in, watch the week's video, find your next lesson, and follow your journey. Everything's in one place.</p>
-      <span class="btn orange">Enter the portal →</span>
-      <span class="signin">🔒 Members sign in with their <b>@eths202.org</b> Google account.</span>
+      <h2>Your doorway to a global experience.</h2>
+      <span class="enter">Step through the door →</span>
+      <p class="signin">🔒 Members sign in with their <b>@eths202.org</b> Google account.</p>
     </div>
   </a>
 
@@ -118,16 +155,16 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
     <div class="stories">
       <span class="kicker">The work, three ways</span>
       <article class="story">
-        <img src="assets/web/ytc-eths-team.jpg" alt="The ETHS YTC team together in the clubroom">
+        <img src="assets/web/ytc-connects.jpg" alt="ETHS students and younger students together at a YTC Connects night">
         <div class="body"><span class="lbl">The flagship</span><h4>Here at ETHS</h4><p>Where the learn-teach-lead model runs at full strength, every week.</p></div>
       </article>
       <article class="story">
         <img src="assets/web/family-focus.jpg" alt="An ETHS student teaching younger students at a Family Focus computer lab">
-        <div class="body"><span class="lbl">Close to home</span><h4>Camp Kuumba &amp; Evanston</h4><p>ETHS students teach the next generation across the city.</p></div>
+        <div class="body"><span class="lbl">Close to home</span><h4>Family Focus &amp; Camp Kuumba</h4><p>ETHS students teach the next generation across Evanston.</p></div>
       </article>
       <article class="story">
         <img src="assets/web/ghana-classroom.jpg" alt="Students at a YTC partner school in Ghana">
-        <div class="body"><span class="lbl">Across borders</span><h4>Namibia, Ghana &amp; beyond</h4><p>The same lessons, carried to partner classrooms worldwide.</p></div>
+        <div class="body"><span class="lbl">Across borders</span><h4>Ghana, Namibia &amp; beyond</h4><p>The same lessons, carried to partner classrooms worldwide.</p></div>
       </article>
     </div>
   </div>

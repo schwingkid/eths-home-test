@@ -6,6 +6,7 @@ import { json, accessEmail, getMember, currentWeekId, prevWeekId, bytcoinBalance
 
 const WATCH_REWARD = 1;
 const ANSWER_REWARD = 2;
+const SURVEY_REWARD = 2;
 const POTW_REWARD = 1;
 
 async function loadWeek(db, weekId) {
@@ -19,11 +20,12 @@ async function activity(db, memberId, weekId) {
   ).bind(memberId, weekId).first();
 }
 
-function publicWeek(row, act, potwDone) {
+function publicWeek(row, act, potwDone, surveyDone) {
   if (!row) return null;
-  let options = [], potwOptions = [];
+  let options = [], potwOptions = [], surveyQs = [];
   try { options = row.options_json ? JSON.parse(row.options_json) : []; } catch (_) {}
   try { potwOptions = row.potw_options_json ? JSON.parse(row.potw_options_json) : []; } catch (_) {}
+  try { surveyQs = row.survey_json ? JSON.parse(row.survey_json) : []; } catch (_) {}
   return {
     weekId: row.week_id,
     video: {
@@ -33,8 +35,13 @@ function publicWeek(row, act, potwDone) {
       duration: row.video_duration,
       watched: !!(act && act.watched_at),
     },
+    // Video survey — open-ended questions about the video. Shown instead of the quiz when set.
+    videoSurvey: surveyQs.length ? {
+      questions: surveyQs,
+      answered: !!surveyDone,
+    } : null,
     // Video quiz — always about LAST week's video. correct_idx never sent.
-    videoQuiz: row.question ? {
+    videoQuiz: !surveyQs.length && row.question ? {
       text: row.question,
       options,
       aboutWeek: row.question_about_week,
@@ -57,6 +64,12 @@ async function potwAnswer(db, memberId, weekId) {
   ).bind(memberId, weekId).first();
 }
 
+async function surveyAnswer(db, memberId, weekId) {
+  return db.prepare(
+    `SELECT id FROM survey_answers WHERE member_id = ? AND week_id = ? LIMIT 1`
+  ).bind(memberId, weekId).first();
+}
+
 export async function onRequestGet(context) {
   const email = accessEmail(context.request);
   if (!email) return json({ ok: false, error: 'not_authenticated' }, 401);
@@ -70,10 +83,11 @@ export async function onRequestGet(context) {
   if (!row) row = await loadWeek(db, prevWeekId(weekId)); // sponsor hasn't posted yet: carry last week
   const act = row ? await activity(db, member.id, row.week_id) : null;
   const potwDone = row ? await potwAnswer(db, member.id, row.week_id) : null;
+  const surveyDone = row ? await surveyAnswer(db, member.id, row.week_id) : null;
 
   return json({
     ok: true,
-    week: publicWeek(row, act, potwDone),
+    week: publicWeek(row, act, potwDone, surveyDone),
     bytcoin: await bytcoinBalance(db, member.id),
   });
 }
@@ -125,6 +139,25 @@ export async function onRequestPost(context) {
       `INSERT INTO bytcoin_ledger (member_id, amount, reason, ref) VALUES (?, ?, 'question_correct', ?)`
     ).bind(member.id, ANSWER_REWARD, row.week_id).run();
     return json({ ok: true, correct: true, awarded: ANSWER_REWARD, bytcoin: await bytcoinBalance(db, member.id) });
+  }
+
+  if (body.action === 'survey') {
+    let surveyQs = [];
+    try { surveyQs = row.survey_json ? JSON.parse(row.survey_json) : []; } catch (_) {}
+    if (!surveyQs.length) return json({ ok: false, error: 'no_survey_this_week' }, 400);
+    const existing = await surveyAnswer(db, member.id, row.week_id);
+    if (existing) return json({ ok: true, already: true, bytcoin: await bytcoinBalance(db, member.id) });
+    const raw = Array.isArray(body.answers) ? body.answers : [];
+    const answers = surveyQs.map((_, i) => String(raw[i] || '').trim().slice(0, 2000));
+    if (answers.some(a => !a)) return json({ ok: false, error: 'all_answers_required' }, 400);
+    await db.prepare(
+      `INSERT INTO survey_answers (member_id, week_id, answers_json) VALUES (?, ?, ?)
+       ON CONFLICT(member_id, week_id) DO NOTHING`
+    ).bind(member.id, row.week_id, JSON.stringify(answers)).run();
+    await db.prepare(
+      `INSERT INTO bytcoin_ledger (member_id, amount, reason, ref) VALUES (?, ?, 'survey_answered', ?)`
+    ).bind(member.id, SURVEY_REWARD, row.week_id).run();
+    return json({ ok: true, awarded: SURVEY_REWARD, bytcoin: await bytcoinBalance(db, member.id) });
   }
 
   if (body.action === 'potw') {

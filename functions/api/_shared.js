@@ -21,10 +21,14 @@ export async function getMember(db, email) {
   return m && m.status === 'active' ? m : null;
 }
 
-// ISO week id like "2026-W34", computed in America/Chicago (UTC-5 in season).
+// Week id like "2026-W34", computed in America/Chicago (UTC-5 in season).
+// Club weeks run Wednesday → Tuesday: the id is the ISO week of the most recent Wednesday,
+// so new weekly content (video, survey, question) rolls over every Wednesday.
 export function currentWeekId(now = new Date()) {
   const chicago = new Date(now.getTime() - 5 * 3600 * 1000);
   const d = new Date(Date.UTC(chicago.getUTCFullYear(), chicago.getUTCMonth(), chicago.getUTCDate()));
+  const dow = d.getUTCDay(); // 0=Sun..6=Sat
+  d.setUTCDate(d.getUTCDate() - ((dow - 3 + 7) % 7)); // snap back to the most recent Wednesday
   const day = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() + 4 - day);
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));

@@ -17,7 +17,6 @@
           <div class="news-card-meta"><span>${item.category}</span><time datetime="${item.date}">${item.displayDate}</time></div>
           <h3><a href="${item.href}">${item.title}</a></h3>
           <p>${item.summary}</p>
-          <a class="news-card-link" href="${item.href}">Read the story →</a>
         </div>`;
       feed.appendChild(article);
     });

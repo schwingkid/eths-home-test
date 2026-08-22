@@ -225,7 +225,7 @@ function renderDaily(locked){
   // Video survey (open-ended — set by the mentors for this video)
   if(w&&w.videoSurvey){
     h+='<div class="card" id="surveyCard"><p class="label">Video survey <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+2</span></p>'+
-    '<p style="margin:0 0 2px;font-size:.7rem;font-weight:700;color:var(--muted)">About the video — there are no wrong answers</p>';
+    '<p style="margin:0 0 2px;font-size:.7rem;font-weight:700;color:var(--muted)">About the video — optional, and there are no wrong answers</p>';
     if(w.videoSurvey.answered){
       h+='<div class="done-row"><span class="check">✓</span>Sent — checked off for the week.</div>';
     }else{
@@ -235,7 +235,7 @@ function renderDaily(locked){
       ).join('')+
       '<button class="btn" id="surveyGo" style="margin-top:10px;width:100%">Send my answers</button>';
     }
-    h+='<p class="hint" id="svHint">Your answers go to the club mentors.</p></div>';
+    h+='<p class="hint" id="svHint">'+esc((w.videoSurvey.note?w.videoSurvey.note+' ':'')+'Your answers go to the club mentors.')+'</p></div>';
   }
 
   // Video quiz (always about LAST week's video)
@@ -332,7 +332,7 @@ function wireDaily(){
   const sg=$('surveyGo');
   if(sg)sg.addEventListener('click',async()=>{
     const answers=Array.from(document.querySelectorAll('#surveyCard .svq')).map(t=>t.value.trim());
-    if(answers.some(a=>!a)){toast('Answer every question first — no wrong answers!');return;}
+    if(!answers.some(a=>a)){toast('Type at least one answer first — no wrong answers!');return;}
     sg.disabled=true;
     const {r,d}=await api('/api/weekly',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'survey',answers})});
     if(!r.ok){sg.disabled=false;toast('Could not send — try again.');return;}

@@ -222,6 +222,22 @@ function renderDaily(locked){
       :'<button class="btn ghost" id="watchedBtn" style="margin-top:11px;width:100%">I watched it — check it off</button>')+'</div></div>';
   }
 
+  // Video survey (open-ended — set by the mentors for this video)
+  if(w&&w.videoSurvey){
+    h+='<div class="card" id="surveyCard"><p class="label">Video survey <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+2</span></p>'+
+    '<p style="margin:0 0 2px;font-size:.7rem;font-weight:700;color:var(--muted)">About the video — there are no wrong answers</p>';
+    if(w.videoSurvey.answered){
+      h+='<div class="done-row"><span class="check">✓</span>Sent — checked off for the week.</div>';
+    }else{
+      h+=w.videoSurvey.questions.map((q,i)=>
+        '<p style="margin:10px 0 4px;font-weight:700;color:var(--navy);font-size:.9rem">'+(i+1)+'. '+esc(q)+'</p>'+
+        '<textarea class="svq" data-i="'+i+'" maxlength="2000" rows="3" placeholder="Your answer…" aria-label="Survey answer '+(i+1)+'" style="width:100%;box-sizing:border-box;border:1.5px solid #d8e2ec;border-radius:10px;padding:9px 11px;font:inherit;font-size:.88rem;resize:vertical"></textarea>'
+      ).join('')+
+      '<button class="btn" id="surveyGo" style="margin-top:10px;width:100%">Send my answers</button>';
+    }
+    h+='<p class="hint" id="svHint">Your answers go to the club mentors.</p></div>';
+  }
+
   // Video quiz (always about LAST week's video)
   if(w&&w.videoQuiz){
     h+='<div class="card" id="qCard"><p class="label">Video quiz <span class="reward"><span class="coin" style="width:13px;height:13px;font-size:.5rem">B</span>+2</span></p>'+
@@ -229,7 +245,7 @@ function renderDaily(locked){
     '<p style="margin:0;font-weight:700;color:var(--navy);font-size:.92rem">'+esc(w.videoQuiz.text)+'</p><div id="opts">'+
     w.videoQuiz.options.map((o,i)=>'<button class="opt" data-i="'+i+'" '+(w.videoQuiz.answered?'disabled':'')+'>'+esc(o)+'</button>').join('')+
     '</div><p class="hint" id="qHint">'+(w.videoQuiz.answered?'Answered — checked off for the week.':'The quiz is always about last week\'s video.')+'</p></div>';
-  }else if(w&&w.video){
+  }else if(w&&w.video&&!w.videoSurvey){
     h+='<div class="card"><p class="label">Video quiz</p><p style="margin:0;color:var(--muted);font-size:.85rem">First week — the quiz about this video drops next Monday. Watch it now, answer it then.</p></div>';
   }
 
@@ -313,6 +329,20 @@ function wireDaily(){
     if(d.awarded)toast('<span class="coin">B</span> +'+d.awarded+' BYTCOIN — thanks for the answer');
     return true;
   }
+  const sg=$('surveyGo');
+  if(sg)sg.addEventListener('click',async()=>{
+    const answers=Array.from(document.querySelectorAll('#surveyCard .svq')).map(t=>t.value.trim());
+    if(answers.some(a=>!a)){toast('Answer every question first — no wrong answers!');return;}
+    sg.disabled=true;
+    const {r,d}=await api('/api/weekly',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'survey',answers})});
+    if(!r.ok){sg.disabled=false;toast('Could not send — try again.');return;}
+    setBalance(d.bytcoin);
+    const card=$('surveyCard');
+    card.querySelectorAll('.svq,#surveyGo,p[style*="margin:10px"]').forEach(x=>x.remove());
+    const p=document.createElement('div');p.className='done-row';p.innerHTML='<span class="check">✓</span>Sent — checked off for the week.';
+    card.insertBefore(p,card.querySelector('.hint'));
+    if(d.awarded)toast('<span class="coin">B</span> +'+d.awarded+' BYTCOIN — thanks for your answers');
+  });
   document.querySelectorAll('#potwOpts .opt').forEach(o=>o.addEventListener('click',()=>sendPotw(o.dataset.a)));
   const pg=$('potwGo');
   if(pg)pg.addEventListener('click',()=>{const v=$('potwText').value.trim();if(!v){toast('Type an answer first.');return;}sendPotw(v);});

@@ -184,7 +184,10 @@ function renderDaily(locked){
   const name=ME.profile&&ME.profile.preferred_name?ME.profile.preferred_name:ME.member.name.split(' ')[0];
   let h='<div class="hello"><h1>'+greetWord()+', '+esc(name)+'.</h1>';
   if(STATUS&&STATUS.checkedIn&&CONTENT){h+='<p>Meeting #'+(CONTENT.journey.meetingsAttended||1)+' · attendance recorded</p><span class="pill">✓ Checked in</span>';}
-  else if(STATUS&&!STATUS.activeSession){h+='<p>No meeting right now — the portal is open.</p>';}
+  else if(STATUS&&!STATUS.activeSession){
+    const nx=CONTENT&&CONTENT.calendar&&CONTENT.calendar.events&&CONTENT.calendar.events[0];
+    h+='<p>You\'ve signed in for a remote experience today.'+(nx?'<br>Next group meeting: <b style="color:var(--navy)">'+esc(nx)+'</b>':'')+'</p>';
+  }
   h+='</div><div class="feed">';
 
   if(locked){

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome to the YTC Student Portal — YTC@ETHS</title>
+<meta name="description" content="A short introduction to the YTC Student Portal, debuting at Evanston Township High School — what it does, what BYTCOIN is, and what to expect this year.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site-nav.css">
+<style>
+:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--orange2:#C95415;--gold:#E9B44C;--cream:#FAF6EF;--mist:#EDF1F5;--paper:#fffdfa;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--max:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}img,video{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;margin:0}
+
+.hero{background:var(--deep);color:#fff;padding:60px 0 54px;text-align:center}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.hero h1{font-size:clamp(2rem,4.6vw,3.2rem);letter-spacing:-.02em;font-weight:600}
+.hero h1 span{color:var(--orange)}
+.hero .lede{color:#cdd9e3;font-size:1.05rem;max-width:620px;margin:16px auto 0}
+
+.vid{margin:26px auto 0;max-width:720px}
+.frame{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:3px solid #7a6a49;background:#17100a;
+  box-shadow:0 20px 44px rgba(0,0,0,.42)}
+.frame video{width:100%;height:100%;object-fit:cover}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(160deg,#1d3550,#101f30);color:#cdd9e3;padding:20px;text-align:center}
+.soon .play{width:56px;height:56px;border-radius:50%;background:rgba(232,106,43,.9);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem}
+.soon b{color:#fff;font-family:Fraunces,Georgia,serif;font-size:1.05rem;font-weight:600}
+.soon span{font-size:.84rem}
+.vidnote{color:#9fb0bf;font-size:.78rem;margin:10px 0 0}
+
+.gate{background:#fff7e9;border-top:1px solid #ead9bb;border-bottom:1px solid #ead9bb;padding:22px 0}
+.gate p{margin:0;text-align:center;color:#6b5a38;font-size:.98rem}
+.gate b{color:var(--navy)}
+
+.sec{padding:46px 0}
+.sec.alt{background:var(--mist)}
+.kicker{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--orange2);margin:0 0 10px}
+.sec h2{color:var(--navy);font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:14px}
+.sec p{color:var(--muted);font-size:1rem;margin:0 0 12px;max-width:70ch}
+.sec p strong{color:var(--ink)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:22px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h3{color:var(--navy);font-size:1.12rem;margin-bottom:6px}
+.card p{font-size:.9rem;margin:0}
+
+.coin{background:var(--deep);color:#fff;padding:52px 0}
+.coin h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem)}
+.coin p{color:#cdd8e2;max-width:70ch}
+.coin .kicker{color:var(--gold)}
+.say{display:inline-flex;align-items:baseline;gap:10px;background:rgba(233,180,76,.14);border:1px solid rgba(233,180,76,.4);border-radius:12px;padding:12px 16px;margin:6px 0 16px}
+.say b{font-family:Fraunces,Georgia,serif;font-size:1.25rem;color:var(--gold)}
+.say span{font-size:.85rem;color:#cdd8e2}
+.idea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:22px;margin-top:20px}
+.idea h3{color:var(--gold);font-size:1.15rem;margin-bottom:8px}
+.idea p{color:#cdd8e2;font-size:.93rem;margin:0 0 8px}
+.tag{display:inline-block;background:rgba(232,106,43,.18);color:#f0b48c;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 10px;margin-bottom:10px}
+
+.close{background:var(--navy);color:#fff;padding:52px 0;text-align:center}
+.close h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.4rem)}
+.close p{color:#d3dfe8;max-width:60ch;margin:14px auto 0}
+.btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;border-radius:999px;padding:13px 22px;font-weight:800;font-size:.95rem}
+.btn.orange{background:var(--orange);color:#fff}
+.btn.ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff}
+
+footer{background:#0b2032;color:#aebdca;padding:30px 0;font-size:.84rem}
+footer a{color:#fff}
+@media(max-width:560px){.wrap{width:calc(100% - 30px)}.hero{padding:46px 0 40px}.sec,.coin,.close{padding:38px 0}}
+</style>
+</head>
+<body>
+<nav class="nav"></nav>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">New this year &middot; Debuting at ETHS</p>
+  <h1>Welcome to the <span>YTC Student Portal.</span></h1>
+  <p class="lede">A new feature for YTC clubs, launching first here at Evanston Township High School &mdash; built for our program, and built to connect us to the wider world.</p>
+
+  <div class="vid">
+    <div class="frame">
+      <!-- INTRO VIDEO SLOT — swap this panel for <video src="assets/web/welcome.mp4" controls playsinline poster="..."></video> -->
+      <div class="soon">
+        <span class="play">&#9654;</span>
+        <b>The welcome video is on its way.</b>
+        <span>Everything it covers is written out below &mdash; take two minutes and read on.</span>
+      </div>
+    </div>
+    <p class="vidnote">An introduction from Mark Lennon, Executive Vice President, Youth Technology Corps.</p>
+  </div>
+</div></header>
+
+<section class="gate"><div class="wrap">
+  <p>If you&rsquo;re a student &mdash; or just curious about the portal &mdash; <b>read on.</b> If not, close this page and enjoy the site. We hope it puts a face on work we can all be proud of.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <p class="kicker">Welcome back</p>
+  <h2>A new year at ETHS, and a new experience in the Clubroom.</h2>
+  <p>We built a student portal that does everything our old club site did &mdash; and a good deal more. It is the daily home for every member of YTC@ETHS.</p>
+  <p><strong>The first time you go in, we&rsquo;ll ask you a few questions</strong> to set up your profile. After that, when you sign in you&rsquo;ll land on a welcome screen that already knows you.</p>
+  <div class="cards">
+    <article class="card"><h3>It knows where you are</h3><p>Your profile recognizes you, marks your attendance, and follows your progress through the curriculum.</p></article>
+    <article class="card"><h3>It counts your hours</h3><p>Volunteer hours are logged as you go &mdash; no clipboard, no trying to remember in June.</p></article>
+    <article class="card"><h3>It opens doors</h3><p>Learning opportunities we think will help you grow, as a student and as a person figuring out what you&rsquo;re into.</p></article>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <p class="kicker">No pressure</p>
+  <h2>All of it is optional.</h2>
+  <p>You&rsquo;re here to find your own path, learn at your own pace, bounce between STEM subjects, and just explore. Nothing here is a requirement or a grade.</p>
+  <p><strong>We are a club first</strong> &mdash; and a global learning center for those who choose to use it that way.</p>
+</div></section>
+
+<section class="coin"><div class="wrap">
+  <p class="kicker">The reward system</p>
+  <h2>Say hello to BYTCOIN.</h2>
+  <div class="say"><b>BYTE-COIN</b><span>&mdash; and if you look closely, YTC is right there in the middle of it.</span></div>
+  <p>Right now YTC@ETHS runs on a very small budget, so BYTCOIN starts small too &mdash; worth just a few cents. <strong style="color:#fff">But it will grow, and we will grow it together.</strong> The goal is for BYTCOIN to carry real value to you, with real-world rewards.</p>
+  <p>You earn it for the things that matter: showing up, watching the week&rsquo;s video, answering the question of the week, teaching someone else.</p>
+
+  <div class="idea">
+    <span class="tag">An idea we&rsquo;re floating</span>
+    <h3>An overnight laser tag trip, end of the school year.</h3>
+    <p>Here&rsquo;s the proposal: it would be open to everyone. Anyone with enough BYTCOIN could go <strong style="color:#fff">free</strong>, if they choose to spend it &mdash; and anyone else could buy in. We&rsquo;ll set pricing once we have a date.</p>
+    <p>This is an experiment for us. Systems like it run in youth programs all over the world, in one form or another. Pay attention, and take advantage of what&rsquo;s on offer.</p>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <p class="kicker">Every week</p>
+  <h2>A video, and a question.</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Video of the Week</h3>
+      <p>Watch at home, on your phone or your computer. It might be a YTC story, a TED Talk, a news clip, or an Instagram reel. Answer a few questions about it and you earn BYTCOIN for the time you put in.</p>
+    </article>
+    <article class="card">
+      <h3>Question of the Week</h3>
+      <p>We want to know what you think &mdash; your interests, your hobbies, your favorite Evanston place to eat. It tells the club staff how to make the Clubroom better and put opportunities in front of you that actually mean something.</p>
+    </article>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <p class="kicker">The coursework</p>
+  <h2>Every lesson, always available.</h2>
+  <p>All of the course work lives in the portal. Follow along on a computer or a phone during class when we&rsquo;re running virtual learning &mdash; or go back and review something, or jump ahead if you&rsquo;re ready. It&rsquo;s all there.</p>
+  <div class="cards">
+    <article class="card">
+      <h3>For mentors</h3>
+      <p>Once you qualify, the portal is where you sign in, set up your class, and get credit for the work &mdash; whether you&rsquo;re teaching, mentoring, or tracking a class locally or on the other side of the world.</p>
+    </article>
+  </div>
+</div></section>
+
+<section class="close"><div class="wrap">
+  <h2>We hope this opens up the world to you.</h2>
+  <p>Our first Video of the Week is a TED Talk we picked as a bit of inspiration to start the year. And if you see something here that could be better &mdash; just ask.</p>
+  <div class="btns">
+    <a class="btn orange" href="students">Go to the Student Hub &rarr;</a>
+    <a class="btn ghost" href="/">Explore the site</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><strong style="font-family:Fraunces,Georgia,serif;color:#fff">YTC Evanston</strong> &mdash; Youth Technology Corps at Evanston Township High School.</p>
+  <p>Learn. Teach. Lead. Repeat. &middot; <a href="mailto:info@ytcorps.org">info@ytcorps.org</a></p>
+</div></footer>
+<script src="site-nav.js?v=544f3b9"></script>
+</body>
+</html>

@@ -147,9 +147,13 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
 <footer><div class="wrap footergrid"><div><strong>YTC Evanston</strong><p>Youth Technology Corps at Evanston Township High School.</p></div><div><p>Learn. Teach. Lead. Repeat.</p><a href="mailto:info@ytcorps.org">info@ytcorps.org</a></div></div></footer>
 <script src="site-nav.js?v=544f3b9"></script>
 <script>
-/* Step-through-the-door: on click, the doors open and walk you in, then the portal loads. */
+/* Step through the door.
+   Sign-in comes FIRST: if the student isn't signed in yet we send them to
+   Cloudflare Access before the video, so the door is the last thing they see
+   and it opens straight into the portal — never onto a login screen. */
 (function(){
   var PORTAL='portal/';
+  var GATE='portal/gate.html';            // behind Access: reaching it means signed in
   var door=document.querySelector('.doorway');
   var frame=document.getElementById('doorFrame');
   var vid=document.getElementById('doorVid');
@@ -157,19 +161,24 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
   var label=enter?enter.querySelector('.enter-label'):null;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var going=false;
+
   function go(){ if(going) return; going=true; window.location.href=PORTAL; }
-  function open(e){
-    if(going) return;
-    // No video support or reduced motion: just go straight in.
-    if(reduce||!vid||typeof vid.play!=='function'){ return; } // let the link/href navigate normally
-    if(e){ e.preventDefault(); }
-    if(door.classList.contains('playing')) return;
+
+  function signedIn(){
+    return fetch('/cdn-cgi/access/get-identity',{credentials:'include'})
+      .then(function(r){ return r.ok; })
+      .catch(function(){ return false; });
+  }
+
+  function walkThrough(){
+    if(going||door.classList.contains('playing')) return;
     door.classList.add('playing');
     if(enter){ enter.classList.add('is-entering'); }
     if(label){ label.textContent='Entering…'; }
-    vid.muted=false; vid.volume=1;                // sound on — the click is the user gesture
+    if(reduce||!vid||typeof vid.play!=='function'){ go(); return; }
+    vid.muted=false; vid.volume=1;
     var safety=null;
-    function arm(){                               // deadline follows playback, so the fade never gets cut
+    function arm(){
       clearTimeout(safety);
       var left=(isFinite(vid.duration)&&vid.duration>0)?(vid.duration-vid.currentTime):9;
       safety=setTimeout(go,(left*1000)+4000);
@@ -179,17 +188,31 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
     vid.addEventListener('ended',function(){ clearTimeout(safety); go(); },{once:true});
     arm();
     var p=vid.play();
-    if(p&&p.catch){ p.catch(function(){        // browser blocked sound? replay silently rather than skip
+    if(p&&p.catch){ p.catch(function(){          // sound blocked? show it silently rather than skip
       vid.muted=true;
       var q=vid.play();
       if(q&&q.catch){ q.catch(function(){ clearTimeout(safety); go(); }); }
     }); }
   }
+
+  function open(e){
+    if(going||door.classList.contains('playing')) return;
+    if(e){ e.preventDefault(); }
+    if(label){ label.textContent='One moment…'; }
+    signedIn().then(function(ok){
+      if(ok){ walkThrough(); }                   // already signed in -> door, then straight in
+      else { window.location.href=GATE; }        // sign in first, then come back to the door
+    });
+  }
+
   if(enter){ enter.addEventListener('click',open); }
   if(frame){
     frame.addEventListener('click',open);
     frame.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ open(e); } });
   }
+
+  // Back from sign-in: the door is the last thing they see before the portal.
+  if(/[?&]enter=1/.test(location.search)){ walkThrough(); }
 })();
 </script>
 <script>

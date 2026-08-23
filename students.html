@@ -18,9 +18,9 @@
 .welcome h1{font-size:clamp(2rem,4.2vw,3.1rem);letter-spacing:-.02em;font-weight:600}
 .welcome .flag{font-family:Fraunces,Georgia,serif;font-size:clamp(1.1rem,2.1vw,1.55rem);color:var(--gold);margin:8px 0 0;font-weight:600}
 .welcome .sub{color:#cdd9e3;font-size:1rem;max-width:640px;margin:12px 0 0}
-.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;align-items:start}
 .strip figure{margin:0;border-radius:12px;overflow:hidden;position:relative;background:#0b1626}
-.strip img{width:100%;height:150px;object-fit:cover;object-position:center 32%;opacity:.96}
+.strip img{width:100%;height:auto;display:block;opacity:.98}
 .strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 9px;font-size:.76rem;font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(7,18,30,.92),transparent)}
 
 /* MAIN */
@@ -84,7 +84,7 @@
 .stories{display:flex;flex-direction:column;gap:16px}
 .stories .kicker{margin-bottom:2px}
 .story{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.story img{width:100%;height:158px;object-fit:cover;object-position:center 38%}
+.story img{width:100%;height:auto;display:block}
 .story .body{padding:15px 20px 17px}
 .story .lbl{font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange2)}
 .story h4{font-size:1.18rem;color:var(--navy);margin:4px 0 4px}

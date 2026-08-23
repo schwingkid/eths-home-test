@@ -91,6 +91,34 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-
 .obhero p{color:#ccd8e2;font-size:.85rem;margin:10px 0 0}
 button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 a{color:var(--navy)}a:hover{color:var(--orange)}
+/* ---- First-visit guided tour ---- */
+.tour{background:var(--deep);color:#fff;flex:1;display:flex;flex-direction:column;padding:28px 20px 22px}
+.tour .step{font-size:.62rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--orange);margin:0 0 14px}
+.tour h1{font-family:Fraunces,Georgia,serif;font-size:1.8rem;line-height:1.1;margin:0;text-wrap:balance}
+.tour h1 span{color:var(--orange)}
+.tour .lede{color:#ccd8e2;font-size:.9rem;margin:12px 0 0}
+.tour ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.tour li{display:flex;gap:12px;align-items:flex-start}
+.tour li b{display:block;color:#fff;font-size:.88rem}
+.tour li span{display:block;color:#ccd8e2;font-size:.79rem;margin-top:1px}
+.tour .ic{width:31px;height:31px;border-radius:9px;background:rgba(232,106,43,.18);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.tour .nav{display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:4px}
+.tour .skip{background:none;border:0;color:#8ea3b5;font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+.dots2{display:flex;gap:6px;margin-left:auto}
+.dots2 i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28)}
+.dots2 i.on{background:var(--orange)}
+
+/* ---- Remote / desktop experience (QR check-in keeps the phone view) ---- */
+@media(min-width:960px){
+  body:not(.atclub) .wrap{width:min(1040px,100%)}
+  body:not(.atclub) .hello{padding:26px 24px 6px}
+  body:not(.atclub) .hello h1{font-size:2.05rem}
+  body:not(.atclub) .top,body:not(.atclub) .tabs{padding-left:24px;padding-right:24px}
+  body:not(.atclub) .feed{display:grid;grid-template-columns:1.3fr .9fr;align-items:start;gap:14px;padding:16px 24px 40px}
+  body:not(.atclub) .feed>*:first-child{grid-column:1/-1}
+  body:not(.atclub) .tour{padding:40px 24px 30px}
+  body:not(.atclub) .tour h1{font-size:2.2rem}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -128,8 +156,45 @@ async function boot(){
   ME=me.d;
   if(['sponsor','admin'].includes(ME.member.role)){$('mentorTab').style.display='block';}
   $('tabs').style.display='flex';
-  if(!ME.profile){renderOnboarding();return;}
+  if(/[?&]at=club/.test(location.search)){document.body.classList.add('atclub');}
+  if(!ME.profile){ $('tabs').style.display='none'; renderTour(0,true); return; }
+  if(/[?&]tour=1/.test(location.search)){ $('tabs').style.display='none'; renderTour(0,false); return; }
   await loadDaily();
+}
+
+/* ---------- First-visit guided tour ---------- */
+var TOUR_STEPS=[
+ {k:'Welcome to YTC@ETHS',h:'You learn it.<br>Then you <span>teach it.</span>',
+  l:'This portal is your side of the club — it remembers where you are on the path and what is coming next.',
+  items:[
+   ['1','Learn','Pick up a real skill — hardware, code, robotics.'],
+   ['2','Teach','Show the next person. That is when it sticks.'],
+   ['3','Lead','Own a project, then train your replacement.']]},
+ {k:'What is inside',h:'Everything in <span>one place.</span>',
+  l:'You will not need five different apps. Here is what you will actually use:',
+  items:[
+   ['▶','Video of the Week','A short video plus a few open questions. We discuss the answers as a club.'],
+   ['?','Question of the Week','How we listen. Tell us what you need or want to build.'],
+   ['✓','Check-in','At club, scan the QR or type the code your sponsor shows.'],
+   ['◆','Lessons','Search every lesson across all three courses, any time.']]},
+ {k:'How it adds up',h:'Show up. <span>It counts.</span>',
+  l:'BYTCOIN quietly tracks participation — checking in, watching the week\'s video, answering, teaching.',
+  items:[
+   ['B','BYTCOIN','Recognition, not currency. It cannot be bought — only earned.'],
+   ['◷','Today\'s Clubroom','What is happening at the next meeting, straight from the calendar.'],
+   ['🔒','Your privacy','Only YTC members can get in here. Your answers are not public.']]}
+];
+function renderTour(i,thenForm){
+  var s=TOUR_STEPS[i], last=(i===TOUR_STEPS.length-1);
+  $('view').innerHTML='<div class="tour"><p class="step">'+esc(s.k)+' · '+(i+1)+' of '+TOUR_STEPS.length+'</p>'+
+   '<h1>'+s.h+'</h1><p class="lede">'+esc(s.l)+'</p>'+
+   '<ul>'+s.items.map(function(it){return '<li><span class="ic">'+esc(it[0])+'</span><div><b>'+esc(it[1])+'</b><span>'+esc(it[2])+'</span></div></li>';}).join('')+'</ul>'+
+   '<div class="nav"><button class="btn" id="tNext">'+(last?(thenForm?'Set up my profile →':'Got it →'):'Next →')+'</button>'+
+   (last?'':'<button class="skip" id="tSkip">Skip</button>')+
+   '<span class="dots2">'+TOUR_STEPS.map(function(_,n){return '<i class="'+(n===i?'on':'')+'"></i>';}).join('')+'</span></div></div>';
+  function finish(){ $('tabs').style.display='flex'; if(thenForm){ renderOnboarding(); } else { loadDaily(); } }
+  $('tNext').addEventListener('click',function(){ last?finish():renderTour(i+1,thenForm); });
+  if($('tSkip')) $('tSkip').addEventListener('click',finish);
 }
 
 /* ---------- Onboarding ---------- */
@@ -148,6 +213,7 @@ function renderOnboarding(){
   '<div class="field"><label>Favorite YTC moment so far? <em>(new members: what are you looking forward to?)</em></label><textarea id="f_moment" maxlength="1000" placeholder="A moment, a person, a project…"></textarea></div>'+
   '<div style="display:flex;align-items:center;gap:14px;margin-top:16px"><button class="btn" id="obGo">Start my journey →</button><span class="hint" style="margin:0">Takes 2 minutes · change it anytime</span></div>'+
   '<p class="hint">Photo to follow — your sponsor will take it at club and add it to your profile.</p>'+
+  '<p class="hint"><a href="?tour=1" style="font-weight:700">Show me the overview again →</a></p>'+
   '</div>';
   document.querySelectorAll('[data-chips]').forEach(row=>{
     row.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;

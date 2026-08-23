@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Signing you in&hellip;</title>
+<style>
+:root{--deep:#122A44;--gold:#E9B44C}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--deep);color:#fff;
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.k{font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+h1{font-family:Georgia,serif;font-weight:600;font-size:clamp(1.3rem,3vw,1.9rem);margin:0 0 8px}
+p{color:#cdd9e3;margin:0;font-size:.95rem}
+.dots{margin-top:18px;display:inline-flex;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.35;animation:b 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,100%{opacity:.35}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.dots i{animation:none}}
+</style>
+</head>
+<body>
+<div>
+  <p class="k">Youth Technology Corps &middot; ETHS</p>
+  <h1>You&rsquo;re signed in.</h1>
+  <p>Taking you back to your doorway&hellip;</p>
+  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+</div>
+<script>
+/* This page sits behind Cloudflare Access, so reaching it means the student has
+   signed in. Send them back to the Student Hub, where the door now opens
+   straight into the portal — no sign-in screen after the video. */
+(function(){
+  var back = '/students?enter=1';
+  try { location.replace(back); } catch (e) { location.href = back; }
+})();
+</script>
+<noscript><p style="margin-top:14px"><a style="color:#E9B44C" href="/students?enter=1">Continue to your doorway &rarr;</a></p></noscript>
+</body>
+</html>

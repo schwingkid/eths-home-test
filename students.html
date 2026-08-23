@@ -120,7 +120,7 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
     <div class="stage">
       <div class="doorframe" id="doorFrame" role="button" tabindex="0" aria-label="Open the doors and enter the student portal">
         <img src="assets/web/door-poster.jpg" alt="The grand carved doors of the YTC Global Learning Center, engraved above with &lsquo;Welcome those who seek knowledge&rsquo;">
-        <video class="door-vid" id="doorVid" src="assets/web/dooropen.mp4" poster="assets/web/door-poster.jpg" muted playsinline preload="auto"></video>
+        <video class="door-vid" id="doorVid" src="assets/web/spliced.mp4" poster="assets/web/door-poster.jpg" muted playsinline preload="auto"></video>
         <span class="hint">Knock, and step inside &rarr;</span>
       </div>
     </div>
@@ -167,10 +167,23 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
     door.classList.add('playing');
     if(enter){ enter.classList.add('is-entering'); }
     if(label){ label.textContent='Entering…'; }
-    var safety=setTimeout(go,10000);              // never strand the student
+    vid.muted=false; vid.volume=1;                // sound on — the click is the user gesture
+    var safety=null;
+    function arm(){                               // deadline follows playback, so the fade never gets cut
+      clearTimeout(safety);
+      var left=(isFinite(vid.duration)&&vid.duration>0)?(vid.duration-vid.currentTime):9;
+      safety=setTimeout(go,(left*1000)+4000);
+    }
+    vid.addEventListener('loadedmetadata',arm);
+    vid.addEventListener('timeupdate',arm);
     vid.addEventListener('ended',function(){ clearTimeout(safety); go(); },{once:true});
+    arm();
     var p=vid.play();
-    if(p&&p.catch){ p.catch(function(){ clearTimeout(safety); go(); }); }
+    if(p&&p.catch){ p.catch(function(){        // browser blocked sound? replay silently rather than skip
+      vid.muted=true;
+      var q=vid.play();
+      if(q&&q.catch){ q.catch(function(){ clearTimeout(safety); go(); }); }
+    }); }
   }
   if(enter){ enter.addEventListener('click',open); }
   if(frame){

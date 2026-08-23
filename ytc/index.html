@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Youth Technology Corps</title>
+<meta name="description" content="Youth Technology Corps: high school students learn a technical skill, then teach it to someone else. Founded 1998. 2,300+ computers placed by students. Nine countries.">
+<meta property="og:title" content="Youth Technology Corps">
+<meta property="og:description" content="Knowledge becomes responsibility when another person is waiting. Founded 1998.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0E2033; --navy:#173653; --slate:#3E5871;
+  --orange:#E86A2B; --orange2:#C2531A; --gold:#E9B44C;
+  --cream:#FAF7F1; --paper:#FFFFFF; --line:#E3DCCE;
+  --ink:#1D2A36; --muted:#697887;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.62;font-size:17px}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,blockquote{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.08;font-weight:500;letter-spacing:-.018em;text-wrap:balance}
+.wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+.eyebrow{font-size:.71rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 16px}
+.sec{padding:88px 0}
+.sec.paper{background:var(--paper)}
+.sec h2{font-size:clamp(1.9rem,3.5vw,2.9rem);color:var(--navy)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px}
+
+/* ---------- masthead ---------- */
+.mast{position:absolute;top:0;left:0;right:0;z-index:3;padding:26px 0}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:Fraunces,Georgia,serif;font-size:1.12rem;color:#fff;font-weight:600;letter-spacing:-.01em}
+.logo em{font-style:normal;color:var(--gold)}
+.mast a.top{color:#D7E2EC;font-size:.79rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.mast a.top:hover{color:#fff}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--deep);min-height:min(86vh,760px);display:flex;align-items:flex-end;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;opacity:.5}
+.hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(92deg,rgba(14,32,51,.95) 0%,rgba(14,32,51,.86) 42%,rgba(14,32,51,.42) 78%,rgba(14,32,51,.3) 100%),
+  linear-gradient(0deg,rgba(14,32,51,.8) 0%,rgba(14,32,51,0) 52%)}
+.hero .wrap{position:relative;z-index:2;padding:150px 0 74px}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{color:#fff;font-size:clamp(2.15rem,5vw,4rem);max-width:19ch}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#D3DFE9;font-size:clamp(1.02rem,1.4vw,1.19rem);max-width:56ch;margin:26px 0 0}
+.hero .since{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;color:#93A8BC;font-size:.79rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- ledger ---------- */
+.ledger{background:var(--navy);color:#fff}
+.ledger .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.ledger div{padding:30px 22px 28px;border-right:1px solid rgba(255,255,255,.13)}
+.ledger div:first-child{padding-left:0}
+.ledger div:last-child{border-right:0;padding-right:0}
+.ledger b{display:block;font-family:Fraunces,Georgia,serif;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
+.ledger span{display:block;color:#A9BED2;font-size:.82rem;line-height:1.42;margin-top:9px}
+
+/* ---------- thesis ---------- */
+.thesis{background:var(--paper);border-bottom:1px solid var(--line)}
+.thesis .wrap{padding:76px 0}
+.thesis .pull{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.34;color:var(--navy);max-width:14ch;margin:0;letter-spacing:-.018em}
+.thesis .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.thesis .body p{font-family:Inter,sans-serif;font-size:1.03rem;color:var(--ink);max-width:64ch;line-height:1.68;margin:0}
+.thesis .body p+p{margin-top:18px}
+.thesis .body b{color:var(--navy)}
+
+/* ---------- method ---------- */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line)}
+.method div{padding:26px 24px 30px 0;border-right:1px solid var(--line)}
+.method div:last-child{border-right:0;padding-right:0}
+.method .n{font-family:Fraunces,Georgia,serif;font-size:.95rem;color:var(--orange2);font-weight:600;display:block;margin-bottom:10px}
+.method h3{font-size:1.2rem;color:var(--navy);margin-bottom:8px}
+.method p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.58}
+
+/* ---------- gallery ---------- */
+.gal{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:14px;margin-top:8px}
+.gal figure{margin:0;position:relative;overflow:hidden;border-radius:5px;background:var(--deep)}
+.gal img{aspect-ratio:4/3;object-fit:cover}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(14,32,51,.94),rgba(14,32,51,0));color:#DCE6EF;font-size:.79rem;line-height:1.4;padding:34px 14px 12px}
+
+/* ---------- reach ---------- */
+.reach .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.places{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.places li{display:grid;grid-template-columns:8.5rem 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem;align-items:baseline}
+.places b{color:var(--navy);font-weight:700;font-size:.9rem}
+.places span{color:var(--muted);line-height:1.5}
+.reach figure{margin:0}
+.reach figure img{border-radius:5px;aspect-ratio:5/4;object-fit:cover}
+.reach figcaption{color:var(--muted);font-size:.82rem;margin-top:10px;line-height:1.5}
+
+/* ---------- flagship ---------- */
+.flag{background:var(--deep);color:#fff}
+.flag h2{color:#fff}
+.flag .eyebrow{color:var(--gold)}
+.flag .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.flag p{color:#C6D4E1;font-size:1.02rem}
+.flag p+p{margin-top:16px}
+.flag .cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--orange);color:#fff;font-weight:800;font-size:.92rem;padding:13px 24px;border-radius:999px}
+.flag .cta:hover{background:var(--orange2)}
+.flag figure{margin:0}
+.flag figure img{border-radius:5px}
+.flag figcaption{color:#8FA5BA;font-size:.8rem;margin-top:10px}
+
+/* ---------- partner ---------- */
+.partner{background:var(--paper)}
+.partner .card{border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:5px;background:#FDF7F1;padding:30px 32px;max-width:78ch}
+.partner .card h3{font-size:1.35rem;color:var(--navy);margin-bottom:10px}
+.partner .card p{margin:0;color:var(--ink);font-size:1rem}
+.partner .card p+p{margin-top:12px}
+
+/* ---------- previews ---------- */
+.prev{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.prev a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .16s ease,box-shadow .16s ease}
+.prev a:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(14,32,51,.13)}
+.prev img{aspect-ratio:16/10;object-fit:cover}
+.prev .t{padding:18px 20px 20px}
+.prev .t b{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:1.12rem;font-weight:500;margin-bottom:6px}
+.prev .t span{color:var(--muted);font-size:.9rem;line-height:1.5;display:block}
+.prev .t i{display:block;font-style:normal;color:var(--orange2);font-weight:800;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;margin-top:12px}
+
+/* ---------- quote ---------- */
+.quote{background:var(--cream);border-top:1px solid var(--line)}
+.quote blockquote{font-size:clamp(1.3rem,2.5vw,1.85rem);line-height:1.36;color:var(--navy);max-width:30ch;margin:0}
+.quote .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding:78px 0}
+.quote cite{display:block;font-style:normal;color:var(--muted);font-size:.9rem;margin-top:22px;font-weight:600}
+.quote .origin{color:var(--muted);font-size:.97rem;line-height:1.66;margin:0}
+.quote .origin b{color:var(--navy)}
+
+/* ---------- footer ---------- */
+footer{background:var(--deep);color:#9FB3C6;padding:56px 0 44px;font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:38px;align-items:start}
+footer .logo{margin-bottom:14px;display:block}
+footer h4{margin:0 0 12px;color:#fff;font-size:.74rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+footer a:hover{color:#fff}
+footer p{margin:0 0 6px;line-height:1.62}
+footer .legal{grid-column:1/-1;margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);color:#7B90A4;font-size:.8rem;display:flex;flex-wrap:wrap;gap:8px 22px}
+
+@media(max-width:900px){
+  .sec{padding:62px 0}
+  .thesis .grid,.reach .wrap,.flag .wrap,.quote .wrap{grid-template-columns:1fr;gap:34px}
+  .ledger .wrap{grid-template-columns:1fr 1fr}
+  .ledger div{border-right:0;border-bottom:1px solid rgba(255,255,255,.13);padding:22px 0}
+  .ledger div:nth-child(odd):not(:last-child){padding-right:22px;border-right:1px solid rgba(255,255,255,.13)}
+  .ledger div:last-child{border-bottom:0;grid-column:1/-1}
+  .method{grid-template-columns:1fr 1fr}
+  .method div:nth-child(2){border-right:0}
+  .gal{grid-template-columns:1fr 1fr}
+  .gal figure:first-child{grid-column:1/-1}
+  .prev{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+  .hero .wrap{padding:126px 0 56px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="logo" href="/ytc/">Youth Technology <em>Corps</em></a>
+    <a class="top" href="/">The ETHS Chapter &rarr;</a>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="../assets/web/namibiaclassroomhands.jpg" alt="ETHS and Namibian students working together over a circuit board" fetchpriority="high">
+  <div class="wrap">
+    <p class="eyebrow">Founded 1998 &middot; A 501(c)(3) nonprofit</p>
+    <h1>Knowledge becomes responsibility when <em>another person is waiting.</em></h1>
+    <p>Youth Technology Corps teaches high school students a technical skill and then asks them to hand it to someone else — a younger student, a family, a senior center, a classroom on another continent. Twenty&#8209;eight years, one idea, passed down.</p>
+    <div class="since">
+      <span>Learn it</span><span>Teach it</span><span>Lead it</span><span>Repeat</span>
+    </div>
+  </div>
+</section>
+
+<section class="ledger">
+  <div class="wrap">
+    <div><b>2,300+</b><span>computers and kits placed by students</span></div>
+    <div><b>28</b><span>years, entirely student&#8209;delivered</span></div>
+    <div><b>9</b><span>countries reached through the Alliance</span></div>
+    <div><b>400</b><span>machines into Evanston homes since 2009</span></div>
+    <div><b>1</b><span>flagship Global Learning Center, at ETHS</span></div>
+  </div>
+</section>
+
+<section class="sec thesis">
+  <div class="wrap">
+    <div class="grid">
+      <p class="pull">The handoff is the education.</p>
+      <div class="body">
+        <p>Most technology programs measure what a student can do. We measure what a student can <b>pass on.</b> A member arrives knowing nothing about the inside of a computer. Within a year, they are the one explaining it — to a freshman, to a family picking up a refurbished machine, to a class in Namibia over video.</p>
+        <p>That inversion is the whole method. Students don't really own a skill until they've given it away, and a program built on that principle compounds instead of graduating. Every year's members become the next year's teachers.</p>
+        <p>It also solves the problem every access program runs into: cost. <b>The teaching is free because the teachers are the students.</b></p>
+      </div>
+    </div>
+
+    <div class="method">
+      <div><span class="n">01</span><h3>Learn it</h3><p>Members are taught to diagnose, repair and rebuild donated computers, and to work with robotics and microcontroller kits.</p></div>
+      <div><span class="n">02</span><h3>Teach it</h3><p>Each member teaches what they learned — to newer members, to Evanston families and seniors, and to partner classrooms abroad.</p></div>
+      <div><span class="n">03</span><h3>Lead it</h3><p>Experienced members run sessions, train new teachers and take responsibility for a site or a class of their own.</p></div>
+      <div><span class="n">04</span><h3>Repeat</h3><p>Students they taught become teachers themselves. The Global Learning Alliance is what happens when that keeps going across borders.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec paper">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--orange2)">What it looks like</p>
+    <h2 style="max-width:20ch;margin-bottom:34px">Teenagers, doing the actual teaching.</h2>
+    <div class="gal">
+      <figure><img loading="lazy" src="../assets/web/namibia-teaching.jpg" alt="An ETHS student working alongside a Namibian student"><figcaption>ETHS students teaching in a Namibian classroom, July 2025</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/web/learn-refurb.jpg" alt="A student repairing an open computer at the workbench"><figcaption>Refurbishing in the ETHS clubroom</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/web/kuumba-families.jpg" alt="Students handing refurbished computers to Camp Kuumba families"><figcaption>Seventy computers to Camp Kuumba families, Evanston</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec reach">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--orange2)">Where it reaches</p>
+      <h2>One method, nine countries.</h2>
+      <p style="color:var(--muted);margin:16px 0 0;max-width:52ch">The Global Learning Alliance is the network that forms when students who were taught begin teaching elsewhere. It is not a franchise. It is the same handoff, repeated across borders.</p>
+      <ul class="places">
+        <li><b>Evanston, IL</b><span>The flagship chapter at ETHS. Schools, senior centers, churches and community organizations since 2009.</span></li>
+        <li><b>Namibia</b><span>Years of refurbished machines, then ETHS students teaching in the classrooms that received them.</span></li>
+        <li><b>Nigeria</b><span>Lagos opened in 2026 with fifteen students at Victokev Schools, taught by a student trained by ETHS members.</span></li>
+        <li><b>Ghana &middot; Ethiopia</b><span>Partner classrooms and student-teachers inside the Alliance.</span></li>
+        <li><b>Mozambique &middot; Mexico</b><span>Kit donations and exchange work that seeded further classrooms.</span></li>
+        <li><b>El Salvador &middot; New Orleans</b><span>Direct donations of student-refurbished machines to communities in need.</span></li>
+      </ul>
+    </div>
+    <figure>
+      <img loading="lazy" src="../assets/web/ytc-at-the-us-embassy-in-namibia-with-the-ambass.jpg" alt="YTC students at the United States Embassy in Namibia with the ambassador">
+      <figcaption>YTC students at the U.S. Embassy in Namibia. The delegation followed years of computers shipped from an Evanston clubroom.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec flag">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">The flagship</p>
+      <h2>Evanston Township High School.</h2>
+      <p>ETHS is where the model runs at full strength: a student-run club, now in its seventeenth year without a gap, operating out of clubroom H120A. Members refurbish, teach, lead sessions in the community, and travel.</p>
+      <p>It is being built as the first <b style="color:#fff">Flagship Global Learning Center</b> — a complete, documented version of the program that another school or university chapter can adopt rather than invent.</p>
+      <a class="cta" href="/">See the ETHS chapter &rarr;</a>
+    </div>
+    <figure>
+      <img loading="lazy" src="../assets/web/hero-clubroom.jpg" alt="The YTC clubroom at Evanston Township High School">
+      <figcaption>Clubroom H120A, Evanston Township High School</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec partner">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--orange2)">College Partner Program</p>
+    <h2 style="max-width:22ch;margin-bottom:26px">Universities teaching into high school clubrooms.</h2>
+    <div class="card">
+      <h3>Georgia Tech is the first.</h3>
+      <p>Beginning this school year, Student Makers at Georgia Tech will teach STEM sessions virtually into the ETHS clubroom, with a faculty advisor serving on our grant advisory committee.</p>
+      <p>The point is not one partnership. It is a shape that repeats: a university makerspace chapter adopts a high school YTC club, a faculty member attaches, and undergraduates get a real teaching practicum while high school students get people only a few years ahead of them. We intend to make that a one-page offer any university can say yes to.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--orange2)">Previews</p>
+    <h2 style="max-width:24ch">What the students built, and what they are building now.</h2>
+    <div class="prev">
+      <a href="/works.html">
+        <img loading="lazy" src="../assets/web/kuumba-mom-daughter.jpg" alt="A mother and daughter meeting their newly refurbished computer">
+        <div class="t"><b>YTC Works</b><span>The record: Evanston, Namibia, Nigeria, New Orleans — told through the students who did it.</span><i>Live</i></div>
+      </a>
+      <a href="/evanston-map.html">
+        <img loading="lazy" src="../assets/web/evanston-map-still.jpg" alt="An interactive map of YTC's Evanston donation and teaching sites">
+        <div class="t"><b>The Evanston Map</b><span>Every school, senior center and community site the club has reached, plotted and documented.</span><i>Live</i></div>
+      </a>
+      <a href="/students.html">
+        <img loading="lazy" src="../assets/web/clubroomtowerteach.jpg" alt="Students teaching in the YTC clubroom">
+        <div class="t"><b>The Student Portal</b><span>Attendance, coursework, volunteer hours and mentor credit — a club that runs itself, built by its members.</span><i>Opening this year</i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <div>
+      <blockquote>&ldquo;When I taught someone how to fix a computer and later saw them helping another person, I felt proud. It made me see that what we learn here grows, because we share it.&rdquo;</blockquote>
+      <cite>&mdash; Chris Gutierrez, 17 &middot; ETHS</cite>
+    </div>
+    <p class="origin"><b>Where it comes from.</b> Youth Technology Corps was founded in 1998 by <b>David Finkel</b>, who has spent twenty-eight years proving that the fastest way to make a skill stick is to require a student to hand it to somebody else. The Global Learning Alliance carried that method across borders. ETHS is where it now runs at full strength.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="logo">Youth Technology <em>Corps</em></span>
+      <p>Students learn a technical skill, then teach it to someone else.</p>
+      <p>Learn it. Teach it. Lead it. Repeat.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Mark Lennon</p>
+      <p>Executive Vice President</p>
+      <p><a href="mailto:mark.lennon@ytcorps.org">mark.lennon@ytcorps.org</a></p>
+      <p><a href="tel:+13129270368">312-927-0368</a></p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="/">The ETHS chapter</a></p>
+      <p><a href="/works.html">YTC Works</a></p>
+      <p><a href="/news.html">News</a></p>
+      <p><a href="/support.html">Support the work</a></p>
+    </div>
+    <div class="legal">
+      <span>Youth Technology Corps NFP, Inc.</span>
+      <span>501(c)(3)</span>
+      <span>EIN 38-3656629</span>
+      <span>Founded 1998</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

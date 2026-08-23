@@ -156,7 +156,7 @@ async function boot(){
   ME=me.d;
   if(['sponsor','admin'].includes(ME.member.role)){$('mentorTab').style.display='block';}
   $('tabs').style.display='flex';
-  if(/[?&]at=club/.test(location.search)){document.body.classList.add('atclub');}
+  if(/[?&](at=club|code=)/.test(location.search)){document.body.classList.add('atclub');}
   if(!ME.profile){ $('tabs').style.display='none'; renderTour(0,true); return; }
   if(/[?&]tour=1/.test(location.search)){ $('tabs').style.display='none'; renderTour(0,false); return; }
   await loadDaily();

@@ -62,8 +62,8 @@ window.YTC_NEWS = [
     date: "2016-03-28",
     displayDate: "Spring 2016",
     category: "Student Journey",
-    title: "Six ETHS students launch two YTC clubs in New Orleans.",
-    summary: "Over spring break, ETHS members set up two new clubs in neighborhoods still recovering from Katrina, delivered the five laptops they had refurbished in Evanston, and processed forty more on site.",
+    title: "Six ETHS students bring computers to two New Orleans communities.",
+    summary: "Over spring break, ETHS members delivered the five laptops they had refurbished in Evanston, processed forty more on site, and taught alongside two communities still recovering from Katrina.",
     image: "NO%20trip%20group%20interaction.jpg",
     alt: "ETHS students working with young people in New Orleans",
     href: "works.html#new-orleans"

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>YTC Roster</title>
+<style>
+:root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--orange2:#C2531A;--cream:#FAF6EF;--ink:#22303F;--muted:#65727F;--line:#E7E0D3;--good:#3C7A52;--warn:#8A5A20;--bad:#913E35}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.55}
+.wrap{width:min(820px,calc(100% - 28px));margin:auto}
+.top{background:var(--deep);color:#fff;padding:20px 0}
+.top a{color:#fff;text-decoration:none;font-weight:600}
+.top a:hover{text-decoration:underline}
+.page{padding:28px 0 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}
+h1,h2{margin-top:0;color:var(--navy);line-height:1.2}
+h1{font-size:1.7rem}
+h2{font-size:1.2rem}
+label{display:block;font-weight:700;margin:14px 0 6px}
+textarea,input,select{width:100%;padding:13px;border:1px solid #c9d3da;border-radius:11px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:190px;resize:vertical;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.5}
+.button{margin-top:16px;background:var(--orange);color:#fff;border:0;border-radius:12px;padding:13px 20px;font-weight:800;font-size:1rem;cursor:pointer}
+.button:hover{background:var(--orange2)}
+.button:disabled{opacity:.5;cursor:default}
+.button.ghost{background:transparent;color:var(--navy);border:1.5px solid #c9d3da}
+.button.ghost:hover{background:#f2f5f7}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.error{color:var(--bad);font-weight:600}
+.ok{color:var(--good);font-weight:600}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--cream);min-width:104px}
+.stat b{display:block;font-size:1.5rem;line-height:1.1;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat.new b{color:var(--good)}
+.stat.dupe b{color:var(--warn)}
+.stat.bad b{color:var(--bad)}
+.list{margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--line);max-height:260px;overflow:auto}
+.list li{padding:9px 2px;border-bottom:1px solid var(--line);font-size:.92rem;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.list .addr{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;color:var(--ink);word-break:break-all}
+.list .tag{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--muted)}
+details{margin-top:14px}
+summary{cursor:pointer;font-weight:700;color:var(--navy);padding:6px 0}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.93rem}
+th{text-align:left;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--line);padding:8px 6px}
+td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.addr{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.84rem;word-break:break-all}
+.pill{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#EDF1F5;color:var(--navy);white-space:nowrap}
+.pill.admin{background:#FBE9DF;color:var(--orange2)}
+.pill.sponsor{background:#E9F0E3;color:var(--good)}
+.pill.off{background:#F1E7E6;color:var(--bad)}
+.link{background:none;border:0;color:var(--muted);font-size:.84rem;cursor:pointer;padding:4px 6px;text-decoration:underline;font-family:inherit}
+.link:hover{color:var(--bad)}
+tr.inactive td{opacity:.55}
+@media(max-width:560px){.hide-sm{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap"><a href="index.html">&larr; Student Portal</a> &nbsp;·&nbsp; <a href="admin.html">Sponsor controls</a></div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+
+    <section class="card">
+      <h1>Roster</h1>
+      <p class="muted" style="margin-top:4px">Add students so they can sign in. Paste a whole list — one per line, or straight out of a spreadsheet. Nothing is written until you look at the preview and confirm.</p>
+      <div id="gate"></div>
+    </section>
+
+    <section class="card" id="addCard" style="display:none">
+      <h2>Add students</h2>
+      <label for="paste">Paste addresses</label>
+      <textarea id="paste" spellcheck="false" placeholder="jsmith@eths202.org
+Jane Smith &lt;jsmith@eths202.org&gt;
+Kwame Mensah, kmensah@eths202.org"></textarea>
+      <p class="muted small" style="margin:8px 0 0">Handles plain addresses, <span style="font-family:ui-monospace,monospace">Name &lt;address&gt;</span>, and two-column paste from Sheets or Excel. Capitalisation and stray commas are fine.</p>
+
+      <div class="row">
+        <button class="button" id="previewBtn">Check the list</button>
+        <button class="button ghost" id="clearBtn" type="button">Clear</button>
+      </div>
+      <div id="msg" style="margin-top:12px"></div>
+
+      <div id="preview" style="display:none">
+        <div class="stats" id="stats"></div>
+        <div id="detail"></div>
+        <label for="role" style="margin-top:18px">Add them as</label>
+        <select id="role">
+          <option value="student">Students</option>
+          <option value="leader">Student leaders</option>
+        </select>
+        <button class="button" id="addBtn">Add to the roster</button>
+      </div>
+    </section>
+
+    <section class="card" id="listCard" style="display:none">
+      <h2>Current roster <span class="muted small" id="chapterLabel"></span></h2>
+      <div class="stats" id="rosterStats"></div>
+      <table id="tbl">
+        <thead><tr><th>Name</th><th class="hide-sm">Address</th><th>Role</th><th></th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <p class="muted small" style="margin-top:14px">Deactivating closes someone's access but keeps their attendance, BYTCOIN and teaching history. Nobody is ever deleted.</p>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let PARSED = null;
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+async function api(body){
+  const opts = body
+    ? { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(body), cache:'no-store' }
+    : { cache:'no-store' };
+  const r = await fetch('/api/roster', opts);
+  let d = null;
+  try { d = await r.json(); } catch (e) {}
+  return { ok: r.ok, status: r.status, data: d || {} };
+}
+
+function stat(n, label, cls){
+  return `<div class="stat ${cls||''}"><b>${n}</b><span>${esc(label)}</span></div>`;
+}
+
+/* ---------- load ---------- */
+async function load(){
+  const { ok, status, data } = await api(null);
+  if (!ok) {
+    const why = status === 403
+      ? 'This page is for sponsors and admins. Ask Mark to change your role if you need it.'
+      : status === 401
+        ? 'You are not signed in. Open the portal first, then come back.'
+        : 'The roster service is not responding right now.';
+    $('gate').innerHTML = `<p class="error">${esc(why)}</p>`;
+    return;
+  }
+  $('gate').innerHTML = `<p class="small muted">Signed in as <b>${esc(data.you.email)}</b> · ${esc(data.you.role)}</p>`;
+  $('addCard').style.display = 'block';
+  $('listCard').style.display = 'block';
+  $('chapterLabel').textContent = '· ' + data.chapter;
+  $('rosterStats').innerHTML =
+    stat(data.counts.active, 'active members') +
+    stat(data.counts.students, 'active students') +
+    stat(data.counts.total, 'on file');
+  renderTable(data.members, data.you.email);
+}
+
+function renderTable(members, meEmail){
+  $('tbody').innerHTML = members.map(m => {
+    const isSelf = String(m.email).toLowerCase() === String(meEmail).toLowerCase();
+    const off = m.status !== 'active';
+    const roleCls = m.role === 'admin' ? 'admin' : (m.role === 'sponsor' ? 'sponsor' : '');
+    const action = (m.role === 'admin' || isSelf)
+      ? '<span class="muted small">—</span>'
+      : `<button class="link" data-email="${esc(m.email)}" data-to="${off ? 'active' : 'inactive'}">${off ? 'Reactivate' : 'Deactivate'}</button>`;
+    return `<tr class="${off ? 'inactive' : ''}">
+      <td>${esc(m.display_name || '—')}${off ? ' <span class="pill off">inactive</span>' : ''}</td>
+      <td class="addr hide-sm">${esc(m.email)}</td>
+      <td><span class="pill ${roleCls}">${esc(m.role)}</span></td>
+      <td style="text-align:right">${action}</td>
+    </tr>`;
+  }).join('');
+
+  $('tbody').querySelectorAll('button.link').forEach(b => {
+    b.onclick = async () => {
+      const to = b.dataset.to;
+      const who = b.dataset.email;
+      if (to === 'inactive' && !confirm('Deactivate ' + who + '?\n\nThey lose access. Their history is kept.')) return;
+      b.disabled = true;
+      const { ok, data } = await api({ action:'setStatus', email: who, status: to });
+      if (!ok) { alert('Could not change that: ' + (data.error || 'unknown')); b.disabled = false; return; }
+      load();
+    };
+  });
+}
+
+/* ---------- preview ---------- */
+$('previewBtn').onclick = async () => {
+  const text = $('paste').value;
+  if (!text.trim()) { $('msg').innerHTML = '<p class="muted">Paste some addresses first.</p>'; return; }
+  $('previewBtn').disabled = true;
+  $('msg').innerHTML = '<p class="muted">Checking…</p>';
+
+  const { ok, data } = await api({ action:'preview', text });
+  $('previewBtn').disabled = false;
+
+  if (!ok) {
+    $('msg').innerHTML = `<p class="error">${data.error === 'too_many'
+      ? `That is ${data.found} lines. The limit is ${data.limit} at a time — split it into a couple of batches.`
+      : 'Could not read that list.'}</p>`;
+    return;
+  }
+
+  PARSED = data;
+  $('msg').innerHTML = '';
+  $('stats').innerHTML =
+    stat(data.fresh.length, 'new to add', 'new') +
+    stat(data.already.length, 'already members') +
+    stat(data.duplicate.length, 'repeated in your list', 'dupe') +
+    stat(data.invalid.length, 'not valid addresses', 'bad');
+
+  let html = '';
+  if (data.fresh.length) {
+    html += `<details open><summary>Will be added (${data.fresh.length})</summary><ul class="list">` +
+      data.fresh.map(f => `<li><span class="addr">${esc(f.email)}</span><span class="tag">${esc(f.display_name || 'no name')}</span></li>`).join('') +
+      `</ul></details>`;
+  }
+  if (data.already.length) {
+    html += `<details><summary>Already on the roster (${data.already.length}) — these are skipped</summary><ul class="list">` +
+      data.already.map(f => `<li><span class="addr">${esc(f.email)}</span><span class="tag">${esc(f.current.role)}${f.current.status !== 'active' ? ' · inactive' : ''}</span></li>`).join('') +
+      `</ul></details>`;
+  }
+  if (data.invalid.length) {
+    html += `<details open><summary>Could not read these (${data.invalid.length}) — fix or remove them</summary><ul class="list">` +
+      data.invalid.map(f => `<li><span class="addr">${esc(f.raw)}</span><span class="tag">skipped</span></li>`).join('') +
+      `</ul></details>`;
+  }
+  if (data.duplicate.length) {
+    html += `<details><summary>Repeated in your list (${data.duplicate.length}) — added once</summary><ul class="list">` +
+      data.duplicate.map(f => `<li><span class="addr">${esc(f.email)}</span><span class="tag">duplicate</span></li>`).join('') +
+      `</ul></details>`;
+  }
+  $('detail').innerHTML = html;
+  $('addBtn').disabled = data.fresh.length === 0;
+  $('addBtn').textContent = data.fresh.length
+    ? `Add ${data.fresh.length} ${data.fresh.length === 1 ? 'person' : 'people'} to the roster`
+    : 'Nothing new to add';
+  $('preview').style.display = 'block';
+};
+
+$('clearBtn').onclick = () => {
+  $('paste').value = '';
+  $('preview').style.display = 'none';
+  $('msg').innerHTML = '';
+  PARSED = null;
+};
+
+/* ---------- commit ---------- */
+$('addBtn').onclick = async () => {
+  if (!PARSED || !PARSED.fresh.length) return;
+  $('addBtn').disabled = true;
+  $('addBtn').textContent = 'Adding…';
+  const { ok, data } = await api({ action:'add', entries: PARSED.fresh, role: $('role').value });
+  if (!ok) {
+    $('msg').innerHTML = `<p class="error">Could not add them: ${esc(data.error || 'unknown')}</p>`;
+    $('addBtn').disabled = false;
+    return;
+  }
+  $('msg').innerHTML = `<p class="ok">Added ${data.added} ${data.added === 1 ? 'person' : 'people'}. They can sign in now.</p>`;
+  $('paste').value = '';
+  $('preview').style.display = 'none';
+  PARSED = null;
+  load();
+};
+
+load();
+</script>
+</body>
+</html>

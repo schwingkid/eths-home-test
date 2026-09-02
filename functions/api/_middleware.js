@@ -84,6 +84,22 @@ function withSecurityHeaders(res) {
   return out;
 }
 
+// Record that this email used the portal today — one row per email per day in
+// YTC's own D1 (login_log), so sign-in history belongs to YTC forever and does
+// not depend on any Cloudflare log-retention plan. Non-blocking and best-effort:
+// a logging failure never affects the user's request.
+function recordLogin(context, email) {
+  const db = context.env.YTC_ATTENDANCE;
+  if (!db || !email) return;
+  const work = db.prepare(
+    `INSERT INTO login_log (email, seen_on)
+     VALUES (?, date('now'))
+     ON CONFLICT(email, seen_on)
+     DO UPDATE SET last_seen_at = CURRENT_TIMESTAMP, hits = hits + 1`
+  ).bind(email).run().catch(() => {});
+  try { context.waitUntil(work); } catch (_) {}
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   const teamDomain = (env.CF_ACCESS_TEAM_DOMAIN || '').trim();
@@ -102,5 +118,6 @@ export async function onRequest(context) {
   }
 
   const res = await context.next();
+  recordLogin(context, (request.headers.get('cf-access-authenticated-user-email') || '').trim().toLowerCase());
   return withSecurityHeaders(res);
 }

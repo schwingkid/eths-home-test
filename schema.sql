@@ -72,3 +72,17 @@ CREATE INDEX IF NOT EXISTS idx_teaching_member ON teaching_log(member_id, taught
 -- INSERT INTO members (email, display_name, chapter_code, role, can_teach) VALUES ('student@example.org','Student Name','ETHS','student',0);
 -- INSERT INTO members (email, display_name, chapter_code, role, can_teach) VALUES ('teacher@example.org','Student Teacher','ETHS','leader',1);
 -- INSERT INTO members (email, display_name, chapter_code, role) VALUES ('sponsor@example.org','Club Sponsor','ETHS','sponsor');
+
+-- Login history owned by YTC (written by functions/api/_middleware.js).
+-- One row per email per day; keeps sign-in tracking independent of any
+-- Cloudflare log-retention plan tier.
+CREATE TABLE IF NOT EXISTS login_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT NOT NULL COLLATE NOCASE,
+  seen_on TEXT NOT NULL,                          -- YYYY-MM-DD (UTC)
+  first_seen_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_seen_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  hits INTEGER NOT NULL DEFAULT 1,
+  UNIQUE (email, seen_on)
+);
+CREATE INDEX IF NOT EXISTS idx_login_log_email ON login_log(email, seen_on);

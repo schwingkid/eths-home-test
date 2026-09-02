@@ -182,7 +182,7 @@ export async function onRequestGet(context) {
       }
     ],
     resources: [
-      { title: 'Google Classroom', status: 'Course 1 live — join code y6rgx4pf' },
+      { title: 'Google Classroom', status: chapterClassroom ? 'Course 1 live — open it from the Classroom card above' : 'Coming soon for your chapter' },
       { title: 'Club files', status: 'Connection pending' },
       { title: 'Leadership + hours', status: 'Next phase' }
     ]

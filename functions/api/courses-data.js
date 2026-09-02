@@ -2,11 +2,14 @@
 // Source of truth: Google Drive "Course 1/2/3" folders (Sept 2024 set, updated June 2026).
 // Classroom: Course 1 migrated by Andrea Isita (June 2026).
 
+// Classroom URLs and join codes are NOT stored in source (this repo is public).
+// They live in the protected `chapters` table in D1 and are served to verified
+// members by /api/portal-content. This export stays only for backward compatibility.
 export const CLASSROOM = {
   title: 'YTC on Google Classroom',
-  note: 'Course 1 is live in Google Classroom. Join with the class code, then lessons and meetings appear there.',
-  url: 'https://classroom.google.com/c/ODY4MDQ1MzM5NTQy?cjc=y6rgx4pf',
-  joinCode: 'y6rgx4pf',
+  note: 'Course 1 is live in Google Classroom. Your join link appears in the portal once you are signed in.',
+  url: null,
+  joinCode: null,
 };
 
 export const COURSES = [

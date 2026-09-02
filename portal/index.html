@@ -15,6 +15,8 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-
 .top{background:var(--deep);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem;white-space:nowrap}.brand span{color:var(--orange)}
 .wallet{display:flex;align-items:center;gap:7px;background:var(--navy);border-radius:999px;padding:6px 12px}
+.signout{margin-left:8px;color:#c9d6e0;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,214,224,.4);border-radius:999px;padding:6px 10px;white-space:nowrap}
+.signout:hover{color:#fff;border-color:#fff}
 .wallet b{font-size:.95rem;font-variant-numeric:tabular-nums}.wallet small{font-size:.58rem;font-weight:800;letter-spacing:.1em;color:#c9d6e0}
 .coin{width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3c96b,var(--gold) 70%);display:inline-flex;align-items:center;justify-content:center;color:#7a5310;font-weight:800;font-size:.58rem;flex-shrink:0}
 .tabs{display:flex;background:#0d2136;padding:0 20px;gap:4px}
@@ -127,6 +129,7 @@ a{color:var(--navy)}a:hover{color:var(--orange)}
   <div class="top">
     <div class="brand">YTC <span>Student Portal</span></div>
     <div class="wallet" id="wallet" style="visibility:hidden"><span class="coin">B</span><div style="line-height:1.05"><b id="balance">0</b><br><small>BYTCOIN</small></div></div>
+    <a class="signout" href="/cdn-cgi/access/logout" title="Sign out of the portal (use on shared devices)">Sign out</a>
   </div>
   <div class="tabs" id="tabs" style="display:none">
     <span class="tab on">Student portal</span>

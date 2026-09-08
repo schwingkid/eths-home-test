@@ -62,12 +62,28 @@
     .events h3{font-size:1.65rem;color:var(--navy);margin-bottom:16px}
     .events .email-link{font-weight:700;color:var(--orange-dark)}
     .in-person{border-top:1px solid var(--line);padding-top:20px;margin-top:26px}
+    .bingo-jump{display:inline-block;margin-top:20px;color:#E1EAF1;font-size:1rem;font-weight:600}
+    .bingo-section{background:var(--mist);border-top:1px solid var(--line)}
+    .bingo-intro{max-width:72ch;color:var(--muted)}
+    .bingo-board{border:2px solid var(--navy);border-radius:8px;overflow:hidden;background:var(--navy);margin-top:28px}
+    .bingo-board-title{padding:17px 22px;margin:0;color:white;font-size:1.0625rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .bingo-grid{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;padding:0;margin:0}
+    .bingo-cell{background:white;padding:20px 18px;min-width:0;overflow-wrap:anywhere}
+    .bingo-cell.personal{background:#FAF6EF}
+    .bingo-cell.story{background:#FFF0DB}
+    .bingo-type{display:block;margin-bottom:12px;color:var(--orange-dark);font-size:.875rem;font-weight:700}
+    .bingo-cell h3{font-family:Inter,system-ui,sans-serif;font-size:1rem;line-height:1.4;font-weight:800;color:var(--navy);margin:0 0 12px}
+    .bingo-cell p{font-size:1rem;line-height:1.5;color:var(--muted);margin:0}
+    .bingo-cell a{color:var(--orange-dark);font-weight:600}
+    .bingo-note{margin:20px 0 0;font-size:.9375rem;color:var(--muted);max-width:78ch}
     footer{background:var(--deep);color:#DAE3EC;padding:30px 0;font-size:.9375rem}
     footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     footer p{margin:0}
-    @media(max-width:760px){.invitation,.interest{grid-template-columns:1fr;gap:30px}.hero{padding:42px 0}.section{padding:42px 0}.roles{gap:0 24px}}
+    @media(max-width:760px){.invitation,.interest{grid-template-columns:1fr;gap:30px}.hero{padding:42px 0}.section{padding:42px 0}.roles{gap:0 24px}.bingo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bingo-cell{padding:18px 15px}}
     @media(max-width:520px){.wrap{width:calc(100% - 32px)}.roles{grid-template-columns:1fr}.mast .wrap{align-items:flex-start}.brand{font-size:1.2rem}.back{font-size:.875rem}.hero .actions{align-items:stretch;flex-direction:column}.project,.events{padding:22px}.btn{max-width:100%}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media(max-width:360px){.bingo-grid{grid-template-columns:1fr}}
+    @media print{.bingo-jump{display:none}.bingo-section{break-before:page;background:white}.bingo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.bingo-cell{break-inside:avoid;padding:12px}.bingo-cell h3,.bingo-cell p{font-size:10pt}.bingo-type{font-size:9pt}.bingo-board-title{background:white;color:var(--navy)}}
     @media print{body{font-size:11pt;background:white}.mast,.actions,.btn,footer{display:none}.hero{background:white;color:var(--ink);padding:0 0 20px;border-bottom:2px solid var(--ink)}.hero .intro,.eyebrow{color:var(--ink)}h1{font-size:28pt;max-width:none}.section{padding:20px 0}.invitation{display:block}.invitation figure{display:none}.wrap{width:100%}.role,.project,.events{break-inside:avoid}.interest{display:block}.events{margin-top:20px}a{overflow-wrap:anywhere}}
   </style>
 </head>
@@ -89,6 +105,7 @@
           <a class="btn primary" href="#team-interest">I'm interested in the team</a>
           <a class="btn light" href="#event-notices">Tell me about single-day service</a>
         </div>
+        <a class="bingo-jump" href="#bingo">Looking for bingo prompts? Start here.</a>
       </div>
     </section>
     <section class="section white" aria-labelledby="invitation-title">
@@ -140,6 +157,36 @@
           <p>You can volunteer at an event without joining the ongoing team.</p>
           <a class="email-link" href="mailto:info@ytcorps.org?subject=For%20Mark%3A%20ETHS%20YTC%20Event%20Notifications&amp;body=Hi%20Mark%2C%0A%0APlease%20add%20me%20to%20the%20notification%20list%20for%20occasional%2C%20single-day%20YTC%20volunteer%20opportunities.%0A%0AMy%20name%3A%0AGrade%3A%0A">Email a request for event notices</a>
         </aside>
+      </div>
+    </section>
+    <section class="section bingo-section" id="bingo" aria-labelledby="bingo-title">
+      <div class="wrap">
+        <p class="section-label">Bring your fair card to the YTC table</p>
+        <h2 id="bingo-title">Your YTC bingo stop.</h2>
+        <p class="bingo-intro">Find these prompts on your official card and explore them with us. Some describe YTC, some happen in conversation, and some depend on your own experience.</p>
+        <div class="bingo-board">
+          <p class="bingo-board-title">YTC bingo matches</p>
+          <ul class="bingo-grid" aria-label="Volunteer fair bingo prompts to explore with YTC">
+            <li class="bingo-cell"><span class="bingo-type">Meet us</span><h3>Org rep's name starts with &quot;M&quot;</h3><p>Meet Mark Lennon at our table.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Meet us</span><h3>ETHS club/activity</h3><p>YTC has a student-run club right here at ETHS.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Meet us</span><h3>Youth Work</h3><p>Students learn, teach, lead, and serve their communities through YTC.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Meet us</span><h3>Intergenerational volunteer opportunity</h3><p>Students work with adult mentors and help neighbors across generations.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Ask about the role</span><h3>Arts related work</h3><p>Ask about designing flyers, photography, and telling YTC's story.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Ask about timing</span><h3>Org has opportunities after school</h3><p>Ask which club and service activities take place after school.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Ask about timing</span><h3>Org has opportunities on Saturdays</h3><p>Ask whether upcoming single-day service events are scheduled for Saturdays.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">After you sign up</span><h3>I signed up to learn more</h3><p>Leave your contact details with Mark or send an <a href="#team-interest">interest email</a>.</p></li>
+            <li class="bingo-cell story"><span class="bingo-type">Talk with Dave</span><h3>I heard a great founding story</h3><p>Ask Dave Finkel how YTC began. He has the story at the table.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Listen for it</span><h3>Org Rep says &quot;community&quot;</h3><p>Ask how YTC students serve the Evanston community.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Listen for it</span><h3>Org Rep says &quot;connection&quot;</h3><p>Ask what a connection between two YTC clubs can lead to.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Listen for it</span><h3>Org Rep says &quot;excited&quot;</h3><p>Ask Mark what he's excited to try with the student team.</p></li>
+            <li class="bingo-cell"><span class="bingo-type">Listen for it</span><h3>Org Rep says &quot;solidarity&quot;</h3><p>Ask Dave what solidarity means when communities work together.</p></li>
+            <li class="bingo-cell personal"><span class="bingo-type">If this fits you</span><h3>I've volunteered here!</h3><p>Have you volunteered with YTC before? Tell us about it.</p></li>
+            <li class="bingo-cell personal"><span class="bingo-type">If this fits you</span><h3>I have the same name as Org Rep</h3><p>Do you share a name with Mark or Dave? Introduce yourself.</p></li>
+            <li class="bingo-cell personal"><span class="bingo-type">If this fits you</span><h3>Org is walking distance from my home</h3><p>Our club is at ETHS. Does that put it within walking distance for you?</p></li>
+          </ul>
+        </div>
+        <p class="bingo-note">The fair's prompt list also uses the wording <strong>ETHS Club/Activity</strong>. Both versions describe our club. Check activity times and any personal matches with us.</p>
+        <p class="bingo-note"><strong>Your stamp comes from the table.</strong> Show Mark or Dave the matching prompt after a conversation. Listening counts as participation, too.</p>
       </div>
     </section>
   </main>

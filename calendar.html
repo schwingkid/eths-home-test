@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Calendar | YTC at ETHS</title>
+  <meta name="description" content="YTC at ETHS student events and service opportunities. Visit the Volunteer Fair page to explore the Student Operations Team, event notices and bingo prompts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#1B3A5C;--deep:#122A44;--orange:#E86A2B;--orange2:#AA4010;--gold:#E9B44C;--cream:#FAF6EF;--paper:#fffdfa;--mist:#EDF1F5;--ink:#22303F;--muted:#526170;--line:#D8DFE5;--max:1100px}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:1rem/1.65 Inter,system-ui,sans-serif}a{color:inherit;text-underline-offset:.2em}.nav a{text-decoration:none}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;color:var(--navy);margin:0}p{margin:0 0 1em}
+    .skip{position:absolute;top:-100px;left:16px;z-index:200;background:#fff;padding:12px}.skip:focus{top:12px}:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
+    .heading{padding:36px 0 28px}.breadcrumb{display:flex;gap:10px;flex-wrap:wrap;font-size:.9375rem;margin-bottom:20px;color:var(--muted)}.breadcrumb a{color:var(--navy);font-weight:600}h1{font-size:clamp(2.25rem,5vw,3.4rem)}.heading p{margin:14px 0 0;color:var(--muted)}
+    main{padding-bottom:60px}.fair{border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:12px;background:#fff;padding:32px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:28px}.date{align-self:start;background:var(--deep);color:#fff;text-align:center;padding:14px 8px;border-radius:8px;line-height:1.2}.date span{display:block}.date .month{font-size:.875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}.date .day{font-family:Fraunces,Georgia,serif;font-size:2.75rem;margin:5px 0}.date .year{font-size:.875rem}.label{font-size:.875rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--orange2);margin-bottom:10px}.fair h2{font-size:clamp(1.8rem,4vw,2.6rem)}.fair h2 a{text-decoration:none}.fair h2 a:hover{text-decoration:underline}.when{color:var(--navy);font-weight:600;margin:16px 0 8px}.where{color:var(--muted);margin-bottom:22px}.fair .intro{max-width:67ch}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--navy);color:#fff;border-radius:6px;padding:12px 20px;text-decoration:none;font-weight:700}.button:hover{background:var(--deep)}.bingo-link{display:inline-block;margin:14px 0 0;font-weight:600;color:var(--orange2)}
+    .schedule{margin-top:40px}.schedule h2{font-size:1.8rem}.schedule .note{color:var(--muted);margin:10px 0 20px}.events{list-style:none;padding:0;margin:0}.event{padding:20px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px}.event-date{font-weight:800;color:var(--orange2)}.event h3{font-size:1.25rem;margin-bottom:8px}.event p{margin:0;color:var(--muted)}.empty{color:var(--muted);padding:18px 0;border-top:1px solid var(--line)}.explore{display:flex;flex-wrap:wrap;gap:16px 28px;padding-top:28px;margin-top:28px;border-top:1px solid var(--line);font-weight:700;color:var(--navy)}
+    footer{background:var(--deep);color:#dbe5ee;padding:30px 0;font-size:.9375rem}.footergrid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer p{margin:0}footer strong{color:#fff}
+    @media(max-width:600px){.wrap{width:calc(100% - 32px)}.heading{padding-top:26px}.fair{grid-template-columns:1fr;padding:24px;gap:18px}.date{display:flex;align-items:baseline;gap:10px;justify-self:start;padding:10px 16px}.date .day{font-size:2rem;margin:0}.button{width:100%}.event{grid-template-columns:60px minmax(0,1fr);gap:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <link rel="stylesheet" href="site-nav.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="nav" aria-label="Main navigation"></nav>
+  <header class="heading"><div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="students.html">Student Hub</a><span aria-hidden="true">/</span><span aria-current="page">Student Calendar</span></nav>
+    <h1>Student Calendar</h1>
+    <p>Club events, community projects and opportunities to get involved.</p>
+  </div></header>
+  <main id="main" class="wrap">
+    <article class="fair" id="volunteer-fair" aria-labelledby="fair-title">
+      <div class="date" aria-hidden="true"><span class="month">September</span><span class="day">9</span><span class="year">2026</span></div>
+      <div>
+        <p class="label">Meet YTC at ETHS</p>
+        <h2 id="fair-title"><a href="volunteer.html">Volunteer Fair</a></h2>
+        <p class="when"><time datetime="2026-09-09T11:30:00-05:00">Wednesday, September 9, 2026 · 11:30 a.m.</time>–<time datetime="2026-09-09T14:00:00-05:00">2 p.m.</time></p>
+        <p class="where">ETHS Fieldhouse · Lunch break: 12:30–1 p.m.<br>All times are Evanston local time.</p>
+        <p class="intro">Interested in marketing, organizing events, finance or community outreach? Meet Mark and Dave at the YTC table. Explore our small <strong>Student Operations Team</strong> or hear about occasional <strong>single-day volunteer opportunities</strong>.</p>
+        <p>No technology experience required.</p>
+        <a class="button" href="volunteer.html">Visit the Volunteer Fair page →</a><br>
+        <a class="bingo-link" href="volunteer.html#bingo">Find YTC matches for your bingo card</a>
+      </div>
+    </article>
+    <section class="schedule" aria-labelledby="schedule-title">
+      <h2 id="schedule-title">More from the club calendar</h2>
+      <p class="note">Upcoming meetings and activities from YTC at ETHS.</p>
+      <ul class="events" id="calendar-events" aria-live="polite"><li class="empty">Loading club events…</li></ul>
+      <noscript><p>Ask at the YTC table about additional meeting dates. The Volunteer Fair details and links above are available without JavaScript.</p></noscript>
+    </section>
+    <nav class="explore" aria-label="Explore YTC"><a href="students.html">Student Hub</a><a href="works.html">See what YTC students do</a><a href="index.html">YTC at ETHS home</a></nav>
+  </main>
+  <footer><div class="wrap footergrid"><div><strong>YTC at ETHS</strong><p>Youth Technology Corps · Evanston Township High School</p></div><p>Learn. Teach. Lead. Repeat.</p></div></footer>
+  <script src="site-nav.js?v=20260909-student-hub"></script>
+  <script>
+    (function(){
+      var list=document.getElementById('calendar-events');
+      var esc=function(value){return String(value==null?'':value).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+      fetch('/events').then(function(response){if(!response.ok)throw new Error('calendar');return response.json();}).then(function(data){
+        if(!data || data.ok===false)throw new Error('calendar');
+        var events=(data.events||[]).filter(function(event){return !(/volunteer fair/i.test(event.title||'') && /^2026-09-09/.test(event.iso||''));});
+        if(!events.length){list.innerHTML='<li class="empty">No additional upcoming events posted yet. Check back for club meetings and service opportunities.</li>';return;}
+        list.innerHTML=events.map(function(event){
+          return '<li class="event"><div class="event-date">'+esc(event.month)+' '+esc(event.day)+'</div><div><h3>'+esc(event.title)+'</h3><p>'+esc([event.weekday,event.time,event.location].filter(Boolean).join(' · '))+'</p></div></li>';
+        }).join('');
+      }).catch(function(){list.innerHTML='<li class="empty">Other club events could not load right now. The Volunteer Fair details above are still available.</li>';});
+    })();
+  </script>
+</body>
+</html>

@@ -6,8 +6,8 @@
     document.head.appendChild(css);
   }
 
-  const path=location.pathname.split('/').pop()||'index.html';
-  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='news.html'?'news':path==='students.html'?'student':path==='support.html'?'support':'home';
+  const path=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')+'.html';
+  const active=path==='parents.html'?'parents':path==='works.html'?'works':path==='news.html'?'news':['students.html','calendar.html','volunteer.html'].includes(path)?'student':path==='support.html'?'support':'home';
   const nav=document.querySelector('.nav');
 
   if(nav){
@@ -47,7 +47,15 @@
           </div>
         </div>
 
-        <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Hub</span></a>
+        <div class="navitem">
+          <a class="tablink ${active==='student'?'on':''}" href="students.html"><span class="tabtop">Student</span><span class="tabbottom">Hub</span></a>
+          <button class="nav-caret" aria-label="Open Student Hub section links" aria-expanded="false">⌄</button>
+          <div class="dropdown">
+            <a class="dropitem" href="students.html"><strong>Student Hub</strong><span>Your starting point at YTC</span></a>
+            <a class="dropitem" href="calendar.html"><strong>Student Calendar</strong><span>Club events and service opportunities</span></a>
+            <a class="dropitem" href="volunteer.html"><strong>Volunteer Fair</strong><span>Student Operations Team, event notices and bingo</span></a>
+          </div>
+        </div>
 
         <div class="navitem">
           <a class="tablink ${active==='support'?'on':''}" href="support.html"><span class="tabtop">Ways to</span><span class="tabbottom">Support</span></a>
@@ -152,7 +160,7 @@
   });
 
   document.addEventListener('click',e=>{
-    if(!e.target.closest('.navitem')) closeMenus();
+    if(!e.target.closest('.nav')) closeMenus();
   });
 
   document.addEventListener('keydown',e=>{

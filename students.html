@@ -80,6 +80,12 @@
 .ev .body span{display:block;color:var(--muted);font-size:.85rem;margin-top:3px}
 .ev-empty{color:var(--muted);font-size:.92rem;padding:8px 0}
 .cal-link{display:inline-block;margin-top:14px;color:var(--orange2);font-weight:800;font-size:.86rem}
+.fair-invitation{background:var(--deep);color:white;border-radius:18px;padding:26px}
+.fair-invitation .kicker{color:var(--gold);font-size:.875rem;letter-spacing:.06em}
+.fair-invitation h2{font-size:1.8rem;line-height:1.15}
+.fair-invitation p{margin:14px 0;font-size:1rem}
+.fair-invitation .fair-date{color:#dbe5ee;font-size:.9375rem}
+.fair-invitation a{display:inline-block;color:white;font-weight:700;text-decoration:underline;text-underline-offset:.2em;padding:8px 0}
 
 /* PHOTO STORIES — image on top so nobody gets cropped out */
 .stories{display:flex;flex-direction:column;gap:16px}
@@ -132,12 +138,20 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
 
   <!-- RIGHT: EVENTS + STORIES -->
   <div class="side">
+    <section class="fair-invitation" aria-labelledby="fair-title">
+      <span class="kicker">ETHS Volunteer Fair</span>
+      <h2 id="fair-title">Find your place in YTC.</h2>
+      <p class="fair-date">Wednesday, September 9, 2026<br>11:30 a.m.–2 p.m. · ETHS Fieldhouse<br>Lunch break: 12:30–1 p.m.</p>
+      <p>Help run the organization behind the club, or hear about single-day service opportunities. No technology experience required.</p>
+      <a href="volunteer.html">Explore the Volunteer Fair page →</a><br>
+      <a href="calendar.html#volunteer-fair">View the fair on the Student Calendar →</a>
+    </section>
     <div class="events">
       <span class="kicker">Upcoming events</span>
       <h3>What's on the calendar.</h3>
       <p class="note">Meetings, builds, and celebrations — live from the club calendar.</p>
       <ul class="evlist" id="evlist"><li class="ev-empty">Loading events…</li></ul>
-      <a class="cal-link" href="portal/">Open the portal for the full calendar →</a>
+      <a class="cal-link" href="calendar.html">Open the Student Calendar →</a>
     </div>
 
   </div>
@@ -145,7 +159,7 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
 </div></section>
 
 <footer><div class="wrap footergrid"><div><strong>YTC Evanston</strong><p>Youth Technology Corps at Evanston Township High School.</p></div><div><p>Learn. Teach. Lead. Repeat.</p><a href="mailto:info@ytcorps.org">info@ytcorps.org</a></div></div></footer>
-<script src="site-nav.js?v=544f3b9"></script>
+<script src="site-nav.js?v=20260909-student-hub"></script>
 <script>
 /* Step through the door.
    Sign-in comes FIRST: if the student isn't signed in yet we send them to
@@ -221,15 +235,15 @@ footer{background:#0b2032;color:#aebdca;padding:32px 0;font-size:.85rem}footer a
   fetch('/events').then(function(r){return r.json()}).then(function(d){
     var el=document.getElementById('evlist');
     var evs=(d&&d.events)||[];
-    if(!evs.length){el.innerHTML='<li class="ev-empty">No upcoming events posted yet — check the portal.</li>';return}
+    if(!evs.length){el.innerHTML='<li class="ev-empty">No additional events posted yet. See the Student Calendar for the Volunteer Fair.</li>';return}
     el.innerHTML=evs.map(function(e){
       var when=(e.weekday?e.weekday+' · ':'')+(e.time||'');
       var loc=e.location?' · '+esc(e.location):'';
       return '<li class="ev"><div class="date"><span class="m">'+esc(e.month)+'</span><span class="d">'+esc(e.day)+'</span></div>'+
-             '<div class="body"><b>'+esc(e.title)+'</b><span>'+esc(when)+loc+'</span></div></li>';
+             '<div class="body"><b><a href="calendar.html'+(/volunteer fair/i.test(e.title)&&/^2026-09-09/.test(e.iso||'')?'#volunteer-fair':'')+'">'+esc(e.title)+'</a></b><span>'+esc(when)+loc+'</span></div></li>';
     }).join('');
   }).catch(function(){
-    document.getElementById('evlist').innerHTML='<li class="ev-empty">Couldn\'t load events right now — open the portal for the calendar.</li>';
+    document.getElementById('evlist').innerHTML='<li class="ev-empty">Couldn\'t load other club events right now. The Volunteer Fair details are on the Student Calendar.</li>';
   });
 })();
 </script>

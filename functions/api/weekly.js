@@ -1,6 +1,6 @@
 // /api/weekly — video of the week + question of the week (about LAST week's video).
-// GET  -> this week's content + the student's watched/answered state + BYTCOIN balance
-// POST -> {action:'watched'} or {action:'answer', answerIdx:n}; awards BYTCOIN once each per week
+// GET  -> this week's content + the student's watched/answered state + IMPACT Credit balance
+// POST -> {action:'watched'} or {action:'answer', answerIdx:n}; awards IMPACT Credits once each per week
 
 import { json, accessEmail, getMember, currentWeekId, prevWeekId, bytcoinBalance } from './_shared.js';
 

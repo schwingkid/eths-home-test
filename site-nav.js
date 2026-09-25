@@ -64,7 +64,7 @@
             <a class="dropitem" href="support.html#donate"><strong>Donate</strong><span>Fund student opportunities</span></a>
             <a class="dropitem" href="support.html#equipment"><strong>Equipment</strong><span>Useful technology and supplies</span></a>
             <a class="dropitem" href="support.html#infrastructure"><strong>YTC Backbone</strong><span>Keep the organization behind the club working</span></a>
-            <a class="dropitem coin-link" href="support.html#bytcoin"><strong>Portal + bYTCoin</strong><span>Fund the ETHS-designed model before launch</span></a>
+            <a class="dropitem coin-link" href="support.html#impact"><strong>Portal + IMPACT Accounts</strong><span>Fund the ETHS-designed model before launch</span></a>
             <a class="dropitem" href="support.html#community-team"><strong>Community Team</strong><span>Bring marketing, design, fundraising or another useful skill</span></a>
             <a class="dropitem" href="support.html#connect"><strong>Partnerships</strong><span>Open a door for a student or the Learning Center</span></a>
           </div>
@@ -101,7 +101,7 @@
       nums.forEach((n,i)=>n.textContent=String(i+1).padStart(2,'0'));
     }
     const coin=document.querySelector('.coin');
-    if(coin) coin.id='bytcoin';
+    if(coin&&!coin.id) coin.id='impact';
   }
   const closeMenus=()=>{
     document.querySelectorAll('.navitem.open').forEach(item=>{

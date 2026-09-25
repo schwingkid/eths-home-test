@@ -5,7 +5,7 @@
 // POST  {action:'setStatus', email, status} -> deactivate / reactivate one member
 //
 // Nothing here ever deletes a member. Deactivating keeps the attendance,
-// BYTCOIN and teaching history intact and simply closes the door.
+// IMPACT Account credits (stored in the legacy ledger) and teaching history intact and simply closes the door.
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {

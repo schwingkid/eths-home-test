@@ -14,7 +14,7 @@
     nav.innerHTML=`<div class="wrap navrow">
       <div class="brandstack">
         <a class="brand" href="index.html">YTC <em>Evanston</em></a>
-        <a class="corp-link" href="https://www.youthtechnologycorps.org/" target="_blank" rel="noopener">Youth Technology Corps ↗</a>
+        <a class="corp-link" href="https://ytc-global-alliance.youth-techno-8053.chatgpt.site/" target="_blank" rel="noopener">YTC Main Website ↗</a>
       </div>
 
       <button class="burger" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -102,10 +102,10 @@
     const target=footer.querySelector('.footergrid > div:last-child')||footer.querySelector('.wrap')||footer;
     const link=document.createElement('a');
     link.className='corp-footer';
-    link.href='https://www.youthtechnologycorps.org/';
+    link.href='https://ytc-global-alliance.youth-techno-8053.chatgpt.site/';
     link.target='_blank';
     link.rel='noopener';
-    link.textContent='Youth Technology Corps organization ↗';
+    link.textContent='YTC Main Website ↗';
     target.appendChild(document.createElement('br'));
     target.appendChild(link);
   }
